@@ -5,13 +5,19 @@ export default defineConfig({
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    headless: true,
+    browserName: "chromium",
     trace: 'off',
+    screenshot: "only-on-failure",
+    video: "retain-on-failure"
   },
-
-  /* Configure projects for major browsers */
+  reporter: [["line"], ["json", { outputFile: "test-result.json" }],
+  ['html', {
+    open: "never",
+    outputFolder: "playwright-report/"
+  }]
+],
   projects: [
     {
       name: 'chromium',

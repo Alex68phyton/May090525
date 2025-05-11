@@ -1,0 +1,147 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\a.aparin\\STUDYAGAIN\\playwright.config.ts",
+    "rootDir": "C:/Users/a.aparin/STUDYAGAIN/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-result.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "playwright-report/"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/a.aparin/STUDYAGAIN/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/a.aparin/STUDYAGAIN/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.52.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "postAccessCards.test.ts",
+      "file": "postAccessCards.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "API-тесты на создание карт доступа",
+          "file": "postAccessCards.test.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[positive] создание карты доступа",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 249,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/access_cards\n"
+                        },
+                        {
+                          "text": "\n\t-- ПАРАМЕТРЫ --\n"
+                        },
+                        {
+                          "text": "{\n  session_id: \u001b[32m'549297f8-e38a-47cd-915e-2a1859102539'\u001b[39m,\n  request_id: \u001b[32m'4b5b7836-dce6-4b5e-9f18-76be91bd7d37'\u001b[39m,\n  request_source: \u001b[32m'mobile_app'\u001b[39m,\n  data: [\n    {\n      access_card_number: \u001b[32m'CAMELtest1'\u001b[39m,\n      user_id: \u001b[33m296978\u001b[39m,\n      type: \u001b[32m'disposable_card'\u001b[39m,\n      is_blocked: \u001b[33mfalse\u001b[39m,\n      is_lost: \u001b[33mfalse\u001b[39m,\n      is_deleted: \u001b[33mfalse\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"549297f8-e38a-47cd-915e-2a1859102539\",\n\t\"request_id\": \"4b5b7836-dce6-4b5e-9f18-76be91bd7d37\",\n\t\"request_source\": \"mobile_app\",\n\t\"data\": [\n\t\t{\n\t\t\t\"access_card_number\": \"CAMELtest1\",\n\t\t\t\"created_at\": \"2025-05-11T16:26:51.290929238Z\",\n\t\t\t\"id\": 4027569,\n\t\t\t\"is_blocked\": false,\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_lost\": false,\n\t\t\t\"type\": \"disposable_card\",\n\t\t\t\"updated_at\": \"2025-05-11T16:26:51.290929238Z\",\n\t\t\t\"user\": {\n\t\t\t\t\"id\": 296978,\n\t\t\t\t\"last_name\": \"Апарин\",\n\t\t\t\t\"name\": \"Алексей\"\n\t\t\t}\n\t\t}\n\t]\n}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-05-11T16:26:51.061Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "679fa412c703b053fd15-cadc8b34e68426cc1d18",
+              "file": "postAccessCards.test.ts",
+              "line": 6,
+              "column": 10
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-05-11T16:26:49.735Z",
+    "duration": 1632.539,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

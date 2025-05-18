@@ -12,6 +12,12 @@ export default defineConfig({
     screenshot: "only-on-failure",
     video: "retain-on-failure"
   },
+  testMatch: [
+    "tests/**/**.test.ts"
+  ],
+  testIgnore: [
+    "first.test.ts"
+  ],
   reporter: [["line"], ["json", { outputFile: "test-result.json" }],
   ['html', {
     open: "never",

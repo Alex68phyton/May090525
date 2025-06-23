@@ -3,12 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test tests/ -- workers 2",
+    "test-users": "npx playwright test tests/users -- workers 1",
+    "test-upp": "npx playwright test tests/userPaymentPlans -- workers 1",
+    "test-accessCards": "npx playwright test tests/accessCards -- workers 1",
+    "test-clubs": "npx playwright test tests/clubs -- workers 1",
+    "test-paymentPlans": "npx playwright test tests/paymentPlans -- workers 1",
+    "test-getCode": "npx playwright test tests/getCode -- workers 1",
+    "test-notes": "npx playwright test tests/notes -- workers 1",
+    "test-employees": "npx playwright test tests/employees -- workers 1",
+    "test-groupTrainings": "npx playwright test tests/groupTrainings -- workers 1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "^1.53.1",
     "@types/node": "^22.15.17"
   }
 }

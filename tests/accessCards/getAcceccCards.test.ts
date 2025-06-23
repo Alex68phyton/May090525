@@ -1,8 +1,8 @@
 import { expect, request, test } from "@playwright/test";
-import api from '../api.json'
-import { log } from "../utils/logger";
-import AccessCardsRequests from "../requests/accessCards.requests";
-import { getBaseParameters } from "../entities/baseParameters";
+import api from '../../api.json'
+import { log } from "../../utils/logger";
+import AccessCardsRequests from "../../requests/accessCards.requests";
+import { getBaseParameters } from "../../entities/baseParameters";
 
 const requestBody = {
             session_id: "549297f8-e38a-47cd-915e-2a1859102539",

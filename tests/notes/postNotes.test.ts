@@ -1,5 +1,5 @@
 import { expect, request, test } from "@playwright/test";
-import api from '../api.json'
+import api from '../../api.json'
 
 test.describe("API-тесты на создание заметок", async () => {
     test("[positive] создание заметки", async ({request}) => {

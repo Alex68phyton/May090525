@@ -1,6 +1,6 @@
 import { expect, request, test } from "@playwright/test";
-import api from '../api.json'
-import { getRandomEmail, getRandomPhoneNumber } from "../utils/random";
+import api from '../../api.json'
+import { getRandomEmail, getRandomPhoneNumber } from "../../utils/random";
 
 const sportExperience = [
     "0-6 месяцев",

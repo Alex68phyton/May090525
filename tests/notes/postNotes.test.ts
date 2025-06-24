@@ -18,7 +18,6 @@ test.describe("API-тесты на создание заметок", async () =>
                         text: "Трололо",
                         employee_id: 2549,
                         user_id: 296978,
-                        contact_id: 1,
                         type: "block"
                       }
                     ]

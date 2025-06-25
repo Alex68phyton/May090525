@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "CommonJS",
+    "strict": false,
+    "esModuleInterop": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "types": ["node"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "paths": {
+        "@requests/*": ["requests/*"],
+        "@entities/*": ["entities/*"],
+        "@utils/*": ["utils/*"]
+    }
+  }
+}

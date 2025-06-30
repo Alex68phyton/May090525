@@ -1,6 +1,4 @@
 import { expect, request, test } from "@playwright/test";
-import api from '../../api.json'
-import { log } from "../../utils/logger";
 import { getBaseParameters } from "../../entities/baseParameters";
 import { getRandomEmail, getRandomPhoneNumber } from "../../utils/random";
 import ClubsRequests from "../../requests/clubs.requests";
@@ -9,7 +7,7 @@ import UsersRequests from "../../requests/users.request";
 
 
 test.describe("API-тесты на получение юзера", async () => {
-    test.only("[positive] получение юзера по id", async ({request}) => {
+    test("[positive] получение юзера по id", async ({request}) => {
             const clubId = await test.step("Получить id клуба", async () => {
                         const parameters = {...await getBaseParameters()};
                         const getClubResponse = await new ClubsRequests(request).getClubs(200, parameters);

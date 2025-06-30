@@ -11,7 +11,8 @@ import UserSearchRequests from "@requests/userSearch.request";
 test.describe("API-тесты на поиск клиента", async () => {
 
     let clubId: number;
-    let userId: number;
+    let phoneId: string;
+    let email: string;
     const birthday = "1991-11-11";
     const name = "Кваква";
     const last_name = "Качественная"
@@ -39,7 +40,7 @@ test.describe("API-тесты на поиск клиента", async () => {
             return getClubsData?.data[0]?.id;
         });
 
-        const { email, phoneId } = await test.step("Получить id клиента", async () => {     
+        const response = await test.step("Получить id клиента", async () => {     
             const requestBody = {
                 session_id: "549297f8-e38a-47cd-915e-2a1859102539",
                 request_id: "4b5b7836-dce6-4b5e-9f18-76be91bd7d99",
@@ -61,57 +62,51 @@ test.describe("API-тесты на поиск клиента", async () => {
                     sport_experience: "Больше 5 лет"
                 }
             };
-            const response = (await (await new UsersRequests(request).postUsers(Statuses.OK, requestBody)).json()).data;
-            return {
-                email: response.email,
-                phoneId: response.phone
-            }
+            return (await (await new UsersRequests(request).postUsers(Statuses.OK, requestBody)).json()).data;
         });
-
-        const PhoneSearchData = {
-            phone: phoneId
-        };
-        const BirthdaySearchData = {
-            name: name,
-            last_name: last_name,
-            birthday: birthday
-        };
-        const EmailSearchData = {
-            name: name,
-            last_name: last_name,
-            email: email
-        };
-
-        test.only("поиск клиента по номеру телефона", async ({request}) => {
+            email = response.email,
+            phoneId = response.phone
+    });
+        test("поиск клиента по номеру телефона", async ({request}) => {
+                const PhoneSearchData = {
+                    phone: phoneId
+                };
                 const userSearchSuccessResponse = await test.step("поиск клиента по номеру телефона", 
                 async () => userSearchResponse(request, PhoneSearchData));     
 
                 await test.step("Проверить статус транзакции", async () => {
-                    expect(userSearchSuccessResponse.name).toEqual("Кваква");
+                    expect(userSearchSuccessResponse.data[0].name).toEqual("Кваква");
             });
                 
         });
 
         test("поиск клиента по имени, фамилии и дате рождения", async ({request}) => {
+                const BirthdaySearchData = {
+                    name: name,
+                    last_name: last_name,
+                    birthday: birthday
+                };
                 const userSearchSuccessResponse = await test.step("поиск клиента по имени, фамилии и дате рождения", 
                 async () => userSearchResponse(request, BirthdaySearchData));     
 
                 await test.step("Проверить статус транзакции", async () => {
-                    expect(userSearchSuccessResponse.name).toEqual("Кваква");
+                    expect(userSearchSuccessResponse.data[0].name).toEqual("Кваква");
             });
                 
         });
 
         test("поиск клиента по имени, фамилии и email", async ({request}) => {
+                const EmailSearchData = {
+                    name: name,
+                    last_name: last_name,
+                    email: email
+                };
                 const userSearchSuccessResponse = await test.step("поиск клиента по имени, фамилии и email", 
                 async () => userSearchResponse(request, EmailSearchData));     
 
                 await test.step("Проверить статус транзакции", async () => {
-                    expect(userSearchSuccessResponse.name).toEqual("Кваква");
+                    expect(userSearchSuccessResponse.data[0].name).toEqual("Кваква");
             });
                 
         });
-
-
-    });
 });

@@ -106,7 +106,7 @@ test.describe("API-тесты на оплату подписки", async () => {
         });
     });
         test("[negative] недопустимое значение провайдера оплаты", async ({request}) => {
-                const paymentCreateErrorResponse = await test.step("Отправка оплаты с несуществующим провайдером",
+                const paymentCreateErrorResponse = await test.step("Отправка оплаты с не существующим провайдером",
                 async () => paymentCreateResponse(request, Statuses.BAD_REQUEST, 777, PaymentServices.CLOUDPAYMENTS));
 
                 await test.step("Проверить сообщение об ошибке", async () => {

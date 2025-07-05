@@ -1,0 +1,16 @@
+{
+    "first_name": "Кваква",
+    "last_name": "Квак",
+    "middle_name": "Квакович",
+    "birthday": "1991-11-11",
+    "sex": {
+        "male": "male",
+        "female": "female"
+    },
+    "password": "Qwery@123456",
+    "userPhotoId": 4,
+    "lang": {
+        "ru": "ru",
+        "eng": "eng"
+    }
+}

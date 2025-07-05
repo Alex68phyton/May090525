@@ -1,80 +1,83 @@
 import { expect, request, test } from "@playwright/test";
-import api from '../../api.json'
-import { getRandomEmail, getRandomPhoneNumber } from "../../utils/random";
+import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
+import ClubsRequests from "@requests/clubs.requests";
+import UsersRequests from "@requests/users.request";
+import { Statuses } from "@libs/statuses";
+import {  RequestSources } from "@libs/requestSources";
+import userTestData from "@data/user.json";
+import requestTestData from "@data/request.json";
+import { SportExpirience } from "@libs/sportExpirience";
+import { getBaseParameters } from "@entities/baseParameters";
 
 const sportExperience = [
-    "0-6 месяцев",
-    "6-12 месяцев",
-    "1-2 года"
+    SportExpirience.ZERO_SIX_MONTH,
+    SportExpirience.SIX_TWELVE_MONTH,
+    SportExpirience.ONE_TWO_YEARS
 ]
+let clubId: number;
 
 test.describe("API-тесты на создание клиентов", async () => {
-    test("[positive] создание клиента", async ({request}) => {
-        const response = await request.post(
-            `${api.urls.base_url_api}${api.paths.users}`,
-            {
-                headers: {
-                    "Authorization": `${api.tokens.test}`
-                },
-                data: {
-                        session_id: "549297f8-e38a-47cd-915e-2a1859102539",
-                        request_id: "4b5b7836-dce6-4b5e-9f18-76be91bd7d99",
-                        request_source: "crm",
-                        data: {
-                            email: getRandomEmail(),
-                            name: "Кваква",
-                            last_name: "Качественная",
-                            middle_name: "Проверка",
-                            sex: "female",
-                            phone: getRandomPhoneNumber(),
-                            birthday: "1991-11-11",
-                            password: "ForAlex2023",
-                            lang: "ru",
-                            home_club_id: 1,
-                            club_access: false,
-                            admin_panel_access: true,
-                            group_training_registration_access: false,
-                            sport_experience: "Больше 5 лет"
-                        }
-                }
-            }
-        );
-
-        expect(response.status()).toEqual(200);
+    test.beforeAll( async({request}) => {
+        clubId = await test.step("Получить id клуба", async () => {
+            const parameters = {...await getBaseParameters()};
+            const getClubResponse = await new ClubsRequests(request).getClubs(Statuses.OK, parameters);
+            const getClubsData = await getClubResponse.json();
+            return getClubsData?.data[0]?.id;
+        });
     });
+    test("Создать клиента", async ( {request}) => {
+        const response = await test.step("Создать клиента", async () => {     
+            const requestBody = {
+                session_id: requestTestData.sessionId,
+                request_id: requestTestData.requestId,
+                request_source: RequestSources.CRM,
+                data: {
+                    email: getRandomEmail(),
+                    name: userTestData.first_name,
+                    last_name: userTestData.last_name,
+                    middle_name: userTestData.middle_name,
+                    sex: userTestData.sex.male,
+                    phone: getRandomPhoneNumber(),
+                    birthday: userTestData.birthday,
+                    password: userTestData.password,
+                    lang: userTestData.lang.ru,
+                    home_club_id: clubId,
+                    club_access: false,
+                    admin_panel_access: true,
+                    group_training_registration_access: false,
+                    sport_experience: SportExpirience.ZERO_SIX_MONTH
+                }
+            };
+            return (await (await new UsersRequests(request).postUsers(Statuses.OK, requestBody)).json()).data;
+        });
+    });
+
 sportExperience.forEach(experience => {
     test(`[positive] создание клиента без пароля с опытом ${experience}`, async ({request}) => {
-        const response = await request.post(
-            `${api.urls.base_url_api}${api.paths.users}`,
-            {
-                headers: {
-                    "Authorization": `${api.tokens.test}`
-                },
+        const response = await test.step("Создать клиента", async () => {     
+            const requestBody = {
+                session_id: requestTestData.sessionId,
+                request_id: requestTestData.requestId,
+                request_source: RequestSources.CRM,
                 data: {
-                        session_id: "549297f8-e38a-47cd-915e-2a1859102539",
-                        request_id: "4b5b7836-dce6-4b5e-9f18-76be91bd7d99",
-                        request_source: "crm",
-                        data: {
-                            email: getRandomEmail(),
-                            name: "Кваква",
-                            last_name: "Качественная",
-                            middle_name: "Проверка",
-                            sex: "female",
-                            phone: getRandomPhoneNumber(),
-                            birthday: "1991-11-11",
-                            password: "ForAlex2023",
-                            lang: "ru",
-                            home_club_id: 1,
-                            club_access: false,
-                            admin_panel_access: true,
-                            group_training_registration_access: false,
-                            sport_experience: experience
-                        }
+                    email: getRandomEmail(),
+                    name: userTestData.first_name,
+                    last_name: userTestData.last_name,
+                    middle_name: userTestData.middle_name,
+                    sex: userTestData.sex.male,
+                    phone: getRandomPhoneNumber(),
+                    birthday: userTestData.birthday,
+                    password: userTestData.password,
+                    lang: userTestData.lang.ru,
+                    home_club_id: clubId,
+                    club_access: false,
+                    admin_panel_access: true,
+                    group_training_registration_access: false,
+                    sport_experience: SportExpirience.ZERO_SIX_MONTH
                 }
-            }
-        );
-        
-        expect(response.status()).toEqual(200);
+            };
+            return (await (await new UsersRequests(request).postUsers(Statuses.OK, requestBody)).json()).data;
+        });
     });
 });
 });

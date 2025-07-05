@@ -1,0 +1,10 @@
+{
+   "discountsName": "autotest_discount",
+   "discountRule": 1,
+   "availableClubsId": 1,
+   "availablePaymentPlansId": 18,
+   "availableInterfacesName": {
+        "crm": "crm",
+        "mobile": "mobile_app"
+   }
+}

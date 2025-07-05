@@ -1,6 +1,4 @@
 import { expect, request, test } from "@playwright/test";
-import api from '../../api.json'
-import { log } from "../../utils/logger";
 import AccessCardsRequests from "../../requests/accessCards.requests";
 
 const requestBody = {

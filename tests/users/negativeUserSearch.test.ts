@@ -5,24 +5,21 @@ import ClubsRequests from "@requests/clubs.requests";
 import UsersRequests from "@requests/users.request";
 import { Statuses } from "libs/statuses";
 import UserSearchRequests from "@requests/userSearch.request";
-
+import userTestData from "@data/user.json";
+import requestTestData from "@data/request.json";
+import { SportExpirience } from "@libs/sportExpirience";
+import { RequestSources } from "@libs/requestSources";
 
 
 test.describe("[negative]API-тесты на поиск клиента", async () => {
 
     let clubId: number;
-    let phoneId: string;
-    let email: string;
-    const birthday = "1991-11-11";
-    const name = "Кваква";
-    const last_name = "Качественная"
-
 
     const userSearchResponse = async (request: APIRequestContext, searchData: Object, status: Statuses) => {
             const requestBody = {
-                session_id: "549297f8-e38a-47cd-915e-2a1859102539",
-                request_id: "4b5b7836-dce6-4b5e-9f18-76be91bd7d37",
-                request_source: "mobile_app",
+                session_id: requestTestData.sessionId,
+                request_id: requestTestData.requestId,
+                request_source: RequestSources.CRM,
                 data: searchData
                 }
     
@@ -42,24 +39,24 @@ test.describe("[negative]API-тесты на поиск клиента", async (
 
         const response = await test.step("Получить id клиента", async () => {     
             const requestBody = {
-                session_id: "549297f8-e38a-47cd-915e-2a1859102539",
-                request_id: "4b5b7836-dce6-4b5e-9f18-76be91bd7d99",
-                request_source: "crm",
+                session_id: requestTestData.sessionId,
+                request_id: requestTestData.requestId,
+                request_source: RequestSources.CRM,
                 data: {
                     email: getRandomEmail(),
-                    name: name,
-                    last_name: last_name,
-                    middle_name: "Проверка",
-                    sex: "female",
+                    name: userTestData.first_name,
+                    last_name: userTestData.last_name,
+                    middle_name: userTestData.middle_name,
+                    sex: userTestData.sex.male,
                     phone: getRandomPhoneNumber(),
-                    birthday: birthday,
-                    password: "ForAlex2023",
-                    lang: "ru",
+                    birthday: userTestData.birthday,
+                    password: userTestData.password,
+                    lang: userTestData.lang.ru,
                     home_club_id: clubId,
                     club_access: false,
                     admin_panel_access: true,
                     group_training_registration_access: false,
-                    sport_experience: "Больше 5 лет"
+                    sport_experience: SportExpirience.ZERO_SIX_MONTH
                 }
             };
             return (await (await new UsersRequests(request).postUsers(Statuses.OK, requestBody)).json()).data;
@@ -81,8 +78,8 @@ test.describe("[negative]API-тесты на поиск клиента", async (
 
         test("[negative]поиск клиента по имени, дате рождения, но без фамилии", async ({request}) => {
                 const BirthdaySearchData = {
-                    name: name,
-                    birthday: birthday
+                    name: userTestData.first_name,
+                    birthday: userTestData.birthday
                 };
                 const userSearchSuccessResponse = await test.step("поиск клиента по имени, фамилии и дате рождения", 
                 async () => userSearchResponse(request, BirthdaySearchData, Statuses.BAD_REQUEST));     
@@ -95,8 +92,8 @@ test.describe("[negative]API-тесты на поиск клиента", async (
 
         test("[negative]поиск клиента по номеру телефона, которого нет в БД", async ({request}) => {
                 const EmailSearchData = {
-                    name: name,
-                    last_name: last_name,
+                    name: userTestData.first_name,
+                    last_name: userTestData.last_name,
                     email: "takogoemailnetu"
                 };
                 const userSearchSuccessResponse = await test.step("поиск клиента по имени, фамилии и email", 

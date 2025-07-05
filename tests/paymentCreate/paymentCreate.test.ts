@@ -4,7 +4,7 @@ import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import ClubsRequests from "@requests/clubs.requests";
 import UsersRequests from "@requests/users.request";
 import UserPaymentPlansRequests from "@requests/userPaymentPlans.request";
-import { getCurrentDate } from "@utils/getPaymentStartDate";
+import { getCurrentSplitDate } from "@utils/getAnyDate";
 import { Statuses } from "libs/statuses";
 import { PaymentServices } from "libs/paymentServices";
 import UserPaymentCreateRequests from "@requests/paymentCreate.requests";
@@ -81,7 +81,7 @@ test.describe("API-тесты на оплату подписки", async () => {
                     session_id: "549297f8-e38a-47cd-915e-2a1859102539",
                     request_id: "4b5b7836-dce6-4b5e-9f18-76be91bd7d37",
                     request_source: "crm",
-                    start_date: getCurrentDate(),
+                    start_date: getCurrentSplitDate(),
                     payment_plan_id: 18,
                     club_id: clubId,
                     verification_token: "e3767699-6a16-4da1-94b9-fa8ab9378fb4",

@@ -18,7 +18,9 @@
     "paths": {
         "@requests/*": ["requests/*"],
         "@entities/*": ["entities/*"],
-        "@utils/*": ["utils/*"]
+        "@utils/*": ["utils/*"],
+        "@libs/*": ["libs/*"],
+        "@data/*": ["data/*"]
     }
   }
 }

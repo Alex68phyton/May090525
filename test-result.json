@@ -76,7 +76,7 @@
         {
           "title": "API-тесты на получение акций",
           "file": "discounts/getDiscounts.test.ts",
-          "line": 18,
+          "line": 11,
           "column": 6,
           "specs": [
             {
@@ -95,7 +95,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 156,
+                      "duration": 109,
                       "errors": [],
                       "stdout": [
                         {
@@ -108,7 +108,7 @@
                           "text": "\n\t-- PARAMETERS --\n"
                         },
                         {
-                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"data\": [\n\t\t{\n\t\t\t\"name\": \"autotest_discount\",\n\t\t\t\"start_date\": \"2025-07-05T09:55:30.643Z\",\n\t\t\t\"end_date\": \"2025-07-12T09:55:30.644Z\",\n\t\t\t\"discount_rule_id\": 1,\n\t\t\t\"is_active\": true,\n\t\t\t\"available_clubs\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_payment_plans\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 18\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_interfaces\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\": \"crm\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"is_deleted\": false\n\t\t}\n\t]\n}\n"
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"data\": [\n\t\t{\n\t\t\t\"name\": \"autotest_discount\",\n\t\t\t\"start_date\": \"2025-07-05T09:58:33.367Z\",\n\t\t\t\"end_date\": \"2025-07-12T09:58:33.368Z\",\n\t\t\t\"discount_rule_id\": 1,\n\t\t\t\"is_active\": true,\n\t\t\t\"available_clubs\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_payment_plans\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 18\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_interfaces\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\": \"crm\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"is_deleted\": false\n\t\t}\n\t]\n}\n"
                         },
                         {
                           "text": "\n\t-- RESPONSE STATUS --\n"
@@ -120,7 +120,7 @@
                           "text": "\n\t-- RESPONSE BODY --\n"
                         },
                         {
-                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 12866,\n\t\t\t\"created_at\": \"2025-07-05T09:55:30Z\",\n\t\t\t\"updated_at\": \"2025-07-05T09:55:30Z\",\n\t\t\t\"name\": \"autotest_discount\",\n\t\t\t\"start_date\": \"2025-07-05T00:00:00Z\",\n\t\t\t\"end_date\": \"2025-07-12T00:00:00Z\",\n\t\t\t\"is_active\": true,\n\t\t\t\"discount_rule\": {\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"ВП = 0р & АП 1ый месяц беслпатно\",\n\t\t\t\t\"rule\": \"{\\r\\nPAYMENT_PLAN.OurJoinFee = 0\\r\\nPAYMENT_PLAN.MembershipFee = 0\\r\\n}\",\n\t\t\t\t\"is_deleted\": false\n\t\t\t},\n\t\t\t\"available_clubs\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_payment_plans\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 18\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_interfaces\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\": \"crm\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"is_deleted\": false\n\t\t}\n\t]\n}\n"
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 12867,\n\t\t\t\"created_at\": \"2025-07-05T09:58:33Z\",\n\t\t\t\"updated_at\": \"2025-07-05T09:58:33Z\",\n\t\t\t\"name\": \"autotest_discount\",\n\t\t\t\"start_date\": \"2025-07-05T00:00:00Z\",\n\t\t\t\"end_date\": \"2025-07-12T00:00:00Z\",\n\t\t\t\"is_active\": true,\n\t\t\t\"discount_rule\": {\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"ВП = 0р & АП 1ый месяц беслпатно\",\n\t\t\t\t\"rule\": \"{\\r\\nPAYMENT_PLAN.OurJoinFee = 0\\r\\nPAYMENT_PLAN.MembershipFee = 0\\r\\n}\",\n\t\t\t\t\"is_deleted\": false\n\t\t\t},\n\t\t\t\"available_clubs\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_payment_plans\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 18\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_interfaces\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\": \"crm\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"is_deleted\": false\n\t\t}\n\t]\n}\n"
                         },
                         {
                           "text": "\n\t-- REQUEST URL --\n"
@@ -144,12 +144,12 @@
                           "text": "\n\t-- RESPONSE BODY --\n"
                         },
                         {
-                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 12866,\n\t\t\t\"name\": \"autotest_discount\",\n\t\t\t\"start_date\": \"2025-07-05T00:00:00Z\",\n\t\t\t\"end_date\": \"2025-07-12T00:00:00Z\",\n\t\t\t\"is_active\": true,\n\t\t\t\"discount_rule\": {\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"ВП = 0р & АП 1ый месяц беслпатно\",\n\t\t\t\t\"rule\": \"{\\r\\nPAYMENT_PLAN.OurJoinFee = 0\\r\\nPAYMENT_PLAN.MembershipFee = 0\\r\\n}\",\n\t\t\t\t\"is_deleted\": false\n\t\t\t},\n\t\t\t\"available_clubs\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_payment_plans\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 18\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_interfaces\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\": \"crm\"\n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"id\": 12865,\n\t\t\t\"name\": \"autotest_discount\",\n\t\t\t\"start_date\": \"2025-07-05T00:00:00Z\",\n\t\t\t\"end_date\": \"2025-07-12T00:00:00Z\",\n\t\t\t\"is_active\": true,\n\t\t\t\"discount_rule\": {\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"ВП = 0р & АП 1ый месяц беслпатно\",\n\t\t\t\t\"rule\": \"{\\r\\nPAYMENT_PLAN.OurJoinFee = 0\\r\\nPAYMENT_PLAN.MembershipFee = 0\\r\\n}\",\n\t\t\t\t\"is_deleted\": false\n\t\t\t},\n\t\t\t\"available_clubs\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_payment_plans\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 18\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_interfaces\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\": \"crm\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"total_pages\": 1,\n\t\"total_rows\": 2\n}\n"
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 12867,\n\t\t\t\"name\": \"autotest_discount\",\n\t\t\t\"start_date\": \"2025-07-05T00:00:00Z\",\n\t\t\t\"end_date\": \"2025-07-12T00:00:00Z\",\n\t\t\t\"is_active\": true,\n\t\t\t\"discount_rule\": {\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"ВП = 0р & АП 1ый месяц беслпатно\",\n\t\t\t\t\"rule\": \"{\\r\\nPAYMENT_PLAN.OurJoinFee = 0\\r\\nPAYMENT_PLAN.MembershipFee = 0\\r\\n}\",\n\t\t\t\t\"is_deleted\": false\n\t\t\t},\n\t\t\t\"available_clubs\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_payment_plans\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 18\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_interfaces\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\": \"crm\"\n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"id\": 12866,\n\t\t\t\"name\": \"autotest_discount\",\n\t\t\t\"start_date\": \"2025-07-05T00:00:00Z\",\n\t\t\t\"end_date\": \"2025-07-12T00:00:00Z\",\n\t\t\t\"is_active\": true,\n\t\t\t\"discount_rule\": {\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"ВП = 0р & АП 1ый месяц беслпатно\",\n\t\t\t\t\"rule\": \"{\\r\\nPAYMENT_PLAN.OurJoinFee = 0\\r\\nPAYMENT_PLAN.MembershipFee = 0\\r\\n}\",\n\t\t\t\t\"is_deleted\": false\n\t\t\t},\n\t\t\t\"available_clubs\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_payment_plans\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 18\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_interfaces\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\": \"crm\"\n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"id\": 12865,\n\t\t\t\"name\": \"autotest_discount\",\n\t\t\t\"start_date\": \"2025-07-05T00:00:00Z\",\n\t\t\t\"end_date\": \"2025-07-12T00:00:00Z\",\n\t\t\t\"is_active\": true,\n\t\t\t\"discount_rule\": {\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"ВП = 0р & АП 1ый месяц беслпатно\",\n\t\t\t\t\"rule\": \"{\\r\\nPAYMENT_PLAN.OurJoinFee = 0\\r\\nPAYMENT_PLAN.MembershipFee = 0\\r\\n}\",\n\t\t\t\t\"is_deleted\": false\n\t\t\t},\n\t\t\t\"available_clubs\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_payment_plans\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 18\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"available_interfaces\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\": \"crm\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"total_pages\": 1,\n\t\"total_rows\": 3\n}\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-07-05T09:55:30.622Z",
+                      "startTime": "2025-07-05T09:58:33.343Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -159,7 +159,7 @@
               ],
               "id": "304a9514505bd5c1c5aa-b889799939146f3e05e8",
               "file": "discounts/getDiscounts.test.ts",
-              "line": 55,
+              "line": 48,
               "column": 9
             }
           ]
@@ -169,8 +169,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-07-05T09:55:29.700Z",
-    "duration": 1334.3079999999998,
+    "startTime": "2025-07-05T09:58:32.285Z",
+    "duration": 1374.0079999999998,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

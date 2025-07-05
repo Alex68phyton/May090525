@@ -46,9 +46,13 @@ test.describe("API-тесты на получение акций", async () => {
     });
 
     test("[positive] получение активных акций по названию за определенный период времени", async ({request}) => {
-            const parameters = await getBaseParameters();
-            const discountSuccessResponse = await new DiscountsRequests(request).getDiscounts(Statuses.OK,{...parameters,...{start_date: getCurrentSplitDate(), end_date: getCurrentSplitDatePlus7Days(), name: discountTestData.discountsName}});
-            const discountName = await discountSuccessResponse.json();
-            expect(discountName.data[0].name).toEqual(discountTestData.discountsName);
-    });
+            const discountName = await test.step("получение активных акций по названию за определенный период времени", async () => {
+                const parameters = await getBaseParameters();
+                const discountSuccessResponse = await new DiscountsRequests(request).getDiscounts(Statuses.OK,{...parameters,...{start_date: getCurrentSplitDate(), end_date: getCurrentSplitDatePlus7Days(), name: discountTestData.discountsName}});
+                return await discountSuccessResponse.json();
+            });
+            await test.step("Проверить название акции", async () => {
+                expect(discountName.data[0].name).toEqual(discountTestData.discountsName);
+            });
+        });
 });

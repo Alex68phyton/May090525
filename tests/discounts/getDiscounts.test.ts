@@ -1,14 +1,7 @@
 import { expect, request, test } from "@playwright/test";
-import api from '../../api.json'
-import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
-import ClubsRequests from "@requests/clubs.requests";
-import UsersRequests from "@requests/users.request";
 import { Statuses } from "@libs/statuses";
 import {  RequestSources } from "@libs/requestSources";
-import UserSearchRequests from "@requests/userSearch.request";
-import userTestData from "@data/user.json";
 import requestTestData from "@data/request.json";
-import { SportExpirience } from "@libs/sportExpirience";
 import { getBaseParameters } from "@entities/baseParameters";
 import DiscountsRequests from "@requests/discounts.request";
 import { getCurrentDate, getCurrentDatePlus7Days, getCurrentSplitDate, getCurrentSplitDatePlus7Days } from "@utils/getAnyDate";

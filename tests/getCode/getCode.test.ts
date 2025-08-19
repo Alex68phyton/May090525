@@ -6,6 +6,7 @@ import { getRandomEmail, getRandomPhoneNumber } from "../../utils/random";
 import ClubsRequests from "../../requests/clubs.requests";
 import UsersRequests from "../../requests/users.request";
 import VerifyRequest from "../../requests/verify.requests";
+import { getUserRequestJson } from "@entities/user.requestJson";
 
 
 
@@ -19,27 +20,7 @@ test.describe("API-тесты на получение юзера", async () => {
         });
 
         const { userId, userPhone } = await test.step("Получить id клиента", async () => {     
-            const requestBody = {
-                        session_id: "549297f8-e38a-47cd-915e-2a1859102539",
-                        request_id: "4b5b7836-dce6-4b5e-9f18-76be91bd7d99",
-                        request_source: "crm",
-                        data: {
-                            email: getRandomEmail(),
-                            name: "Кваква",
-                            last_name: "Качественная",
-                            middle_name: "Проверка",
-                            sex: "female",
-                            phone: getRandomPhoneNumber(),
-                            birthday: "1991-11-11",
-                            password: "ForAlex2023",
-                            lang: "ru",
-                            home_club_id: clubId,
-                            club_access: false,
-                            admin_panel_access: true,
-                            group_training_registration_access: false,
-                            sport_experience: "Больше 5 лет"
-                        }
-                };
+            const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber());
             const response = (await (await new UsersRequests(request).postUsers(200, requestBody)).json()).data;
             return {
                 userId: response.id,

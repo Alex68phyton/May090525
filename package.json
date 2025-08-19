@@ -15,7 +15,8 @@
     "test-employees": "npx playwright test tests/employees -- workers 1",
     "test-groupTrainings": "npx playwright test tests/groupTrainings -- workers 1",
     "test-paymentCreate": "npx playwright test tests/paymentCreate -- workers 1",
-    "test-discounts": "npx playwright test tests/discounts -- workers 1"
+    "test-discounts": "npx playwright test tests/discounts -- workers 1",
+    "test-products": "npx playwright test tests/products -- workers 1"
   },
   "keywords": [],
   "author": "",

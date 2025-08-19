@@ -9,6 +9,7 @@ import UserSearchRequests from "@requests/userSearch.request";
 import userTestData from "@data/user.json";
 import requestTestData from "@data/request.json";
 import { SportExpirience } from "@libs/sportExpirience";
+import { getUserRequestJson } from "@entities/user.requestJson";
 
 
 
@@ -42,27 +43,7 @@ test.describe("API-тесты на поиск клиента", async () => {
         });
 
         const response = await test.step("Получить id клиента", async () => {     
-            const requestBody = {
-                session_id: requestTestData.sessionId,
-                request_id: requestTestData.requestId,
-                request_source: RequestSources.CRM,
-                data: {
-                    email: getRandomEmail(),
-                    name: userTestData.first_name,
-                    last_name: userTestData.last_name,
-                    middle_name: userTestData.middle_name,
-                    sex: userTestData.sex.male,
-                    phone: getRandomPhoneNumber(),
-                    birthday: userTestData.birthday,
-                    password: userTestData.password,
-                    lang: userTestData.lang.ru,
-                    home_club_id: clubId,
-                    club_access: false,
-                    admin_panel_access: true,
-                    group_training_registration_access: false,
-                    sport_experience: SportExpirience.ZERO_SIX_MONTH
-                }
-            };
+            const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber());
             return (await (await new UsersRequests(request).postUsers(Statuses.OK, requestBody)).json()).data;
         });
             email = response.email,

@@ -1,5 +1,5 @@
 import { expect, request, test } from "@playwright/test";
-import AccessCardsRequests from "../../requests/accessCards.requests";
+import AccessCardsRequests from "@requests/accessCards.requests";
 
 const requestBody = {
             session_id: "549297f8-e38a-47cd-915e-2a1859102539",

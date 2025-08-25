@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 2
+      "actualWorkers": 1
     },
     "preserveOutput": "always",
     "reporter": [
@@ -44,7 +44,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 2
+          "actualWorkers": 1
         },
         "id": "chromium",
         "name": "chromium",
@@ -67,20 +67,20 @@
   },
   "suites": [
     {
-      "title": "products\\getProducts.test.ts",
-      "file": "products/getProducts.test.ts",
+      "title": "api\\groupTrainingCategories\\positiveGetGroupTrainingCategories.test.ts",
+      "file": "api/groupTrainingCategories/positiveGetGroupTrainingCategories.test.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "API-тесты на получение продуктов",
-          "file": "products/getProducts.test.ts",
+          "title": "API-тесты на получение категорий тренировок",
+          "file": "api/groupTrainingCategories/positiveGetGroupTrainingCategories.test.ts",
           "line": 7,
           "column": 6,
           "specs": [
             {
-              "title": "[positive] получение списка продуктов",
+              "title": "[positive] получение всех категорий тренировок",
               "ok": true,
               "tags": [],
               "tests": [
@@ -95,14 +95,14 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 255,
+                      "duration": 307,
                       "errors": [],
                       "stdout": [
                         {
                           "text": "\n\t-- REQUEST URL --\n"
                         },
                         {
-                          "text": "https://api.test.ddxfitness.ru/products\n"
+                          "text": "https://api.test.ddxfitness.ru/group_training_categories\n"
                         },
                         {
                           "text": "\n\t-- REQUEST BODY --\n"
@@ -120,12 +120,18 @@
                           "text": "\n\t-- RESPONSE BODY --\n"
                         },
                         {
-                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 116,\n\t\t\t\"name\": \"Заморозка 7 дней\",\n\t\t\t\"category\": \"freeze\",\n\t\t\t\"units\": \"day\",\n\t\t\t\"count\": 7,\n\t\t\t\"price\": 300,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 52,\n\t\t\t\"name\": \"Солярий 1 минута\",\n\t\t\t\"category\": \"solarium\",\n\t\t\t\"units\": \"min\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 50,\n\t\t\t\"tax\": 1,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 118,\n\t\t\t\"name\": \"Заморозка 30 дней\",\n\t\t\t\"category\": \"freeze\",\n\t\t\t\"units\": \"day\",\n\t\t\t\"count\": 30,\n\t\t\t\"price\": 600,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 201,\n\t\t\t\"name\": \"Техническая заморозка\",\n\t\t\t\"category\": \"freeze\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 0,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": false,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 300,\n\t\t\t\"name\": \"Входной билет 26 июля\",\n\t\t\t\"category\": \"ticket\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 3500,\n\t\t\t\"tax\": 1,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 301,\n\t\t\t\"name\": \"Входной билет 27 июля\",\n\t\t\t\"category\": \"ticket\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 3500,\n\t\t\t\"tax\": 1,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 1,\n\t\t\t\"name\": \"Авансовый платеж\",\n\t\t\t\"category\": \"system\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 1,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": false,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 2,\n\t\t\t\"name\": \"Браслет\",\n\t\t\t\"category\": \"access card\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 3000,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 11,\n\t\t\t\"name\": \"InBody\",\n\t\t\t\"category\": \"fitness\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 900,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 22,\n\t\t\t\"name\": \"Смена банковской карты\",\n\t\t\t\"category\": \"system\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 10,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 54,\n\t\t\t\"name\": \"Перевод из клуба в клуб\",\n\t\t\t\"category\": \"option\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 200,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 70,\n\t\t\t\"name\": \"miride promo\",\n\t\t\t\"category\": \"myride\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 0,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 104,\n\t\t\t\"name\": \"Стартовый Фитнес Тестирование\",\n\t\t\t\"category\": \"personal training\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 0,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 105,\n\t\t\t\"name\": \"Стартовый Вводный Инструктаж\",\n\t\t\t\"category\": \"personal training\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 0,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 107,\n\t\t\t\"name\": \"miride пробный\",\n\t\t\t\"category\": \"myride\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 450,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 124,\n\t\t\t\"name\": \"1 RIDE NEW\",\n\t\t\t\"category\": \"myride\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 900,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 126,\n\t\t\t\"name\": \"Tomorrow Ride\",\n\t\t\t\"category\": \"myride\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 450,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 129,\n\t\t\t\"name\": \"$$$ Cycle КК\",\n\t\t\t\"category\": \"fitness\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 450,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 141,\n\t\t\t\"name\": \"ВРЕМЕННАЯ КАРТА 40р\",\n\t\t\t\"category\": \"access card\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 40,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 3,\n\t\t\t\"name\": \"Архив\",\n\t\t\t\"category\": \"archive\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 1,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": false,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 200,\n\t\t\t\"name\": \"Восстановление браслета\",\n\t\t\t\"category\": \"penalty\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 500,\n\t\t\t\"tax\": 1,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 215,\n\t\t\t\"name\": \"Персональная тренировка\",\n\t\t\t\"category\": \"coach_personal_services\",\n\t\t\t\"units\": \"trainings\",\n\t\t\t\"count\": 14,\n\t\t\t\"price\": 4000000,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t}\n\t]\n}\n"
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 7,\n\t\t\t\"name\": \"Smart Start\",\n\t\t\t\"color\": \"#F6B1DF\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": 29,\n\t\t\t\"name\": \"Семинары\",\n\t\t\t\"color\": \"#F1ED94\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": 34,\n\t\t\t\"name\": \"Mind Body\",\n\t\t\t\"color\": \"#C9AFFF\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 35,\n\t\t\t\"name\": \"Кардио\",\n\t\t\t\"color\": \"#9CB2FF\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 36,\n\t\t\t\"name\": \"Силовая\",\n\t\t\t\"color\": \"#FDAA63\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 38,\n\t\t\t\"name\": \"Танцевальная\",\n\t\t\t\"color\": \"#A0E0F4\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 39,\n\t\t\t\"name\": \"Функциональная\",\n\t\t\t\"color\": \"#C2F0A2\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 40,\n\t\t\t\"name\": \"Мастер-Класс\",\n\t\t\t\"color\": \"#CEE2FF\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": true,\n\t\t\t\"photo\": {\n\t\t\t\t\"id\": 2249365,\n\t\t\t\t\"url\": \"https://photo-storage.storage.yandexcloud.net/f41ea969-0e87-43fd-bfc1-67f115db8a0b\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": 41,\n\t\t\t\"name\": \"DDX Games\",\n\t\t\t\"color\": \"#84E19E\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": true,\n\t\t\t\"photo\": {\n\t\t\t\t\"id\": 2249368,\n\t\t\t\t\"url\": \"https://photo-storage.storage.yandexcloud.net/7016d4c9-73e5-4cb7-ba8e-9e74c07334e6\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": 42,\n\t\t\t\"name\": \"Cycle\",\n\t\t\t\"color\": \"#FFDD71\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 43,\n\t\t\t\"name\": \"Йога\",\n\t\t\t\"color\": \"#F0B3FF\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t}\n\t]\n}\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-08-19T13:02:21.200Z",
+                      "steps": [
+                        {
+                          "title": "Получить информацию о категориях тренировок",
+                          "duration": 288
+                        }
+                      ],
+                      "startTime": "2025-08-25T18:46:01.153Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -133,68 +139,9 @@
                   "status": "expected"
                 }
               ],
-              "id": "09e4b240bf05f2145a1d-f88205fa3fb2f7022b9e",
-              "file": "products/getProducts.test.ts",
+              "id": "72f2343f3f65975c6b5c-2d984e0c34f287bf9ac1",
+              "file": "api/groupTrainingCategories/positiveGetGroupTrainingCategories.test.ts",
               "line": 8,
-              "column": 9
-            },
-            {
-              "title": "[positive] получение списка продуктов по категории",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 1,
-                      "status": "passed",
-                      "duration": 267,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "\n\t-- REQUEST URL --\n"
-                        },
-                        {
-                          "text": "https://api.test.ddxfitness.ru/products\n"
-                        },
-                        {
-                          "text": "\n\t-- REQUEST BODY --\n"
-                        },
-                        {
-                          "text": "{\n  session_id: \u001b[32m'autotest_aai'\u001b[39m,\n  request_id: \u001b[32m'autotest_aai'\u001b[39m,\n  request_source: \u001b[32m'crm'\u001b[39m,\n  category: \u001b[32m'freeze'\u001b[39m\n}\n"
-                        },
-                        {
-                          "text": "\n\t-- RESPONSE STATUS --\n"
-                        },
-                        {
-                          "text": "\u001b[33m200\u001b[39m\n"
-                        },
-                        {
-                          "text": "\n\t-- RESPONSE BODY --\n"
-                        },
-                        {
-                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 116,\n\t\t\t\"name\": \"Заморозка 7 дней\",\n\t\t\t\"category\": \"freeze\",\n\t\t\t\"units\": \"day\",\n\t\t\t\"count\": 7,\n\t\t\t\"price\": 300,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 118,\n\t\t\t\"name\": \"Заморозка 30 дней\",\n\t\t\t\"category\": \"freeze\",\n\t\t\t\"units\": \"day\",\n\t\t\t\"count\": 30,\n\t\t\t\"price\": 600,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": true,\n\t\t\t\"payment_subject_type\": 4\n\t\t},\n\t\t{\n\t\t\t\"id\": 201,\n\t\t\t\"name\": \"Техническая заморозка\",\n\t\t\t\"category\": \"freeze\",\n\t\t\t\"units\": \"pcs\",\n\t\t\t\"count\": 1,\n\t\t\t\"price\": 0,\n\t\t\t\"tax\": 6,\n\t\t\t\"is_active\": false,\n\t\t\t\"payment_subject_type\": 4\n\t\t}\n\t]\n}\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-19T13:02:21.201Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "09e4b240bf05f2145a1d-7211a4a9b4648ea8d4c1",
-              "file": "products/getProducts.test.ts",
-              "line": 12,
               "column": 9
             }
           ]
@@ -204,9 +151,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-08-19T13:02:19.361Z",
-    "duration": 2174.1530000000002,
-    "expected": 2,
+    "startTime": "2025-08-25T18:46:00.339Z",
+    "duration": 1165.821,
+    "expected": 1,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

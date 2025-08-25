@@ -1,5 +1,5 @@
 import { test } from "@playwright/test";
-import { getBaseParameters } from "../../entities/baseParameters";
+import { getBaseParameters } from "@entities/baseParameters";
 import ProductsRequests from "@requests/products.requests";
 
 

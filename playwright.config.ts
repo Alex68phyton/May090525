@@ -6,7 +6,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   use: {
-    headless: true,
+    headless: false,
     browserName: "chromium",
     trace: 'off',
     screenshot: "only-on-failure",

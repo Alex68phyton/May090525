@@ -1,8 +1,8 @@
 import { expect, request, test } from "@playwright/test";
-import { getBaseParameters } from "../../entities/baseParameters";
-import { getRandomEmail, getRandomPhoneNumber } from "../../utils/random";
-import ClubsRequests from "../../requests/clubs.requests";
-import UsersRequests from "../../requests/users.request";
+import { getBaseParameters } from "@entities/baseParameters";
+import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
+import ClubsRequests from "@requests/clubs.requests";
+import UsersRequests from "@requests/users.request";
 
 
 

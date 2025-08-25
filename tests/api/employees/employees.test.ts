@@ -1,6 +1,6 @@
 import { expect, request, test } from "@playwright/test";
-import api from '../../api.json'
-import { getBaseParameters } from "../../entities/baseParameters";
+import api from '../../../api.json'
+import { getBaseParameters } from "@entities/baseParameters";
 
 const clubId = [1,2,3];
 

@@ -4,8 +4,11 @@ import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import ClubsRequests from "@requests/clubs.requests";
 import UsersRequests from "@requests/users.request";
 import UserPaymentPlansRequests from "@requests/userPaymentPlans.request";
-import { getUserRequestJson } from "@entities/user.requestJson";
+import { getUserRequestJson } from "@entities/users/user.requestJson";
 import { getUserPaymentPlanRequestJson } from "@entities/userPaymentPlan.requestJson";
+import { baseResponseJsonSchema } from "@entities/base.response";
+import { validateJson } from "@utils/validator.util";
+import { clubDataResponseJsonSchema, createUserPaymentPlanDataResponseJsonSchema, paymentPlanDataResponseJsonSchema } from "@entities/users/userPaymentPlan.response";
 
 
 
@@ -27,12 +30,19 @@ test.describe("API-тесты на создание подписки юзера"
             const response = await test.step("Создать подписку юзеру", async () => { 
                 const requestBody = await getUserPaymentPlanRequestJson(clubId);
 
-            const getUserPaymentPlanResponse = (await (await new UserPaymentPlansRequests(request).postUserPaymentPlans(200, requestBody, userId)).json()).data[0];
-            return getUserPaymentPlanResponse.status;       
-            })
+            const getUserPaymentPlanResponse = (await (await new UserPaymentPlansRequests(request).postUserPaymentPlans(200, requestBody, userId)).json());
+            return getUserPaymentPlanResponse;       
+            });
 
-            await test.step("Проверки", async () => {
-            expect(response).toEqual("Created");
+            await test.step("Проверить схему ответа", async () => {
+                await expect(validateJson(baseResponseJsonSchema, response)).resolves.toBeTruthy();
+                await expect(validateJson(createUserPaymentPlanDataResponseJsonSchema, response.data[0])).resolves.toBeTruthy();
+                await expect(validateJson(paymentPlanDataResponseJsonSchema, response.data[0].payment_plan)).resolves.toBeTruthy();
+                await expect(validateJson(clubDataResponseJsonSchema, response.data[0].club)).resolves.toBeTruthy();
+            });
+
+            await test.step("Проверка статуса", async () => {
+            expect(response.data[0].status).toEqual("Created");
         })
             
     });

@@ -17,7 +17,8 @@
     "test-paymentCreate": "npx playwright test tests/api/paymentCreate -- workers 1",
     "test-discounts": "npx playwright test tests/api/discounts -- workers 1",
     "test-products": "npx playwright test tests/api/products -- workers 1",
-    "test-groupTrainingCategories": "npx playwright test tests/api/groupTrainingCategories -- workers 1"
+    "test-groupTrainingCategories": "npx playwright test tests/api/groupTrainingCategories -- workers 1",
+    "test-groupTrainingTimeTables": "npx playwright test tests/api/groupTrainingTimeTables -- workers 1"
   },
   "keywords": [],
   "author": "",
@@ -25,5 +26,8 @@
   "devDependencies": {
     "@playwright/test": "^1.53.1",
     "@types/node": "^22.15.17"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1"
   }
 }

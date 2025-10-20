@@ -1,5 +1,5 @@
 import { SportExpirience } from "@libs/sportExpirience";
-import { BaseRequestJson } from "./base.requestJson";
+import { BaseRequestJson } from "../base.requestJson";
 import userTestData from "@data/user.json";
 import { RequestSources } from "@libs/requestSources";
 import requestTestData from "@data/request.json";

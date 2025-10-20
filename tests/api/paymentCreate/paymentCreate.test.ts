@@ -95,7 +95,7 @@ test.describe("API-тесты на оплату подписки", async () => {
     });
     const paymentService = [PaymentServices.CLOUDPAYMENTS, PaymentServices.NEW_SBER, PaymentServices.PAYGINE]
     paymentService.forEach(payment_service => {
-        test.only(`[positive] создание транзакции первичной оплаты подписки провайдером ${payment_service}`, async ({request}) => {
+        test(`[positive] создание транзакции первичной оплаты подписки провайдером ${payment_service}`, async ({request}) => {
                 const paymentCreateSuccessResponse = await test.step("Создание платежной транзакции первичной оплаты подписки", 
                 async () => paymentCreateResponse(request, Statuses.OK, 6, payment_service));     
 

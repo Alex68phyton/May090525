@@ -8,7 +8,7 @@ import {  RequestSources } from "@libs/requestSources";
 import UserSearchRequests from "@requests/userSearch.request";
 import userTestData from "@data/user.json";
 import requestTestData from "@data/request.json";
-import { getUserRequestJson } from "@entities/user.requestJson";
+import { getUserRequestJson } from "@entities/users/user.requestJson";
 
 
 

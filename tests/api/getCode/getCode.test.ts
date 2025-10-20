@@ -4,7 +4,7 @@ import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import ClubsRequests from "@requests/clubs.requests";
 import UsersRequests from "@requests/users.request";
 import VerifyRequest from "@requests/verify.requests";
-import { getUserRequestJson } from "@entities/user.requestJson";
+import { getUserRequestJson } from "@entities/users/user.requestJson";
 
 
 

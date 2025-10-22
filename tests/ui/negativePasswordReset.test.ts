@@ -10,7 +10,7 @@ test.describe("Негативные тесты на сброс пароля", as
             await page.getByText('Не помню пароль').click();
         });
         await test.step("Ввести несуществующий email", async () => {
-            await page.getByPlaceholder('Email').fill('abrokadabra');
+            await page.getByPlaceholder('Введите ваш e-mail').fill('abrokadabra');
         });
         await test.step("Нажать Сбросить пароль", async () => {
             await page.getByRole('button', { name: 'Сбросить пароль' }).click();  

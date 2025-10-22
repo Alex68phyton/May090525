@@ -6,6 +6,7 @@ import { validateJson } from "@utils/validator.util";
 import GroupTrainingRequests from "@requests/group_training.requests";
 import { getGroupTrainingTimeTableRequestJson } from "@entities/groupTrainingTimeTable.requestJson";
 import GroupTrainingTimeTablesCreateRequests from "@requests/groupTrainingTimeTables.requests";
+import { createGroupTrainingTimeTableJsonSchema } from "@entities/groupTrainingTimeTables.response";
 
 
 
@@ -37,6 +38,7 @@ test.describe("API-тесты на создание тренировок в ра
 
             await test.step("Проверить схему ответа", async () => {
                 await expect(validateJson(baseResponseJsonSchema, response)).resolves.toBeTruthy();
+                await expect(validateJson(createGroupTrainingTimeTableJsonSchema, response.data[0])).resolves.toBeTruthy();
             });
                     
     });

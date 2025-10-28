@@ -7,6 +7,7 @@ import GroupTrainingRequests from "@requests/group_training.requests";
 import { getGroupTrainingTimeTableRequestJson } from "@entities/groupTrainingTimeTable.requestJson";
 import GroupTrainingTimeTablesCreateRequests from "@requests/groupTrainingTimeTables.requests";
 import { createGroupTrainingTimeTableJsonSchema } from "@entities/groupTrainingTimeTables.response";
+import GroupTrainingTimeTablesRequests from "@requests/groupTrainingTimeTables.requests";
 
 
 
@@ -32,7 +33,7 @@ test.describe("API-тесты на создание тренировок в ра
             const response = await test.step("Создать тренировку в расписании", async () => { 
                 const requestBody = await getGroupTrainingTimeTableRequestJson(groupTrainingId, clubId, clubZone);
 
-            const getGTTTResponse = (await (await new GroupTrainingTimeTablesCreateRequests(request).postGroupTrainingTimeTables(200, requestBody)).json());
+            const getGTTTResponse = (await (await new GroupTrainingTimeTablesRequests(request).postGroupTrainingTimeTables(200, requestBody)).json());
             return getGTTTResponse;       
             });
 

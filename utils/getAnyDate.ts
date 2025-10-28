@@ -18,6 +18,12 @@ export function getCurrentDatePlus7Days(date: Date = new Date()): string {
   return newDate.toISOString();
 }
 
+export function getCurrentDatePlus8Days(date: Date = new Date()): string {
+  const newDate = new Date(date);
+  newDate.setDate(newDate.getDate() + 8);
+  return newDate.toISOString();
+}
+
 export function getCurrentDatePlusOneHour(date: Date = new Date()): string {
   const newDate = new Date(date);
   newDate.setHours(newDate.getHours() + 1);

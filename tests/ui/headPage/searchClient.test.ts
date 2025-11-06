@@ -5,7 +5,7 @@ import UsersRequests from "@requests/users.request";
 import { Statuses } from "@libs/statuses";
 import { getBaseParameters } from "@entities/baseParameters";
 import { getUserRequestJson } from "@entities/users/user.requestJson";
-import api from '../../api.json';
+import api from '../../../api.json';
 import authCRMTestData from "@data/authCRM.json";
 
 test.describe("Тесты на поиск клиента в CRM", async () => {

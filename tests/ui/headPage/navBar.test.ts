@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
 import authCRMTestData from "@data/authCRM.json";
-import api from "../../api.json";
+import api from "../../../api.json";
 
 test.describe("Проверка перехода по ссылкам в боковом меню", async() => {    
     test("Проверка перехода по ссылкам в боковом меню", async ({ page }) => {

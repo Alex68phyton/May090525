@@ -1,0 +1,9 @@
+{
+   "created": "зарегистрирован",
+   "active": "активный",
+   "close": "закрыт",
+   "notStarted": "не начат",
+   "paymentPending": "мораторий",
+   "freezed": "заморожен"
+
+}

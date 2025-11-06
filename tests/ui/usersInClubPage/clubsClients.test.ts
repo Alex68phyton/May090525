@@ -1,6 +1,6 @@
 import test from "@playwright/test";
 import authCRMTestData from "@data/authCRM.json";
-import api from "../../api.json"
+import api from "../../../api.json";
 
 test.describe("Тесты на функционал клиенты в клубе", async () => {
     test("Успешный переход на страницу клиенты в клубе", async ({page}) => {

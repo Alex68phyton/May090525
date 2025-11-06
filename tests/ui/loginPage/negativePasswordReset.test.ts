@@ -1,5 +1,5 @@
 import test from "@playwright/test";
-import api from "../../api.json"
+import api from "../../../api.json";
 
 test.describe("Негативные тесты на сброс пароля", async () => {
     test("Ввод несуществующего email на странице сброса пароля", async ({page}) => {

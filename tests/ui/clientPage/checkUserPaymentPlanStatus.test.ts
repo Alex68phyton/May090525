@@ -3,7 +3,7 @@ import { selectUserPaymentPlanByStatus } from "db/userPaymentPlans.db";
 import api from "../../../api.json";
 import authCRMTestData from "@data/authCRM.json";
 import { getCrmStatusByDbStatus } from "@utils/crmStatusSwitcher";
-import dbStatus from "../../../data/userPaymentPlanStatuses.json"
+import dbStatus from "@data/userPaymentPlanStatuses.json"
 
 test.describe("Тесты на проверку отображения статуса подписки на карточке клиента", () =>{
     test.beforeEach( async({page}) => {

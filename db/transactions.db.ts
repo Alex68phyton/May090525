@@ -1,8 +1,9 @@
 import { db } from "@utils/dbConnects";
 import { DataTypes } from "sequelize";
 
+const tableName = 'transactions'
 
-export interface Transaction {
+export interface TransactionDB {
   id: number;
   provider_id: number;
   type: string;
@@ -43,8 +44,8 @@ export interface Transaction {
   membership_data: any | null;
 }
 
-export const groupTrainingTimeTableDB = db.define(
-    'transactions',
+export const transactionsTableDB = db.define(
+    tableName,
     {
       id: {
         type: DataTypes.BIGINT,
@@ -164,21 +165,12 @@ export const groupTrainingTimeTableDB = db.define(
     }
 )
 
-export async function findTransactionsWithUser(): Promise<{ 
-  userId: number
-} | null> {
-  try {
-    const [results] = await db.query(`
-      select * from transactions t where user_id is not null limit 1
-    `);
-
-    const result = results[0] as { user_id: number } | undefined;
+export async function selectTransactionsWithUser(): Promise<TransactionDB> {
+    const result = await db.query(`
+      SELECT * FROM ${tableName} t WHERE user_id IS NOT NULL LIMIT 1
+    `,
+    { model: transactionsTableDB, mapToModel: true});
     
-    return result ? {
-      userId: result.user_id 
-    } : null;
-  } catch (error) {
-    console.error('Error finding transactions with user:', error);
-    throw error;
-  }
+        return <TransactionDB | any>result[0];
+
 }

@@ -1,7 +1,9 @@
 import { db } from "@utils/dbConnects";
 import { DataTypes } from "sequelize";
 
-const tableName = 'user_payment_plans';
+const gttTableName = 'group_training_time_tables';
+const gtuTableName = 'group_training_users';
+const gtTableName = 'group_trainings';
 
 export interface GroupTrainingTimeTableDB {
   id: number;
@@ -26,7 +28,7 @@ export interface GroupTrainingTimeTableDB {
 }
 
 export const groupTrainingTimeTableDB = db.define(
-    'group_training_time_tables',
+    gttTableName,
     {
         id: { type: DataTypes.BIGINT, primaryKey: true },
         group_training_id: { type: DataTypes.BIGINT },
@@ -63,7 +65,7 @@ export interface GroupTrainingUsersDB {
 }
 
 export const groupTrainingUsersDB = db.define(
-    'group_training_users',
+    gtuTableName,
     {
         id: { type: DataTypes.BIGINT, primaryKey: true },
         group_training_time_table_id: { type: DataTypes.BIGINT },
@@ -94,7 +96,7 @@ export interface GroupTrainingDB {
 }
 
 export const groupTrainingDB = db.define(
-    'group_trainings',
+    gtTableName,
     {
         id: { type: DataTypes.BIGINT, primaryKey: true },
         group_training_category_id: { type: DataTypes.BIGINT },
@@ -115,21 +117,25 @@ export const groupTrainingDB = db.define(
     }
 );
 
-export async function findFirstTrainingWithBookedUser(): Promise<{ 
-  trainingId: number, 
-  userId: number,
-  trainingName: string 
-} | null> {
-  try {
+export interface JoiningTableDB {
+  training_name: string;
+  training_id: number;
+  user_id: number;
+}
+
+
+
+
+export async function selectFirstTrainingWithBookedUser(): Promise<JoiningTableDB | null> {
     const [results] = await db.query(`
       SELECT 
         gtu.group_training_time_table_id as training_id,
         gtu.user_id,
         gt.name as training_name
-      FROM group_training_users gtu
-      INNER JOIN group_training_time_tables gtt
+      FROM ${gtuTableName} gtu
+      INNER JOIN ${gttTableName} gtt
         ON gtu.group_training_time_table_id = gtt.id
-      INNER JOIN group_trainings gt
+      INNER JOIN ${gtTableName} gt
         ON gtt.group_training_id = gt.id
       WHERE gtu.booking_status = 'booked'
         AND gtt.start_time > NOW()
@@ -138,16 +144,6 @@ export async function findFirstTrainingWithBookedUser(): Promise<{
       ORDER BY gtt.start_time ASC
       LIMIT 1
     `);
-
-    const result = results[0] as { training_id: number, user_id: number, training_name: string } | undefined;
-    
-    return result ? { 
-      trainingId: result.training_id, 
-      userId: result.user_id,
-      trainingName: result.training_name 
-    } : null;
-  } catch (error) {
-    console.error('Error finding first booked training:', error);
-    throw error;
-  }
-}
+        const resultsArray = results as JoiningTableDB[];
+        return resultsArray.length > 0 ? resultsArray[0] : null;   
+    }

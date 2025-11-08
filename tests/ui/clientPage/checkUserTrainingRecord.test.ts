@@ -1,7 +1,7 @@
 import {  test } from "@playwright/test";
 import api from '../../../api.json';
 import authCRMTestData from "@data/authCRM.json";
-import { findFirstTrainingWithBookedUser } from "db/groupTraining.db";
+import { selectFirstTrainingWithBookedUser } from "db/groupTraining.db";
 
 test.describe("Тесты на проверку записи клиента на тренировку в CRM", async () => {
     test("Проверку записи клиента на тренировку в CRM", async ({request, page}) => {
@@ -13,20 +13,24 @@ test.describe("Тесты на проверку записи клиента на
             await page.getByRole('button', { name: 'Войти' }).click();
         });
 
+        await test.step("Проверить, что пользователь находится в CRM и видит поле поиска", async () => {
+            await page.locator("//input[@data-testid='phone-input']").waitFor({state: 'visible', timeout: 3000});  
+        });
+
         const trainingWithUser = await test.step("получить тренировку с записанным юзером", async () => {
-            return await findFirstTrainingWithBookedUser();
+            return await selectFirstTrainingWithBookedUser();
         });
 
         await test.step("Перейти на страницу юзера", async() => {
-            await page.goto(`${api.urls.crm_test_url}client/${trainingWithUser?.userId}`);
+            await page.goto(`${api.urls.crm_test_url}client/${trainingWithUser?.user_id}`);
         });
 
         await test.step("Проверить, что пользователь видит запись на тренировку с корректным названием", async () => {
-            if (!trainingWithUser?.trainingName) {
+            if (!trainingWithUser?.training_name) {
                 throw new Error('Не удалось получить название тренировки для проверки');
             }
     
-        await page.getByText(trainingWithUser.trainingName).waitFor({ state: 'visible', timeout: 3000 });
+        await page.getByText(trainingWithUser.training_name).waitFor({ state: 'visible', timeout: 3000 });
         });
     });
 });

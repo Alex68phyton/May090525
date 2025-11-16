@@ -147,3 +147,11 @@ export async function selectFirstTrainingWithBookedUser(): Promise<JoiningTableD
         const resultsArray = results as JoiningTableDB[];
         return resultsArray.length > 0 ? resultsArray[0] : null;   
     }
+
+export async function selectGroupTrainingTimeTableById(gtttId:number): Promise <GroupTrainingTimeTableDB> {
+    const result = await db.query(
+        `SELECT * FROM ${gttTableName} WHERE id  = '${gtttId}'`,
+        { model: groupTrainingTimeTableDB, mapToModel: true});
+
+    return <GroupTrainingTimeTableDB | any>result[0];   
+}

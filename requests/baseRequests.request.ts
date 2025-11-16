@@ -32,4 +32,14 @@ export default class BaseRequest {
 
         return response;
     }
+
+    async delete(url: string, status: number, parameters?: any): Promise<APIResponse> {
+        log("request url", url);
+        log("request body", parameters);
+        const response = await this.request.delete(url, { headers: {'Authorization': this.token }, params: parameters })
+        log("response status", await response.status());
+        expect(response.status()).toEqual(status);
+
+        return response;
+    }
 }

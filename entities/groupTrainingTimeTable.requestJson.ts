@@ -1,7 +1,6 @@
-import userPaymentPlanTestData from "@data/userPaymentPlan.json";
 import { RequestSources } from "@libs/requestSources";
 import requestTestData from "@data/request.json";
-import { getCurrentDate, getCurrentDatePlus7Days, getCurrentDatePlusOneHour, getDatePlus7DaysAnd1Hour } from "@utils/getAnyDate";
+import { getCurrentDatePlus7Days, getDatePlus7DaysAnd1Hour } from "@utils/getAnyDate";
 import { BaseRequestJson } from "./base.requestJson";
 
 export interface groupTrainingTimeTableDataRequestJson {

@@ -2,15 +2,15 @@ import {  test } from "@playwright/test";
 import api from '../../../api.json';
 import authCRMTestData from "@data/authCRM.json";
 import { selectFirstTrainingWithBookedUser } from "db/groupTraining.db";
+import LoginPage from "pages/login.page";
 
 test.describe("Тесты на проверку записи клиента на тренировку в CRM", async () => {
     test("Проверку записи клиента на тренировку в CRM", async ({request, page}) => {
+        const loginPage = new LoginPage();
 
         await test.step("Перейти на страницу входа в CRM", async () => {
             await page.goto(api.urls.crm_test_url);
-            await page.getByPlaceholder('Логин').fill(authCRMTestData.login);
-            await page.getByPlaceholder('Пароль').fill(authCRMTestData.password);
-            await page.getByRole('button', { name: 'Войти' }).click();
+            await loginPage.login(page, authCRMTestData.login, authCRMTestData.password);
         });
 
         await test.step("Проверить, что пользователь находится в CRM и видит поле поиска", async () => {

@@ -8,20 +8,20 @@ import { getUserRequestJson } from "@entities/users/user.requestJson";
 import api from '../../../api.json';
 import authCRMTestData from "@data/authCRM.json";
 import userTestData from "@data/user.json";
+import LoginPage from "pages/login.page";
 
 test.describe("Тесты на создание клиента в CRM", async () => {
     test("Создание юзера", async ({request, page}) => {
         const phoneNumber = await test.step("Создать номер телефона клиента", () => getRandomPhoneNumber());
         const email = await test.step("Создать email", () => getRandomEmail());
+        const loginPage = new LoginPage();
 
         await test.step("Перейти на страницу входа в CRM", async () => {
             await page.goto(api.urls.crm_test_url);
         });
 
         await test.step("Заполнить форму авторизации и нажать войти", async () => {
-            await page.getByPlaceholder('Логин').fill(authCRMTestData.login);
-            await page.getByPlaceholder('Пароль').fill(authCRMTestData.password);
-            await page.getByRole('button', { name: 'Войти' }).click();
+            await loginPage.login(page, authCRMTestData.login, authCRMTestData.password);
         });
 
         await test.step("Ввести номер телефона в поиске и перейти на страницу создания клиента", async () => {

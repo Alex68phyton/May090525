@@ -4,14 +4,14 @@ import api from "../../../api.json";
 import authCRMTestData from "@data/authCRM.json";
 import { getCrmStatusByDbStatus } from "@utils/crmStatusSwitcher";
 import dbStatus from "@data/userPaymentPlanStatuses.json"
+import LoginPage from "pages/login.page";
 
 test.describe("Тесты на проверку отображения статуса подписки на карточке клиента", () =>{
     test.beforeEach( async({page}) => {
+        const loginPage = new LoginPage();
         await test.step("Авторизоваться в CRM", async () => {
             await page.goto(api.urls.crm_test_url);
-            await page.getByPlaceholder('Логин').fill(authCRMTestData.login);
-            await page.getByPlaceholder('Пароль').fill(authCRMTestData.password);
-            await page.getByRole('button', { name: 'Войти' }).click();
+            await loginPage.login(page, authCRMTestData.login, authCRMTestData.password);
             await page.getByTestId('phone-input').waitFor({state: 'visible', timeout: 3000});
         });
     });

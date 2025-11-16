@@ -7,9 +7,13 @@ import { getBaseParameters } from "@entities/baseParameters";
 import { getUserRequestJson } from "@entities/users/user.requestJson";
 import api from '../../../api.json';
 import authCRMTestData from "@data/authCRM.json";
+import LoginPage from "pages/login.page";
+import HeaderBlock from "pages/blocks/header.block";
 
 test.describe("Тесты на поиск клиента в CRM", async () => {
     test("Поиск юзера по номеру телефона", async ({request, page}) => {
+        const loginPage = new LoginPage();
+        const headerBlock = new HeaderBlock();
         const phoneNumber = await test.step("Создать номер телефона клиента", () => getRandomPhoneNumber());
 
         const clubId = await test.step("Получить id клуба", async () => {
@@ -30,16 +34,14 @@ test.describe("Тесты на поиск клиента в CRM", async () => {
         });
 
         await test.step("Заполнить форму авторизации и нажать войти", async () => {
-            await page.getByPlaceholder('Логин').fill(authCRMTestData.login);
-            await page.getByPlaceholder('Пароль').fill(authCRMTestData.password);
-            await page.getByRole('button', { name: 'Войти' }).click();
+            await loginPage.login(page, authCRMTestData.login, authCRMTestData.password);
         });
 
         await test.step("Ввести номер телефона в поиске и перейти на страницу клиента", async () => {
-            await page.getByTestId('phone-input').waitFor({state: 'visible', timeout: 3000});
-            await page.getByTestId('phone-input').fill(phoneNumber);
-            await page.getByTestId('search').getByRole('img').click();
-            await page.getByRole('button', { name: 'Открыть' }).click();
+            await headerBlock.selector(page).search.searchInput.waitFor({state: 'visible', timeout: 3000});
+            await headerBlock.selector(page).search.searchInput.fill(phoneNumber);
+            await headerBlock.selector(page).search.searchButton.click();
+            await headerBlock.selector(page).clientInfo.openButton.click();
         });
 
         await test.step("Проверить, что был выполнен переход на страницу клиента", async () => {

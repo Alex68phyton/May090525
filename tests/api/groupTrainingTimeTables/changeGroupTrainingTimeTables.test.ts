@@ -43,7 +43,7 @@ test.describe("API-тесты на изменение тренировок в р
             await new GroupTrainingTimeTablesRequests(request).deleteGroupTrainingTimeTables(204, parameters, group_time_table_id);
         });
     });
-    test.only("Изменение тренировки в расписании", async( {request} ) => {
+    test("Изменение тренировки в расписании", async( {request} ) => {
         await test.step("Изменить кол-во мест в тренировке", async() => {
             const requestBody = await getChangeGroupTrainingTimeTableRequestJson();
             await new GroupTrainingTimeTablesRequests(request).changeGroupTrainingTimeTables(200, requestBody, group_time_table_id);

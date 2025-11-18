@@ -25,7 +25,7 @@ test.describe("Тесты на проверку страницы FAQ", async() =
             });
         });
         await test.step("Проверить, что пользователь находится на странице FAQ", async () => {
-            expect.soft(page.url()).toContain("https://crm.test.ddxfitness.ru/faq");
+            expect.soft(page.url()).toContain(`${api.urls.crm_test_url}${faqPage.path}`);
         });
         await test.step("Открыть раздел Как пользоваться разделом FAQ", async () => {
             await faqPage.selector(page).chapterName.faqToFaq.dblclick();  
@@ -35,7 +35,7 @@ test.describe("Тесты на проверку страницы FAQ", async() =
         
         });
         await test.step("Проверить, что пользователь находится на странице статьи Как пользоваться разделом FAQ", async () => {
-            expect.soft(page.url()).toContain("https://crm.test.ddxfitness.ru/faq-article/89");
+            expect.soft(page.url()).toContain(`${api.urls.crm_test_url}${articlePage.path}/89`);
         });
         await test.step("Проверить, что пользователь видит указанные элементы на странице", async () => {
             expect.soft(articlePage.selector(page).elements.breadCrumbs.isVisible());

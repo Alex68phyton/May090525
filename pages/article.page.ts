@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 
 export default class ArticlePage {
-
+    path = "/faq-article";
     selector = (page: Page) => ({
         elements: {
             breadCrumbs: page.locator('//div[contains(text(), "FAQ")][2]'),

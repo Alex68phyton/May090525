@@ -1,13 +1,11 @@
-import test from "@playwright/test";
+import test, { expect } from "../baseTest";
 import authCRMTestData from "@data/authCRM.json";
 import api from "../../../api.json";
-import LoginPage from "pages/login.page";
 
 test.describe("Тесты на авторизацию в CRM", async () => {
-    test("Успешная авторизация в CRM", async ({page}) => {
-        const loginPage = new LoginPage();
+    test("Успешная авторизация в CRM", async ({page, loginPage}) => {
         await test.step("Перейти на страницу входа в CRM", async () => {
-            await page.goto(api.urls.crm_test_url);
+            await page.goto("");
         });
         await test.step("Заполнить форму авторизации и нажать войти", async () => {
             await loginPage.login(page, authCRMTestData.login, authCRMTestData.password);

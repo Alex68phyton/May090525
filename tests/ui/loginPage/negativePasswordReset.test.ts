@@ -1,12 +1,11 @@
-import test from "@playwright/test";
+import test from "../baseTest";
 import api from "../../../api.json";
-import LoginPage from "pages/login.page";
 import authCRMTestData from "@data/authCRM.json";
 
 test.describe("Негативные тесты на сброс пароля", async () => {
     test("Ввод несуществующего email на странице сброса пароля", async ({page}) => {
         await test.step("Перейти на страницу входа в CRM", async () => {
-            await page.goto(api.urls.crm_test_url);
+            await page.goto("");
         });
         await test.step("Нажать не помню пароль", async () => {
             await page.getByText('Не помню пароль').click();
@@ -21,11 +20,10 @@ test.describe("Негативные тесты на сброс пароля", as
             await page.getByText('Введён некорректный email').waitFor({state: 'visible', timeout: 3000});;  
         });    
     });
-    test("Ввод несуществующих логина и пароля на странице авторизации", async( {page} ) => {
-        const loginPage = new LoginPage();
+    test("Ввод несуществующих логина и пароля на странице авторизации", async( { page, loginPage } ) => {
 
         await test.step("Перейти на страницу входа в CRM", async () => {
-            await page.goto(api.urls.crm_test_url);
+            await page.goto("");
         });
         await test.step("Заполнить форму авторизации и нажать войти", async () => {
             await loginPage.login(page, authCRMTestData.incorrect_login, authCRMTestData.incorrect_password);

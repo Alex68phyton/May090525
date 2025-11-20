@@ -1,15 +1,13 @@
-import {  test } from "@playwright/test";
+import test, { expect } from "../baseTest";
 import api from '../../../api.json';
 import authCRMTestData from "@data/authCRM.json";
 import { selectFirstTrainingWithBookedUser } from "db/groupTraining.db";
-import LoginPage from "pages/login.page";
 
 test.describe("Тесты на проверку записи клиента на тренировку в CRM", async () => {
-    test("Проверку записи клиента на тренировку в CRM", async ({request, page}) => {
-        const loginPage = new LoginPage();
+    test("Проверку записи клиента на тренировку в CRM", async ({ page, loginPage }) => {
 
         await test.step("Перейти на страницу входа в CRM", async () => {
-            await page.goto(api.urls.crm_test_url);
+            await page.goto("");
             await loginPage.login(page, authCRMTestData.login, authCRMTestData.password);
         });
 
@@ -22,7 +20,7 @@ test.describe("Тесты на проверку записи клиента на
         });
 
         await test.step("Перейти на страницу юзера", async() => {
-            await page.goto(`${api.urls.crm_test_url}client/${trainingWithUser?.user_id}`);
+            await page.goto(`client/${trainingWithUser?.user_id}`);
         });
 
         await test.step("Проверить, что пользователь видит запись на тренировку с корректным названием", async () => {

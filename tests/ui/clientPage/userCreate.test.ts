@@ -1,23 +1,15 @@
-import { expect, test } from "@playwright/test";
+import test from "../baseTest";
 import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
-import ClubsRequests from "@requests/clubs.requests";
-import UsersRequests from "@requests/users.request";
-import { Statuses } from "@libs/statuses";
-import { getBaseParameters } from "@entities/baseParameters";
-import { getUserRequestJson } from "@entities/users/user.requestJson";
-import api from '../../../api.json';
 import authCRMTestData from "@data/authCRM.json";
 import userTestData from "@data/user.json";
-import LoginPage from "pages/login.page";
 
 test.describe("Тесты на создание клиента в CRM", async () => {
-    test("Создание юзера", async ({request, page}) => {
+    test("Создание юзера", async ({ page, loginPage}) => {
         const phoneNumber = await test.step("Создать номер телефона клиента", () => getRandomPhoneNumber());
         const email = await test.step("Создать email", () => getRandomEmail());
-        const loginPage = new LoginPage();
 
         await test.step("Перейти на страницу входа в CRM", async () => {
-            await page.goto(api.urls.crm_test_url);
+            await page.goto("");
         });
 
         await test.step("Заполнить форму авторизации и нажать войти", async () => {

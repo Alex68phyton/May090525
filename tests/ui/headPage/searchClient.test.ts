@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import test, { expect } from "../baseTest";
 import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import ClubsRequests from "@requests/clubs.requests";
 import UsersRequests from "@requests/users.request";
@@ -7,13 +7,9 @@ import { getBaseParameters } from "@entities/baseParameters";
 import { getUserRequestJson } from "@entities/users/user.requestJson";
 import api from '../../../api.json';
 import authCRMTestData from "@data/authCRM.json";
-import LoginPage from "pages/login.page";
-import HeaderBlock from "pages/blocks/header.block";
 
 test.describe("Тесты на поиск клиента в CRM", async () => {
-    test("Поиск юзера по номеру телефона", async ({request, page}) => {
-        const loginPage = new LoginPage();
-        const headerBlock = new HeaderBlock();
+    test("Поиск юзера по номеру телефона", async ({request, page, loginPage, headerBlock}) => {
         const phoneNumber = await test.step("Создать номер телефона клиента", () => getRandomPhoneNumber());
 
         const clubId = await test.step("Получить id клуба", async () => {
@@ -30,7 +26,7 @@ test.describe("Тесты на поиск клиента в CRM", async () => {
         });
 
         await test.step("Перейти на страницу входа в CRM", async () => {
-            await page.goto(api.urls.crm_test_url);
+            await page.goto("");
         });
 
         await test.step("Заполнить форму авторизации и нажать войти", async () => {

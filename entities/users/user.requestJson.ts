@@ -37,7 +37,7 @@ export const getUserRequestJson = async (clubId: number, email: string, phoneNum
             password: userTestData.password,
             lang: userTestData.lang.ru,
             home_club_id: clubId,
-            club_access: false,
+            club_access: true,
             admin_panel_access: true,
             group_training_registration_access: false,
             sport_experience: SportExpirience.ZERO_SIX_MONTH

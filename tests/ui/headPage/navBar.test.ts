@@ -1,14 +1,13 @@
-import test, { expect } from "@playwright/test";
+import test, { expect } from "../baseTest";
 import authCRMTestData from "@data/authCRM.json";
 import api from "../../../api.json";
 import LoginPage from "pages/login.page";
 
 test.describe("Проверка перехода по ссылкам в боковом меню", async() => {    
-    test("Проверка перехода по ссылкам в боковом меню", async ({ page }) => {
-        const loginPage = new LoginPage();
+    test("Проверка перехода по ссылкам в боковом меню", async ({ page, loginPage }) => {
         
         await test.step("Перейти на страницу входа в CRM", async () => {
-            await page.goto(api.urls.crm_test_url);
+            await page.goto("");
         });
         await test.step("Заполнить форму авторизации и нажать войти", async () => {
             await loginPage.login(page, authCRMTestData.login, authCRMTestData.password);
@@ -18,7 +17,7 @@ test.describe("Проверка перехода по ссылкам в боко
                 await page.getByText('Клиенты в клубе').click();  
             });
             await test.step("Проверить, что пользователь находится на странице Клиенты в клубе", async () => {
-                expect.soft(page.url()).toContain("https://crm.test.ddxfitness.ru/clients-in-club");
+                expect.soft(page.url()).toContain("clients-in-club");
             });
         });    
         await test.step("Проверка перехода по ссылке Главная", async () => {
@@ -27,7 +26,7 @@ test.describe("Проверка перехода по ссылкам в боко
             });
 
             await test.step("Проверить, что пользователь находится на странице Главная", async () => {
-                expect.soft(page.url()).toContain("https://crm.test.ddxfitness.ru/");
+                expect.soft(page.url()).toContain("");
             });
         });    
 
@@ -36,7 +35,7 @@ test.describe("Проверка перехода по ссылкам в боко
                 await page.getByText('Расписание').click();  
             });
             await test.step("Проверить, что пользователь находится на странице Расписание", async () => {
-                expect.soft(page.url()).toContain("https://crm.test.ddxfitness.ru/schedule")
+                expect.soft(page.url()).toContain("schedule")
             });
         });
 
@@ -45,7 +44,7 @@ test.describe("Проверка перехода по ссылкам в боко
                 await page.getByText('Акции').click();  
             });
             await test.step("Проверить, что пользователь находится на странице Акции", async () => {
-                expect.soft(page.url()).toContain("https://crm.test.ddxfitness.ru/discounts");
+                expect.soft(page.url()).toContain("discounts");
             });
         });   
 

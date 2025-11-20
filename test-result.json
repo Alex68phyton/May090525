@@ -67,20 +67,20 @@
   },
   "suites": [
     {
-      "title": "ui\\clientPage\\userBlock.test.ts",
-      "file": "ui/clientPage/userBlock.test.ts",
+      "title": "api\\users\\positiveUserBlock.test.ts",
+      "file": "api/users/positiveUserBlock.test.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Тесты на блокировку/разблокировку клиента",
-          "file": "ui/clientPage/userBlock.test.ts",
-          "line": 11,
+          "title": "API-тесты на поиск клиента",
+          "file": "api/users/positiveUserBlock.test.ts",
+          "line": 16,
           "column": 6,
           "specs": [
             {
-              "title": "Тест на блокировку клиента",
+              "title": "Заблокировать клиента",
               "ok": true,
               "tags": [],
               "tests": [
@@ -95,7 +95,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 12640,
+                      "duration": 807,
                       "errors": [],
                       "stdout": [
                         {
@@ -132,7 +132,7 @@
                           "text": "\n\t-- PARAMETERS --\n"
                         },
                         {
-                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"data\": {\n\t\t\"email\": \"autotest+9578189@mailtest.ru\",\n\t\t\"name\": \"Кваква\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79019578189\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"password\": \"Qwery@123456\",\n\t\t\"lang\": \"ru\",\n\t\t\"home_club_id\": 146,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\"\n\t}\n}\n"
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"data\": {\n\t\t\"email\": \"autotest+3532437@mailtest.ru\",\n\t\t\"name\": \"Кваква\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79013532437\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"password\": \"Qwery@123456\",\n\t\t\"lang\": \"ru\",\n\t\t\"home_club_id\": 146,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\"\n\t}\n}\n"
                         },
                         {
                           "text": "\n\t-- RESPONSE STATUS --\n"
@@ -144,7 +144,55 @@
                           "text": "\n\t-- RESPONSE BODY --\n"
                         },
                         {
-                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": {\n\t\t\"id\": 3013096,\n\t\t\"created_at\": \"2025-11-20T20:12:58.322366385Z\",\n\t\t\"updated_at\": \"2025-11-20T20:12:58.322366385Z\",\n\t\t\"name\": \"Кваква\",\n\t\t\"email\": \"autotest+9578189@mailtest.ru\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79019578189\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"parent\": 0,\n\t\t\"lang\": \"ru\",\n\t\t\"user_photo\": \"\",\n\t\t\"home_club_id\": 146,\n\t\t\"balance\": 0,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\",\n\t\t\"is_qr_check\": true,\n\t\t\"qr_token\": \"6cb77214-b209-4925-a7d1-ded933500b67\",\n\t\t\"need_recovery\": false\n\t}\n}\n"
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": {\n\t\t\"id\": 3013101,\n\t\t\"created_at\": \"2025-11-20T21:18:52.594976234Z\",\n\t\t\"updated_at\": \"2025-11-20T21:18:52.594976234Z\",\n\t\t\"name\": \"Кваква\",\n\t\t\"email\": \"autotest+3532437@mailtest.ru\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79013532437\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"parent\": 0,\n\t\t\"lang\": \"ru\",\n\t\t\"user_photo\": \"\",\n\t\t\"home_club_id\": 146,\n\t\t\"balance\": 0,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\",\n\t\t\"is_qr_check\": true,\n\t\t\"qr_token\": \"45ca1775-4a9e-4453-ad10-15f7c94be501\",\n\t\t\"need_recovery\": false\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/users/3013101/block\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"data\": {\n\t\t\"note\": {\n\t\t\t\"text\": \"block\",\n\t\t\t\"employee_id\": 2549\n\t\t},\n\t\t\"club_access\": false\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": {\n\t\t\"employee_id\": 2549,\n\t\t\"last_name\": \"Апарин\",\n\t\t\"name\": \"Алексей\",\n\t\t\"notes\": {\n\t\t\t\"created_at\": \"2025-11-20T21:18:52.68883737Z\",\n\t\t\t\"id\": 283297,\n\t\t\t\"is_deleted\": false,\n\t\t\t\"text\": \"block\",\n\t\t\t\"type\": \"block\"\n\t\t},\n\t\t\"user\": {\n\t\t\t\"club_access\": false,\n\t\t\t\"id\": 3013101,\n\t\t\t\"last_name\": \"Квак\",\n\t\t\t\"name\": \"Кваква\"\n\t\t}\n\t}\n}\n"
+                        },
+                        {
+                          "text": "ПРОВЕРКА СХЕМЫ undefined\n"
+                        },
+                        {
+                          "text": "\n\t-- EXPECTED RESPONSE SCHEMA --\n"
+                        },
+                        {
+                          "text": "{\n  type: \u001b[32m'object'\u001b[39m,\n  properties: {\n    session_id: { type: \u001b[32m'string'\u001b[39m },\n    request_id: { type: \u001b[32m'string'\u001b[39m },\n    request_source: { type: \u001b[32m'string'\u001b[39m },\n    data: { anyOf: \u001b[36m[Array]\u001b[39m }\n  },\n  required: [ \u001b[32m'session_id'\u001b[39m, \u001b[32m'request_id'\u001b[39m ],\n  additionalProperties: \u001b[33mfalse\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "\nRESPONSE SUCCESSFULY VALIDATED\n"
+                        },
+                        {
+                          "text": "ПРОВЕРКА СХЕМЫ undefined\n"
+                        },
+                        {
+                          "text": "\n\t-- EXPECTED RESPONSE SCHEMA --\n"
+                        },
+                        {
+                          "text": "{\n  type: \u001b[32m'object'\u001b[39m,\n  properties: {\n    employee_id: { type: \u001b[32m'number'\u001b[39m },\n    name: { type: \u001b[32m'string'\u001b[39m },\n    last_name: { type: \u001b[32m'string'\u001b[39m },\n    user: {\n      type: \u001b[32m'object'\u001b[39m,\n      properties: \u001b[36m[Object]\u001b[39m,\n      required: \u001b[36m[Array]\u001b[39m,\n      additionalProperties: \u001b[33mfalse\u001b[39m\n    },\n    notes: {\n      type: \u001b[32m'object'\u001b[39m,\n      properties: \u001b[36m[Object]\u001b[39m,\n      required: \u001b[36m[Array]\u001b[39m,\n      additionalProperties: \u001b[33mfalse\u001b[39m\n    }\n  },\n  required: [ \u001b[32m'employee_id'\u001b[39m, \u001b[32m'name'\u001b[39m, \u001b[32m'last_name'\u001b[39m, \u001b[32m'user'\u001b[39m, \u001b[32m'notes'\u001b[39m ],\n  additionalProperties: \u001b[33mfalse\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "\nRESPONSE SUCCESSFULY VALIDATED\n"
                         }
                       ],
                       "stderr": [],
@@ -152,34 +200,26 @@
                       "steps": [
                         {
                           "title": "Получить id клуба",
-                          "duration": 361
+                          "duration": 362
                         },
                         {
-                          "title": "Создать клиента",
-                          "duration": 188
+                          "title": "Получить id клиента",
+                          "duration": 186
                         },
                         {
-                          "title": "Перейти на страницу входа в CRM",
-                          "duration": 1256
+                          "title": "Заблокировать клиента",
+                          "duration": 89
                         },
                         {
-                          "title": "Проверить, что пользователь находится в CRM и видит поле поиска",
-                          "duration": 2392
+                          "title": "Проверить схему ответа",
+                          "duration": 137
                         },
                         {
-                          "title": "Перейти на страницу юзера",
-                          "duration": 209
-                        },
-                        {
-                          "title": "Заблокировать юзера",
-                          "duration": 7012
-                        },
-                        {
-                          "title": "Проверить, что юзер заблокирован",
-                          "duration": 201
+                          "title": "Проверить тип заметки заблокированного клиента",
+                          "duration": 2
                         }
                       ],
-                      "startTime": "2025-11-20T20:12:57.204Z",
+                      "startTime": "2025-11-20T21:18:52.054Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -187,9 +227,9 @@
                   "status": "expected"
                 }
               ],
-              "id": "71e26bcf57aeaf74d9a5-5ff039924bb7e6d9e4e1",
-              "file": "ui/clientPage/userBlock.test.ts",
-              "line": 12,
+              "id": "349dbf22dec211537c0e-d8d068dd923ede149d84",
+              "file": "api/users/positiveUserBlock.test.ts",
+              "line": 17,
               "column": 10
             }
           ]
@@ -199,8 +239,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-11-20T20:12:56.013Z",
-    "duration": 14412.368999999999,
+    "startTime": "2025-11-20T21:18:50.635Z",
+    "duration": 3621.203,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

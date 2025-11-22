@@ -4,6 +4,6 @@ import api from '../api.json';
 
 export default class UserBlockRequests extends BaseRequest {
     async postUserBlock(status: number, body: object, userId: number): Promise<APIResponse> {
-        return await this.post(`${this.baseUrl}${api.paths.users}/${userId}/block`, status, body);
+        return await this.post(`${this.baseUrl}${api.paths.users.users}/${userId}${api.paths.users.block}`, status, body);
     }
 }

@@ -8,7 +8,8 @@ export default class ClientPage {
     selector = (page: Page) => ({
         button: {
             blockButton: page.locator('//div[contains(text(), "Заблокировать")]'),
-            blockFormButton: page.locator('(//div[contains(text(), "Заблокировать")])[2]')
+            blockFormButton: page.locator('(//div[contains(text(), "Заблокировать")])[2]'),
+            unblockButton: page.locator('//div[contains(text(), "Разблокировать")]')
         }
     });
 

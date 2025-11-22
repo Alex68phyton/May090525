@@ -41,7 +41,7 @@ test.describe("Тесты на блокировку/разблокировку �
         });
 
         await test.step("Проверить, что юзер заблокирован", async() => {
-            await page.locator('//div[contains(text(), "Разблокировать")]').waitFor({state: 'visible', timeout: 3000});
+            await clientPage.selector(page).button.unblockButton.waitFor({state: 'visible', timeout: 3000});
         });
     });
 });

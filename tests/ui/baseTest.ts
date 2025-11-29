@@ -6,6 +6,7 @@ import LoginPage from "pages/login.page";
 import api from "../../api.json"
 import HeaderBlock from "pages/blocks/header.block";
 import ClientPage from "pages/client.page";
+import CpWidgetPage from "pages/cpWidget.page";
 
 const test = mergeTests(BaseTest.extend<{
     loginPage: LoginPage,
@@ -13,7 +14,8 @@ const test = mergeTests(BaseTest.extend<{
     faqPage: FaqPage,
     articlePage: ArticlePage,
     headerBlock: HeaderBlock,
-    clientPage: ClientPage
+    clientPage: ClientPage,
+    cpWidgetPage: CpWidgetPage
 }>({
     baseURL: api.urls.crm_test_url,
     headless: false,
@@ -23,7 +25,8 @@ const test = mergeTests(BaseTest.extend<{
     faqPage: async({}, use) => { await use(new FaqPage())},
     articlePage: async({}, use) => { await use(new ArticlePage())},
     headerBlock: async({}, use) => { await use(new HeaderBlock())},
-    clientPage: async({}, use) => { await use(new ClientPage())}
+    clientPage: async({}, use) => { await use(new ClientPage())},
+    cpWidgetPage: async({}, use) => { await use(new CpWidgetPage())}
 })
 )
 

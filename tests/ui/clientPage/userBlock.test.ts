@@ -9,7 +9,7 @@ import authCRMTestData from "@data/authCRM.json";
 
 
 test.describe("Тесты на блокировку/разблокировку клиента", async () => {
-    test.only("Тест на блокировку клиента", async ( {request, page, loginPage, clientPage, headerBlock }) => {
+    test("Тест на блокировку клиента", async ( {request, page, loginPage, clientPage, headerBlock }) => {
         const clubId = await test.step("Получить id клуба", async () => {
             const parameters = {...await getBaseParameters()};
             const getClubResponse = await new ClubsRequests(request).getClubs(Statuses.OK, parameters);

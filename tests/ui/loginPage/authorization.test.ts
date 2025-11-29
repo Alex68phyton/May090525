@@ -3,7 +3,7 @@ import authCRMTestData from "@data/authCRM.json";
 import api from "../../../api.json";
 
 test.describe("Тесты на авторизацию в CRM", async () => {
-    test("Успешная авторизация в CRM", async ({page, loginPage}) => {
+    test("Успешная авторизация в CRM", async ({page, loginPage, headerBlock}) => {
         await test.step("Перейти на страницу входа в CRM", async () => {
             await page.goto("");
         });
@@ -11,7 +11,24 @@ test.describe("Тесты на авторизацию в CRM", async () => {
             await loginPage.login(page, authCRMTestData.login, authCRMTestData.password);
         });
         await test.step("Проверить, что пользователь находится в CRM и видит поле поиска", async () => {
-            await page.locator("//input[@data-testid='phone-input']").waitFor({state: 'visible', timeout: 3000});  
+            await headerBlock.selector(page).search.searchInput.waitFor({state: 'visible', timeout: 3000});  
+        });    
+    });
+
+    test("Успешная авторизация в CRM(проверить что пользователь авторизован в новой вкладке", async ({page, loginPage, headerBlock}) => {
+        await test.step("Перейти на страницу входа в CRM", async () => {
+            await page.goto("");
+        });
+        await test.step("Заполнить форму авторизации и нажать войти", async () => {
+            await loginPage.login(page, authCRMTestData.login, authCRMTestData.password);
+        });
+        await test.step("Проверить, что пользователь находится в CRM и видит поле поиска", async () => {
+            await headerBlock.selector(page).search.searchInput.waitFor({state: 'visible', timeout: 3000});  
+        });
+        await test.step("Открыть новую вкладку, зайти в CRM и убедиться, что пользователь авторизован", async () => {
+            await page.context().newPage();
+            await page.goto("");
+            await headerBlock.selector(page).search.searchInput.waitFor({state: 'visible', timeout: 3000});
         });    
     });
 });

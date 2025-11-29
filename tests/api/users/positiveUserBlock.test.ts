@@ -14,7 +14,7 @@ import { userBlockDataJsonSchema } from "@entities/users/userBlock.response";
 
 
 test.describe("API-тесты на поиск клиента", async () => {
-    test.only("Заблокировать клиента", async({request}) => {
+    test("Заблокировать клиента", async({request}) => {
         const clubId = await test.step("Получить id клуба", async () => {
             const parameters = {...await getBaseParameters()};
             const getClubResponse = await new ClubsRequests(request).getClubs(Statuses.OK, parameters);

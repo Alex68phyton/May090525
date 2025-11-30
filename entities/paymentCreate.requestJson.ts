@@ -1,5 +1,6 @@
 import { RequestSources } from "@libs/requestSources";
 import requestTestData from "@data/request.json";
+import api from '../api.json'
 
 export interface PaymentCreateDataRequestJson {
     session_id: string;
@@ -35,8 +36,8 @@ export const getPaymentCreateRequestJson = async (userId: number, userPaymentPla
         employee_id: 2549,
         fiscal_method: "OrangeData",
         widget_settings: {
-            success_page: "https://site-pretest.ddxfitness.ru/checkout/redirect.php",
-            fault_page: "https://site-pretest.ddxfitness.ru/checkout/redirect.php?error=faild"
+            success_page: api.urls.widget_settings.success_page,
+            fault_page: api.urls.widget_settings.fault_page
         }
     }
 }

@@ -60,27 +60,27 @@
     ],
     "shard": null,
     "updateSnapshots": "missing",
-    "updateSourceMethod": "patch",
+    "updateSourceMethod": "3way",
     "version": "1.53.1",
     "workers": 4,
     "webServer": null
   },
   "suites": [
     {
-      "title": "api\\cardTokens\\getCardTokens.test.ts",
-      "file": "api/cardTokens/getCardTokens.test.ts",
+      "title": "ui\\clientPage\\checkWidgetPage.test.ts",
+      "file": "ui/clientPage/checkWidgetPage.test.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "API-тесты на получение банковских карт",
-          "file": "api/cardTokens/getCardTokens.test.ts",
-          "line": 11,
+          "title": "Тесты на проверку отображения статуса подписки на карточке клиента",
+          "file": "ui/clientPage/checkWidgetPage.test.ts",
+          "line": 10,
           "column": 6,
           "specs": [
             {
-              "title": "[positive] получение банковских карт юзера",
+              "title": "Проверка отображения подписки в статусе  на карточке клиента",
               "ok": true,
               "tags": [],
               "tests": [
@@ -92,26 +92,26 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 8,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 6423,
+                      "duration": 26150,
                       "errors": [],
                       "stdout": [
                         {
-                          "text": "Executing (default): SELECT * FROM card_tokens WHERE public_card_number is not null ORDER BY id DESC LIMIT 1\n"
+                          "text": "Executing (default): SELECT * FROM user_payment_plans WHERE status  = 'Created' ORDER BY id DESC LIMIT 1\n"
                         },
                         {
                           "text": "\n\t-- REQUEST URL --\n"
                         },
                         {
-                          "text": "https://api.test.ddxfitness.ru/card_tokens\n"
+                          "text": "https://api.test.ddxfitness.ru/payment/create\n"
                         },
                         {
-                          "text": "\n\t-- REQUEST BODY --\n"
+                          "text": "\n\t-- PARAMETERS --\n"
                         },
                         {
-                          "text": "{\n  session_id: \u001b[32m'autotest_aai'\u001b[39m,\n  request_id: \u001b[32m'autotest_aai'\u001b[39m,\n  request_source: \u001b[32m'crm'\u001b[39m,\n  user_id: \u001b[32m'3020304'\u001b[39m\n}\n"
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"provider_id\": 6,\n\t\"type\": \"payment\",\n\t\"gate_id\": 3,\n\t\"user_id\": 3020309,\n\t\"user_payment_plan_id\": 4271935,\n\t\"currency\": \"RUB\",\n\t\"payment_service_id\": 2,\n\t\"employee_id\": 2549,\n\t\"fiscal_method\": \"OrangeData\",\n\t\"widget_settings\": {\n\t\t\"success_page\": \"https://site-pretest.ddxfitness.ru/checkout/redirect.php\",\n\t\t\"fault_page\": \"https://site-pretest.ddxfitness.ru/checkout/redirect.php?error=faild\"\n\t}\n}\n"
                         },
                         {
                           "text": "\n\t-- RESPONSE STATUS --\n"
@@ -123,64 +123,50 @@
                           "text": "\n\t-- RESPONSE BODY --\n"
                         },
                         {
-                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 3352616,\n\t\t\t\"user_id\": 3020304,\n\t\t\t\"payment_service_id\": 2,\n\t\t\t\"public_card_number\": \"424242******4242\",\n\t\t\t\"created_at\": \"2025-11-28T16:35:32Z\",\n\t\t\t\"updated_at\": \"2025-11-28T16:35:32Z\",\n\t\t\t\"is_deleted\": false\n\t\t}\n\t]\n}\n"
-                        },
-                        {
-                          "text": "ПРОВЕРКА СХЕМЫ undefined\n"
-                        },
-                        {
-                          "text": "\n\t-- EXPECTED RESPONSE SCHEMA --\n"
-                        },
-                        {
-                          "text": "{\n  type: \u001b[32m'object'\u001b[39m,\n  properties: {\n    session_id: { type: \u001b[32m'string'\u001b[39m },\n    request_id: { type: \u001b[32m'string'\u001b[39m },\n    request_source: { type: \u001b[32m'string'\u001b[39m },\n    data: { anyOf: \u001b[36m[Array]\u001b[39m }\n  },\n  required: [ \u001b[32m'session_id'\u001b[39m, \u001b[32m'request_id'\u001b[39m ],\n  additionalProperties: \u001b[33mfalse\u001b[39m\n}\n"
-                        },
-                        {
-                          "text": "\nRESPONSE SUCCESSFULY VALIDATED\n"
-                        },
-                        {
-                          "text": "ПРОВЕРКА СХЕМЫ undefined\n"
-                        },
-                        {
-                          "text": "\n\t-- EXPECTED RESPONSE SCHEMA --\n"
-                        },
-                        {
-                          "text": "{\n  type: \u001b[32m'object'\u001b[39m,\n  properties: {\n    id: { type: \u001b[32m'number'\u001b[39m },\n    user_id: { type: \u001b[32m'number'\u001b[39m },\n    payment_service_id: { type: \u001b[32m'number'\u001b[39m },\n    public_card_number: { type: \u001b[32m'string'\u001b[39m },\n    created_at: { type: \u001b[32m'string'\u001b[39m },\n    updated_at: { type: \u001b[32m'string'\u001b[39m },\n    is_deleted: { type: \u001b[32m'boolean'\u001b[39m }\n  },\n  required: [\n    \u001b[32m'id'\u001b[39m,\n    \u001b[32m'user_id'\u001b[39m,\n    \u001b[32m'payment_service_id'\u001b[39m,\n    \u001b[32m'public_card_number'\u001b[39m,\n    \u001b[32m'created_at'\u001b[39m,\n    \u001b[32m'updated_at'\u001b[39m,\n    \u001b[32m'is_deleted'\u001b[39m\n  ],\n  additionalProperties: \u001b[33mfalse\u001b[39m\n}\n"
-                        },
-                        {
-                          "text": "\nRESPONSE SUCCESSFULY VALIDATED\n"
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"transaction\": {\n\t\t\"id\": 44386073,\n\t\t\"status\": \"in progress\",\n\t\t\"payment_widget_uri\": \"https://ls.test.ddxfitness.ru/hCIvj\",\n\t\t\"payment_service_id\": 2,\n\t\t\"price\": {\n\t\t\t\"currency\": \"RUB\",\n\t\t\t\"our_amount\": 5400,\n\t\t\t\"partner_amount\": 0,\n\t\t\t\"discount_amount\": 0,\n\t\t\t\"deposit_amount\": 0,\n\t\t\t\"total_amount\": 5400\n\t\t}\n\t}\n}\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
                       "steps": [
                         {
-                          "title": "Получить в БД клиента с токеном",
-                          "duration": 6212
+                          "title": "Получить клиента с подпиской в статусе [object Object]",
+                          "duration": 6676
                         },
                         {
-                          "title": "Получить карту по user_id",
-                          "duration": 130
+                          "title": "Отправить запрос на оплату",
+                          "duration": 223
                         },
                         {
-                          "title": "Проверить схему ответа",
-                          "duration": 57
+                          "title": "Перейти на страницу клиента",
+                          "duration": 461
                         },
                         {
-                          "title": "Проверить соответствие номера карты в ответе карте в БД",
-                          "duration": 1
+                          "title": "Проверить, что статус подписки отображается в карточке клиента",
+                          "duration": 6365
+                        },
+                        {
+                          "title": "Открыть новую вкладку, перейти на виджет и убедиться, что пользователь находится на странице оплаты",
+                          "duration": 6029
                         }
                       ],
-                      "startTime": "2025-11-29T11:06:06.852Z",
+                      "startTime": "2025-11-30T09:15:36.738Z",
                       "annotations": [],
-                      "attachments": []
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\a.aparin\\STUDYAGAIN\\test-results\\ui-clientPage-checkWidgetP-60410-статусе-на-карточке-клиента-chromium\\trace.zip"
+                        }
+                      ]
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "33e548b7292346ee1403-1d4f8ee9821bcd49746f",
-              "file": "api/cardTokens/getCardTokens.test.ts",
-              "line": 14,
+              "id": "e66b30b33f9dc85fd32b-e235e2ef21d309ba8bec",
+              "file": "ui/clientPage/checkWidgetPage.test.ts",
+              "line": 20,
               "column": 10
             }
           ]
@@ -190,8 +176,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-11-29T11:06:05.129Z",
-    "duration": 8187.068,
+    "startTime": "2025-11-30T09:15:34.532Z",
+    "duration": 30189.26599999983,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

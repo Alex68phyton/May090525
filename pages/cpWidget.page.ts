@@ -2,10 +2,14 @@ import { FrameLocator, Page } from "@playwright/test";
 
 export default class CpWidgetPage {
 
-    selector = (page?: any, iframe?: any) => ({
+    selector = (page: Page ) => ({
         element: {
-            choicePaymentButton: iframe.getByText(' Банковской картой '),
             iframeWidget: page.frameLocator('iframe[src*="cloudpayments.ru"]')
+        }
+    });
+    iframe = (iframe: FrameLocator) => ({
+        element: {
+            choicePaymentButton: iframe.getByText(' Банковской картой ')
         }
     });
 }

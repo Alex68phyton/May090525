@@ -24,8 +24,6 @@ test.describe("Тесты на проверку отображения стат�
 
         const paymentCreateWidgetLink = await test.step("Отправить запрос на оплату", async() => {
             const requestBody = await getPaymentCreateRequestJson(Number(userPaymentPlan.user_id), Number(userPaymentPlan.id), 2);
-            console.log(userPaymentPlan);
-            console.log(requestBody);
             const paymentCreateResponse = (await (await new UserPaymentCreateRequests(request).postUserPaymentCreate(200, requestBody)).json());
             return paymentCreateResponse.transaction.payment_widget_uri;
         })
@@ -39,9 +37,12 @@ test.describe("Тесты на проверку отображения стат�
         });
         await test.step("Открыть новую вкладку, перейти на виджет и убедиться, что пользователь находится на странице оплаты", async () => {
             const newPage = await page.context().newPage();
-            await newPage.goto(paymentCreateWidgetLink, {waitUntil: "domcontentloaded", timeout: 30000});
+            await newPage.goto(paymentCreateWidgetLink, {waitUntil: "domcontentloaded", timeout: 90000});
             const iframe = await cpWidgetPage.selector(newPage).element.iframeWidget;
-            await cpWidgetPage.selector(iframe).element.choicePaymentButton.waitFor({state: 'visible', timeout: 10000});
+            //console.log(iframe);
+            //const iframe = await newPage.frameLocator('iframe[src*="cloudpayments.ru"]');
+            //await cpWidgetPage.selector(iframe).element.choicePaymentButton.waitFor({state: 'visible', timeout: 10000});
+            await cpWidgetPage.iframe(iframe).element.choicePaymentButton.waitFor({ state: 'visible', timeout: 10000 });;
         });
     });
 });

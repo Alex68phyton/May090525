@@ -26,9 +26,9 @@ test.describe("Тесты на авторизацию в CRM", async () => {
             await headerBlock.selector(page).search.searchInput.waitFor({state: 'visible', timeout: 3000});  
         });
         await test.step("Открыть новую вкладку, зайти в CRM и убедиться, что пользователь авторизован", async () => {
-            await page.context().newPage();
-            await page.goto("");
-            await headerBlock.selector(page).search.searchInput.waitFor({state: 'visible', timeout: 3000});
+            const newPage = await page.context().newPage();
+            await newPage.goto("");
+            await headerBlock.selector(newPage).search.searchInput.waitFor({state: 'visible', timeout: 3000});
         });    
     });
 });

@@ -30,8 +30,8 @@ export interface TransactionDB {
   payment_service_response_code: number | null;
   receipt_id: number | null;
   fiscal_method: string | null;
-  created_at: Date | null;
-  updated_at: Date | null;
+  created_at: Date;
+  updated_at: Date;
   is_deleted: boolean;
   payment_transaction_id: number | null;
   club_legal_info_id: number | null;
@@ -167,7 +167,7 @@ export const transactionsTableDB = db.define(
 
 export async function selectTransactionsWithUser(): Promise<TransactionDB> {
     const result = await db.query(`
-      SELECT * FROM ${tableName} t WHERE user_id IS NOT NULL LIMIT 1
+      SELECT * FROM ${tableName} t WHERE club_legal_info_id = 214 and user_id IS NOT NULL ORDER BY id DESC LIMIT 1
     `,
     { model: transactionsTableDB, mapToModel: true});
     

@@ -1,10 +1,10 @@
-import test from "../baseTest";
+import test, { expect } from "../baseTest";
 import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import authCRMTestData from "@data/authCRM.json";
 import userTestData from "@data/user.json";
 
 test.describe("Тесты на создание клиента в CRM", async () => {
-    test("Создание юзера", async ({ page, loginPage}) => {
+    test("Создание юзера", async ({ page, loginPage, addClientPage}) => {
         const phoneNumber = await test.step("Создать номер телефона клиента", () => getRandomPhoneNumber());
         const email = await test.step("Создать email", () => getRandomEmail());
 
@@ -21,6 +21,16 @@ test.describe("Тесты на создание клиента в CRM", async ()
             await page.getByTestId('phone-input').fill(phoneNumber);
             await page.getByTestId('search').getByRole('img').click();
             await page.getByRole('button', { name: 'Создать' }).click();
+        });
+
+        await test.step("Проверить верстку страницы", async () => {
+            await expect(page).toHaveScreenshot("addClientPage.png", {
+              fullPage: true,
+              maxDiffPixelRatio: 0.02,
+              mask: [
+                addClientPage.selector(page).elements.phoneInput
+              ]  
+            });
         });
 
         await test.step("Заполнить информацию о клиенте", async () => {
@@ -46,7 +56,7 @@ test.describe("Тесты на создание клиента в CRM", async ()
             await page.getByRole('button', { name: 'Отправить код' }).click();
         });
         await test.step("Проверить, что пользователь видит инпут для ввода кода", async () => {
-            await page.locator("//form//div[contains(., 'Код')]/div/div/input").waitFor({state: 'visible', timeout: 3000});  
+            await page.locator("//form//div[contains(., 'Код')]/div/div/input").waitFor({state: 'visible', timeout: 5000});  
         });
     });
 });

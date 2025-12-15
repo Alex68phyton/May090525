@@ -36,3 +36,15 @@ export function getDatePlus7DaysAnd1Hour(date: Date = new Date()): string {
   newDate.setHours(newDate.getHours() + 1);
   return newDate.toISOString();
 }
+
+export function formatPayDate(isoString: Date): string {
+    const date = new Date(isoString);
+    const correctedDate = new Date(date.getTime() + (3 * 60 * 60 * 1000));
+    const hours = correctedDate.getHours().toString().padStart(2, '0');
+    const minutes = correctedDate.getMinutes().toString().padStart(2, '0');
+    const day = correctedDate.getDate().toString().padStart(2, '0');
+    const month = (correctedDate.getMonth() + 1).toString().padStart(2, '0');
+    const year = correctedDate.getFullYear();
+    
+    return `${hours}:${minutes} ${day}.${month}.${year}`;
+}

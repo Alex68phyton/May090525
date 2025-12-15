@@ -60,27 +60,27 @@
     ],
     "shard": null,
     "updateSnapshots": "missing",
-    "updateSourceMethod": "3way",
+    "updateSourceMethod": "patch",
     "version": "1.53.1",
     "workers": 4,
     "webServer": null
   },
   "suites": [
     {
-      "title": "ui\\clientPage\\checkWidgetPage.test.ts",
-      "file": "ui/clientPage/checkWidgetPage.test.ts",
+      "title": "ui\\clientPage\\checkUserPaymentInfo.test.ts",
+      "file": "ui/clientPage/checkUserPaymentInfo.test.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Тесты на проверку отображения статуса подписки на карточке клиента",
-          "file": "ui/clientPage/checkWidgetPage.test.ts",
-          "line": 10,
+          "title": "Тесты на проверку записи клиента на тренировку в CRM",
+          "file": "ui/clientPage/checkUserPaymentInfo.test.ts",
+          "line": 7,
           "column": 6,
           "specs": [
             {
-              "title": "Проверка отображения подписки в статусе  на карточке клиента",
+              "title": "Проверку записи клиента на тренировку в CRM",
               "ok": true,
               "tags": [],
               "tests": [
@@ -92,81 +92,61 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 8,
+                      "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 26150,
+                      "duration": 5655,
                       "errors": [],
                       "stdout": [
                         {
-                          "text": "Executing (default): SELECT * FROM user_payment_plans WHERE status  = 'Created' ORDER BY id DESC LIMIT 1\n"
+                          "text": "Executing (default): SELECT * FROM transactions t WHERE club_legal_info_id = 214 and user_id IS NOT NULL ORDER BY id DESC LIMIT 1\n"
                         },
                         {
-                          "text": "\n\t-- REQUEST URL --\n"
+                          "text": "transactions {\n  dataValues: {\n    id: \u001b[32m'44387875'\u001b[39m,\n    provider_id: \u001b[32m'6'\u001b[39m,\n    type: \u001b[32m'payment'\u001b[39m,\n    gate_id: \u001b[32m'3'\u001b[39m,\n    user_id: \u001b[32m'296978'\u001b[39m,\n    user_payment_plan_id: \u001b[32m'4272767'\u001b[39m,\n    discount_id: \u001b[32m'0'\u001b[39m,\n    our_amount: \u001b[32m'5999.00000'\u001b[39m,\n    partner_amount: \u001b[32m'0.00000'\u001b[39m,\n    discount_amount: \u001b[32m'0.00000'\u001b[39m,\n    total_amount: \u001b[32m'5999.00000'\u001b[39m,\n    currency: \u001b[32m'RUB'\u001b[39m,\n    payment_service_id: \u001b[32m'2'\u001b[39m,\n    supp_transaction_id: \u001b[32m'3220486373'\u001b[39m,\n    card_token_id: \u001b[32m'3351799'\u001b[39m,\n    employee_id: \u001b[32m'2549'\u001b[39m,\n    status: \u001b[32m'completed'\u001b[39m,\n    response: {\n      response: \u001b[32m'{\\r\\n'\u001b[39m +\n        \u001b[32m'  \"TransactionId\": 3220486373,\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Amount\": 0,\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Currency\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!PaymentAmount\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!PaymentCurrency\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!DateTime\": \"2023-02-10T08:24:02.706Z\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"CardFirstSix\": \"424242\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"CardLastFour\": \"4242\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!CardType\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!CardExpDate\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!TestMode\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Status\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!OperationType\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!GatewayName\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"InvoiceId\": \"44387875\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!AccountId\": \"296978\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!SubscriptionId\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Name\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Email\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpAddress\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpCountry\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpCity\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpRegion\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpDistrict\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpLatitude\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpLongitude \": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Issuer\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IssuerBankCountry\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Description\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!AuthCode\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Data\": {},\\r\\n'\u001b[39m +\n        \u001b[32m'  \"Token\": \"tk_4f2cf6adfa4db9df6fa95ccea0073\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!TotalFee\": 0,\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!CardProduct\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!PaymentMethod\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!FallBackScenarioDeclinedTransactionId\": 0\\r\\n'\u001b[39m +\n        \u001b[32m'}'\u001b[39m\n    },\n    http_response_code: \u001b[33m200\u001b[39m,\n    payment_service_response_code: \u001b[33m0\u001b[39m,\n    receipt_id: \u001b[32m'18597319'\u001b[39m,\n    is_deleted: \u001b[33mfalse\u001b[39m,\n    description: \u001b[32m'Оплата тарифного плана'\u001b[39m,\n    fiscal_method: \u001b[32m'OrangeData'\u001b[39m,\n    deposit_amount: \u001b[32m'0.00000'\u001b[39m,\n    created_at: \u001b[35m2025-12-31T21:49:29.000Z\u001b[39m,\n    updated_at: \u001b[35m2025-12-12T03:51:50.000Z\u001b[39m,\n    payment_transaction_id: \u001b[32m'0'\u001b[39m,\n    join_fee: \u001b[32m'3000.00000'\u001b[39m,\n    membership_fee: \u001b[32m'2999.00000'\u001b[39m,\n    widget_settings: {\n      fault_page: \u001b[32m'https://site-pretest.ddxfitness.ru/checkout/redirect.php?error=faild'\u001b[39m,\n      success_page: \u001b[32m'https://site-pretest.ddxfitness.ru/checkout/redirect.php'\u001b[39m\n    },\n    club_legal_info_id: \u001b[32m'214'\u001b[39m,\n    discount_code_id: \u001b[1mnull\u001b[22m,\n    refund_balance: \u001b[32m'5999.00000'\u001b[39m,\n    parent_id: \u001b[1mnull\u001b[22m,\n    paymentsrv_transaction_id: \u001b[32m'301606375'\u001b[39m,\n    join_fee_discount_amount: \u001b[1mnull\u001b[22m,\n    membership_fee_discount_amount: \u001b[1mnull\u001b[22m,\n    membership_data: [ \u001b[36m[Object]\u001b[39m, \u001b[36m[Object]\u001b[39m ],\n    spa_carts_id: \u001b[1mnull\u001b[22m\n  },\n  _previousDataValues: {\n    id: \u001b[32m'44387875'\u001b[39m,\n    provider_id: \u001b[32m'6'\u001b[39m,\n    type: \u001b[32m'payment'\u001b[39m,\n    gate_id: \u001b[32m'3'\u001b[39m,\n    user_id: \u001b[32m'296978'\u001b[39m,\n    user_payment_plan_id: \u001b[32m'4272767'\u001b[39m,\n    discount_id: \u001b[32m'0'\u001b[39m,\n    our_amount: \u001b[32m'5999.00000'\u001b[39m,\n    partner_amount: \u001b[32m'0.00000'\u001b[39m,\n    discount_amount: \u001b[32m'0.00000'\u001b[39m,\n    total_amount: \u001b[32m'5999.00000'\u001b[39m,\n    currency: \u001b[32m'RUB'\u001b[39m,\n    payment_service_id: \u001b[32m'2'\u001b[39m,\n    supp_transaction_id: \u001b[32m'3220486373'\u001b[39m,\n    card_token_id: \u001b[32m'3351799'\u001b[39m,\n    employee_id: \u001b[32m'2549'\u001b[39m,\n    status: \u001b[32m'completed'\u001b[39m,\n    response: {\n      response: \u001b[32m'{\\r\\n'\u001b[39m +\n        \u001b[32m'  \"TransactionId\": 3220486373,\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Amount\": 0,\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Currency\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!PaymentAmount\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!PaymentCurrency\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!DateTime\": \"2023-02-10T08:24:02.706Z\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"CardFirstSix\": \"424242\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"CardLastFour\": \"4242\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!CardType\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!CardExpDate\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!TestMode\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Status\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!OperationType\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!GatewayName\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"InvoiceId\": \"44387875\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!AccountId\": \"296978\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!SubscriptionId\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Name\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Email\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpAddress\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpCountry\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpCity\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpRegion\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpDistrict\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpLatitude\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IpLongitude \": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Issuer\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!IssuerBankCountry\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Description\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!AuthCode\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!Data\": {},\\r\\n'\u001b[39m +\n        \u001b[32m'  \"Token\": \"tk_4f2cf6adfa4db9df6fa95ccea0073\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!TotalFee\": 0,\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!CardProduct\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!PaymentMethod\": \"string\",\\r\\n'\u001b[39m +\n        \u001b[32m'  \"!FallBackScenarioDeclinedTransactionId\": 0\\r\\n'\u001b[39m +\n        \u001b[32m'}'\u001b[39m\n    },\n    http_response_code: \u001b[33m200\u001b[39m,\n    payment_service_response_code: \u001b[33m0\u001b[39m,\n    receipt_id: \u001b[32m'18597319'\u001b[39m,\n    is_deleted: \u001b[33mfalse\u001b[39m,\n    description: \u001b[32m'Оплата тарифного плана'\u001b[39m,\n    fiscal_method: \u001b[32m'OrangeData'\u001b[39m,\n    deposit_amount: \u001b[32m'0.00000'\u001b[39m,\n    created_at: \u001b[35m2025-12-31T21:49:29.000Z\u001b[39m,\n    updated_at: \u001b[35m2025-12-12T03:51:50.000Z\u001b[39m,\n    payment_transaction_id: \u001b[32m'0'\u001b[39m,\n    join_fee: \u001b[32m'3000.00000'\u001b[39m,\n    membership_fee: \u001b[32m'2999.00000'\u001b[39m,\n    widget_settings: {\n      fault_page: \u001b[32m'https://site-pretest.ddxfitness.ru/checkout/redirect.php?error=faild'\u001b[39m,\n      success_page: \u001b[32m'https://site-pretest.ddxfitness.ru/checkout/redirect.php'\u001b[39m\n    },\n    club_legal_info_id: \u001b[32m'214'\u001b[39m,\n    discount_code_id: \u001b[1mnull\u001b[22m,\n    refund_balance: \u001b[32m'5999.00000'\u001b[39m,\n    parent_id: \u001b[1mnull\u001b[22m,\n    paymentsrv_transaction_id: \u001b[32m'301606375'\u001b[39m,\n    join_fee_discount_amount: \u001b[1mnull\u001b[22m,\n    membership_fee_discount_amount: \u001b[1mnull\u001b[22m,\n    membership_data: [ \u001b[36m[Object]\u001b[39m, \u001b[36m[Object]\u001b[39m ],\n    spa_carts_id: \u001b[1mnull\u001b[22m\n  },\n  uniqno: \u001b[33m1\u001b[39m,\n  _changed: Set(0) {},\n  _options: {\n    isNewRecord: \u001b[33mfalse\u001b[39m,\n    _schema: \u001b[1mnull\u001b[22m,\n    _schemaDelimiter: \u001b[32m''\u001b[39m,\n    raw: \u001b[33mtrue\u001b[39m,\n    attributes: \u001b[90mundefined\u001b[39m\n  },\n  isNewRecord: \u001b[33mfalse\u001b[39m\n}\n"
                         },
                         {
-                          "text": "https://api.test.ddxfitness.ru/payment/create\n"
-                        },
-                        {
-                          "text": "\n\t-- PARAMETERS --\n"
-                        },
-                        {
-                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"provider_id\": 6,\n\t\"type\": \"payment\",\n\t\"gate_id\": 3,\n\t\"user_id\": 3020309,\n\t\"user_payment_plan_id\": 4271935,\n\t\"currency\": \"RUB\",\n\t\"payment_service_id\": 2,\n\t\"employee_id\": 2549,\n\t\"fiscal_method\": \"OrangeData\",\n\t\"widget_settings\": {\n\t\t\"success_page\": \"https://site-pretest.ddxfitness.ru/checkout/redirect.php\",\n\t\t\"fault_page\": \"https://site-pretest.ddxfitness.ru/checkout/redirect.php?error=faild\"\n\t}\n}\n"
-                        },
-                        {
-                          "text": "\n\t-- RESPONSE STATUS --\n"
-                        },
-                        {
-                          "text": "\u001b[33m200\u001b[39m\n"
-                        },
-                        {
-                          "text": "\n\t-- RESPONSE BODY --\n"
-                        },
-                        {
-                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"transaction\": {\n\t\t\"id\": 44386073,\n\t\t\"status\": \"in progress\",\n\t\t\"payment_widget_uri\": \"https://ls.test.ddxfitness.ru/hCIvj\",\n\t\t\"payment_service_id\": 2,\n\t\t\"price\": {\n\t\t\t\"currency\": \"RUB\",\n\t\t\t\"our_amount\": 5400,\n\t\t\t\"partner_amount\": 0,\n\t\t\t\"discount_amount\": 0,\n\t\t\t\"deposit_amount\": 0,\n\t\t\t\"total_amount\": 5400\n\t\t}\n\t}\n}\n"
+                          "text": "09:51 12.12.2025\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
                       "steps": [
                         {
-                          "title": "Получить клиента с подпиской в статусе [object Object]",
-                          "duration": 6676
+                          "title": "Перейти на страницу входа в CRM",
+                          "duration": 1218
                         },
                         {
-                          "title": "Отправить запрос на оплату",
-                          "duration": 223
+                          "title": "Проверить, что пользователь находится в CRM и видит поле поиска",
+                          "duration": 1864
                         },
                         {
-                          "title": "Перейти на страницу клиента",
-                          "duration": 461
+                          "title": "получить id юзера, у которого есть транзакции",
+                          "duration": 414
                         },
                         {
-                          "title": "Проверить, что статус подписки отображается в карточке клиента",
-                          "duration": 6365
+                          "title": "Получить отформатированную дату",
+                          "duration": 5
                         },
                         {
-                          "title": "Открыть новую вкладку, перейти на виджет и убедиться, что пользователь находится на странице оплаты",
-                          "duration": 6029
+                          "title": "Перейти на страницу юзера",
+                          "duration": 249
+                        },
+                        {
+                          "title": "Проверить, что пользователь видит запись о последней платежной транзакции",
+                          "duration": 472
                         }
                       ],
-                      "startTime": "2025-11-30T09:15:36.738Z",
+                      "startTime": "2025-12-14T20:20:00.423Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "trace",
-                          "contentType": "application/zip",
-                          "path": "C:\\Users\\a.aparin\\STUDYAGAIN\\test-results\\ui-clientPage-checkWidgetP-60410-статусе-на-карточке-клиента-chromium\\trace.zip"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "e66b30b33f9dc85fd32b-e235e2ef21d309ba8bec",
-              "file": "ui/clientPage/checkWidgetPage.test.ts",
-              "line": 20,
+              "id": "073eade28060a08a9b60-edb2826b06c987359285",
+              "file": "ui/clientPage/checkUserPaymentInfo.test.ts",
+              "line": 8,
               "column": 10
             }
           ]
@@ -176,8 +156,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-11-30T09:15:34.532Z",
-    "duration": 30189.26599999983,
+    "startTime": "2025-12-14T20:19:58.664Z",
+    "duration": 8558.822,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

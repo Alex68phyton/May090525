@@ -7,6 +7,16 @@ test.describe("Тесты на авторизацию в CRM", async () => {
         await test.step("Перейти на страницу входа в CRM", async () => {
             await page.goto("");
         });
+        await test.step("Проверить верстку страницы", async () => {
+            await expect(page).toHaveScreenshot("authPage.png", {
+              fullPage: true,
+              maxDiffPixelRatio: 0.02,
+              mask: [
+                loginPage.selector(page).authForm.loginInput,
+                loginPage.selector(page).authForm.passwordInput
+              ]  
+            });
+        });
         await test.step("Заполнить форму авторизации и нажать войти", async () => {
             await loginPage.login(page, authCRMTestData.login, authCRMTestData.password);
         });

@@ -13,8 +13,6 @@ test.describe("API-тесты на получение транзакций", asy
                     return await selectTransactionsWithUser();
                 });
 
-        console.log(transactions);
-
         const response = await test.step("Получить транзакции юзера", async () => { 
                 const parameters = {...await getBaseParameters(),...{user_id: transactions.user_id}};
                 return await (await new TransactionsRequests(request).getTransactions(200, parameters)).json();

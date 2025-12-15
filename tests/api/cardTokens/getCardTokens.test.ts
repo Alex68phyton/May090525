@@ -11,7 +11,7 @@ import { cardTokensResponseJsonSchema } from "@entities/cardTokens.response";
 test.describe("API-тесты на получение банковских карт", async () => {
     let card_token_user: number;
     let card_token_number: string | null;
-    test.only("[positive] получение банковских карт юзера", async ({request}) => {
+    test("[positive] получение банковских карт юзера", async ({request}) => {
         [card_token_user, card_token_number] = await test.step("Получить в БД клиента с токеном", async () => {
             const cardToken = await selectCardToken();
             return [cardToken.user_id, cardToken.public_card_number] 

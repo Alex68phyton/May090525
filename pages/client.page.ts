@@ -5,14 +5,15 @@ export default class ClientPage {
         return `/client/${userId}`;
     }
 
-    selector = (page: Page, crmStatus?: string) => ({
+    selector = (page: Page, crmStatus?: string, payDate?: string) => ({
         button: {
             blockButton: page.locator('//div[contains(text(), "Заблокировать")]'),
             blockFormButton: page.locator('(//div[contains(text(), "Заблокировать")])[2]'),
             unblockButton: page.locator('//div[contains(text(), "Разблокировать")]')
         },
         elements: {
-            paymentPlanStatus: page.locator(`//div[@data-testid="subscription-name"]/../div[2]/div[text()="${crmStatus}"]`)
+            paymentPlanStatus: page.locator(`//div[@data-testid="subscription-name"]/../div[2]/div[text()="${crmStatus}"]`),
+            paymentInfo: page.locator(`//td[contains(text(), "${payDate}")]`)
         }
     });
 

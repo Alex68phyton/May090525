@@ -1,5 +1,4 @@
 import test, { expect } from "../baseTest";
-import api from '../../../api.json';
 import authCRMTestData from "@data/authCRM.json";
 import { selectFirstTrainingWithBookedUser } from "db/groupTraining.db";
 

@@ -8,7 +8,7 @@ import { getUserRequestJson } from "@entities/users/user.requestJson";
 import { getUserPaymentPlanRequestJson } from "@entities/userPaymentPlan.requestJson";
 import { baseResponseJsonSchema } from "@entities/base.response";
 import { validateJson } from "@utils/validator.util";
-import { clubDataResponseJsonSchema, createUserPaymentPlanDataResponseJsonSchema, paymentPlanDataResponseJsonSchema } from "@entities/users/userPaymentPlan.response";
+import { clubDataResponseJsonSchema, createUserPaymentPlanDataResponseJsonSchema, paymentPlanDataResponseJsonSchema } from "@entities/userPaymentPlan.response";
 
 
 

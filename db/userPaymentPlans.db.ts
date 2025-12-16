@@ -64,3 +64,11 @@ export async function selectUserPaymentPlanByStatus(status:string): Promise <Use
 
     return <UserPaymentPlansDB | any>result[0];   
 }
+
+export async function selectUserPaymentPlanById(userPaymentPlanId:number): Promise <UserPaymentPlansDB> {
+    const result = await db.query(
+        `SELECT * FROM ${tableName} WHERE id  = '${userPaymentPlanId}'`,
+        { model: userPaymentPlansDB, mapToModel: true});
+
+    return <UserPaymentPlansDB | any>result[0];   
+}

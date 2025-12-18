@@ -34,15 +34,11 @@ test.describe("API-тесты на редактирование подписки
             const requestBody = await getUserPaymentPlanRequestJson(clubId);
 
             const getUserPaymentPlanResponse = (await (await new UserPaymentPlansRequests(request).postUserPaymentPlans(200, requestBody, userId)).json());
-            console.log(getUserPaymentPlanResponse);
             return getUserPaymentPlanResponse;       
         });
 
         const response = await test.step("Отредактировать подписку юзеру", async () => { 
             const requestBody = await getEditUserPaymentPlanRequestJson(createUppResponse.data[0].id, createUppResponse.data[0].status);
-            console.log(requestBody);
-            console.log(createUppResponse.data[0].id);
-            console.log(createUppResponse.data[0].status);
 
             const getUserPaymentPlanEditResponse = (await (await new UserPaymentPlanEditRequests(request).postUserPaymentPlanEdit(200, requestBody)).json());
             return getUserPaymentPlanEditResponse;       

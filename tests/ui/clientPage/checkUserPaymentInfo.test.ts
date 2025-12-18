@@ -1,11 +1,10 @@
 import test, { expect } from "../baseTest";
 import authCRMTestData from "@data/authCRM.json";
-import { formatPayDate } from "@utils/getAnyDate";
 import { selectTransactionsWithUser } from "db/transactions.db";
 import api from "../../../api.json";
 
 test.describe("Тесты на проверку записи клиента на тренировку в CRM", async () => {
-    test.only("Проверку записи клиента на тренировку в CRM", async ({ page, loginPage, headerBlock, clientPage }) => {
+    test("Проверку записи клиента на тренировку в CRM", async ({ page, loginPage, headerBlock, clientPage, clientPaymentInfoPage }) => {
 
         await test.step("Перейти на страницу входа в CRM", async () => {
             await page.goto("");
@@ -19,20 +18,18 @@ test.describe("Тесты на проверку записи клиента на
         const transaction = await test.step("получить id юзера, у которого есть транзакции", async () => {
             return await selectTransactionsWithUser();
         });
-    
-        const payDate = await test.step("Получить отформатированную дату", async() => {
-            console.log(transaction);
-            return await formatPayDate(transaction.updated_at);
-            
-        });
-        await console.log(payDate);
 
         await test.step("Перейти на страницу юзера", async() => {
             await page.goto(`${api.paths.clients}/${transaction.user_id}`);
         });
+        
+
+        await test.step("Перейти на страницу со всей платежной информацией юзера", async() => {
+            await clientPage.selector(page).button.allRecordOpenButton.nth(1).click();
+        });
 
         await test.step("Проверить, что пользователь видит запись о последней платежной транзакции", async () => {    
-            await clientPage.selector(page, undefined, payDate).elements.paymentInfo.waitFor({ state: 'visible', timeout: 3000 });
+            await clientPaymentInfoPage.selector(page, transaction.id).transactions.paymentId.waitFor({ state: 'visible', timeout: 3000 });
         });
     });
 });

@@ -12,4 +12,4 @@ export default class FaqPage {
 
     });
 }
-//почему-то не работает клик по локатору, хотя находит тот же элемент page.locator('//div[text()="Как пользоваться разделом FAQ"]//div[@data-testid="arrowDown"]') 
+

@@ -26,13 +26,14 @@ export interface PaymentPlanDataResponseJson {
     payment_interval: number,
     interval_type: string,
     is_group_training_access: boolean,
-    is_fitness_access: boolean
+    is_fitness_access: boolean,
+    pp_extension: string | null
 }
 
 export interface UserPaymentPlanClubDataResponseJson {
     id: number,
     name: string,
-    open_date_: string
+    open_date: string
 }
 
 export const createUserPaymentPlanDataResponseJsonSchema: JSONSchemaType<CreateUserPaymentPlanDataResponseJson> = {
@@ -77,7 +78,8 @@ export const paymentPlanDataResponseJsonSchema: JSONSchemaType<PaymentPlanDataRe
     payment_interval: { type: "number" },
     interval_type: { type: "string" },
     is_group_training_access: { type: "boolean"},
-    is_fitness_access: { type: "boolean"}
+    is_fitness_access: { type: "boolean"},
+    pp_extension: { type: "string" }
 },
 required: [
     "id",
@@ -103,12 +105,12 @@ export const clubDataResponseJsonSchema: JSONSchemaType<UserPaymentPlanClubDataR
     properties: {
     id: { type: "number" },
     name: { type: "string" },
-    open_date_: { type: "string" }
+    open_date: { type: "string" }
 },
 required: [
     "id",
     "name",
-    "open_date_"
+    "open_date"
 ],
 additionalProperties: false
 }

@@ -4,7 +4,7 @@
     "rootDir": "C:/Users/a.aparin/STUDYAGAIN/tests",
     "forbidOnly": false,
     "fullyParallel": true,
-    "globalSetup": null,
+    "globalSetup": "C:\\Users\\a.aparin\\STUDYAGAIN\\global-setup.ts",
     "globalTeardown": null,
     "globalTimeout": 0,
     "grep": {},
@@ -60,27 +60,27 @@
     ],
     "shard": null,
     "updateSnapshots": "missing",
-    "updateSourceMethod": "3way",
+    "updateSourceMethod": "patch",
     "version": "1.53.1",
     "workers": 4,
     "webServer": null
   },
   "suites": [
     {
-      "title": "ui\\clientPage\\checkUserPaymentInfo.test.ts",
-      "file": "ui/clientPage/checkUserPaymentInfo.test.ts",
+      "title": "ui\\clientPage\\userBlock.test.ts",
+      "file": "ui/clientPage/userBlock.test.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Тесты на проверку записи клиента на тренировку в CRM",
-          "file": "ui/clientPage/checkUserPaymentInfo.test.ts",
-          "line": 6,
+          "title": "Тесты на блокировку/разблокировку клиента",
+          "file": "ui/clientPage/userBlock.test.ts",
+          "line": 9,
           "column": 6,
           "specs": [
             {
-              "title": "Проверку записи клиента на тренировку в CRM",
+              "title": "Тест на блокировку клиента",
               "ok": true,
               "tags": [],
               "tests": [
@@ -92,62 +92,77 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 13,
+                      "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 7132,
+                      "duration": 8880,
                       "errors": [],
                       "stdout": [
                         {
-                          "text": "Executing (default): SELECT * FROM transactions t WHERE type = 'payment' and user_id IS NOT NULL ORDER BY id DESC LIMIT 1\n"
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/users\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"data\": {\n\t\t\"email\": \"autotest+1026569@mailtest.ru\",\n\t\t\"name\": \"Кваква\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79011026569\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"password\": \"Qwery@123456\",\n\t\t\"lang\": \"ru\",\n\t\t\"home_club_id\": 146,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\"\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": {\n\t\t\"id\": 3038160,\n\t\t\"created_at\": \"2025-12-22T08:10:26.674477513Z\",\n\t\t\"updated_at\": \"2025-12-22T08:10:26.674477513Z\",\n\t\t\"name\": \"Кваква\",\n\t\t\"email\": \"autotest+1026569@mailtest.ru\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79011026569\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"parent\": 0,\n\t\t\"lang\": \"ru\",\n\t\t\"user_photo\": \"\",\n\t\t\"home_club_id\": 146,\n\t\t\"balance\": 0,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\",\n\t\t\"is_qr_check\": true,\n\t\t\"qr_token\": \"7ff13b80-0e0b-448f-aa7e-48bd8edb30fc\",\n\t\t\"need_recovery\": false\n\t}\n}\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
                       "steps": [
                         {
+                          "title": "Создать клиента",
+                          "duration": 422
+                        },
+                        {
                           "title": "Перейти на страницу входа в CRM",
-                          "duration": 1645
+                          "duration": 1837
                         },
                         {
                           "title": "Проверить, что пользователь находится в CRM и видит поле поиска",
-                          "duration": 2395
-                        },
-                        {
-                          "title": "получить id юзера, у которого есть транзакции",
-                          "duration": 437
+                          "duration": 2409
                         },
                         {
                           "title": "Перейти на страницу юзера",
-                          "duration": 337
+                          "duration": 351
                         },
                         {
-                          "title": "Перейти на страницу со всей платежной информацией юзера",
-                          "duration": 1259
+                          "title": "Заблокировать юзера",
+                          "duration": 1483
                         },
                         {
-                          "title": "Проверить, что пользователь видит запись о последней платежной транзакции",
-                          "duration": 101
+                          "title": "Проверить, что юзер заблокирован",
+                          "duration": 216
                         }
                       ],
-                      "startTime": "2025-12-18T12:01:25.563Z",
+                      "startTime": "2025-12-22T08:10:24.185Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "trace",
-                          "contentType": "application/zip",
-                          "path": "C:\\Users\\a.aparin\\STUDYAGAIN\\test-results\\ui-clientPage-checkUserPay-30ecc-клиента-на-тренировку-в-CRM-chromium\\trace.zip"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "073eade28060a08a9b60-edb2826b06c987359285",
-              "file": "ui/clientPage/checkUserPaymentInfo.test.ts",
-              "line": 7,
-              "column": 9
+              "id": "71e26bcf57aeaf74d9a5-5ff039924bb7e6d9e4e1",
+              "file": "ui/clientPage/userBlock.test.ts",
+              "line": 10,
+              "column": 10
             }
           ]
         }
@@ -156,8 +171,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-12-18T12:01:23.427Z",
-    "duration": 10365.881999999285,
+    "startTime": "2025-12-22T08:10:10.794Z",
+    "duration": 24365.553,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

@@ -1,7 +1,5 @@
-import { APIRequestContext, expect, request, test } from "@playwright/test";
-import { getBaseParameters } from "@entities/baseParameters";
+import { APIRequestContext } from "@playwright/test";
 import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
-import ClubsRequests from "@requests/clubs.requests";
 import UsersRequests from "@requests/users.request";
 import { Statuses } from "@libs/statuses";
 import {  RequestSources } from "@libs/requestSources";
@@ -9,12 +7,11 @@ import UserSearchRequests from "@requests/userSearch.request";
 import userTestData from "@data/user.json";
 import requestTestData from "@data/request.json";
 import { getUserRequestJson } from "@entities/users/user.requestJson";
-
+import test, { expect } from "../baseApiTest.fixture";
 
 
 test.describe("API-тесты на поиск клиента", async () => {
 
-    let clubId: number;
     let phoneId: string;
     let email: string;
 
@@ -33,13 +30,7 @@ test.describe("API-тесты на поиск клиента", async () => {
         }
     
 
-    test.beforeAll( async({request}) => {
-        clubId = await test.step("Получить id клуба", async () => {
-            const parameters = {...await getBaseParameters()};
-            const getClubResponse = await new ClubsRequests(request).getClubs(Statuses.OK, parameters);
-            const getClubsData = await getClubResponse.json();
-            return getClubsData?.data[0]?.id;
-        });
+    test.beforeAll( async({request, clubId}) => {
 
         const response = await test.step("Получить id клиента", async () => {     
             const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber());

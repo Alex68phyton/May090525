@@ -1,6 +1,5 @@
-import { expect, test } from "@playwright/test";
+import test, { expect } from "../baseApiTest.fixture";
 import { getBaseParameters } from "@entities/baseParameters";
-import ClubsRequests from "@requests/clubs.requests";
 import GroupTrainingRequests from "@requests/group_training.requests";
 import { getGroupTrainingTimeTableRequestJson } from "@entities/groupTrainingTimeTable.requestJson";
 import GroupTrainingTimeTablesCreateRequests from "@requests/groupTrainingTimeTables.requests";
@@ -13,27 +12,12 @@ import { getGroupTrainingTimeTableJsonSchema } from "@entities/getGroupTrainingT
 
 
 test.describe("API-тесты на получение расписания тренировок", async () => {
-    test("[positive] получение списка тренировок с фильтрами по категории, клубу и времени", async ({request}) => {
+    test("[positive] получение списка тренировок с фильтрами по категории, клубу и времени", async ({request, clubId, clubZoneId, groupTrainingId}) => {
         const date_to = getCurrentDatePlus8Days();
         const date_from = getCurrentDatePlus7Days();
-        const [clubId, clubZone] = await test.step("Получить id клуба и зону", async () => {
-            const parameters = {...await getBaseParameters()};
-            const getClubResponse = await new ClubsRequests(request).getClubs(200, parameters);
-            const getClubsData = await getClubResponse.json();
-                return [
-                    getClubsData?.data[0]?.id,
-                    getClubsData?.data[0]?.club_zones?.[0].id
-                ];
-        });
-        const groupTrainingId = await test.step("Получить id тренировки", async () => {
-                const parameters = {...await getBaseParameters()};
-                const getGTResponse = await new GroupTrainingRequests(request).getGroupTrainings(200, parameters);
-                const getGTData = await getGTResponse.json();
-                return getGTData?.data[0]?.id;
-        });
 
         const group_training_time_table_id = await test.step("Создать тренировку в расписании", async () => { 
-            const requestBody = await getGroupTrainingTimeTableRequestJson(groupTrainingId, clubId, clubZone);
+            const requestBody = await getGroupTrainingTimeTableRequestJson(groupTrainingId, clubId, clubZoneId);
 
             const getGTTTResponse = (await (await new GroupTrainingTimeTablesCreateRequests(request).postGroupTrainingTimeTables(200, requestBody)).json());
             return getGTTTResponse.data[0].group_training_time_table_id;       

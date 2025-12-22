@@ -19,7 +19,8 @@ const test = mergeTests(BaseTest.extend<{
     clientPage: ClientPage,
     cpWidgetPage: CpWidgetPage,
     addClientPage: AddClientPage,
-    clientPaymentInfoPage: ClientPaymentInfoPage
+    clientPaymentInfoPage: ClientPaymentInfoPage,
+    clubId: number
 }>({
     baseURL: api.urls.crm_test_url,
     headless: false,
@@ -32,7 +33,9 @@ const test = mergeTests(BaseTest.extend<{
     clientPage: async({}, use) => { await use(new ClientPage())},
     cpWidgetPage: async({}, use) => { await use(new CpWidgetPage())},
     addClientPage: async({}, use) => { await use(new AddClientPage())},
-    clientPaymentInfoPage: async({}, use) => { await use(new ClientPaymentInfoPage())}
+    clientPaymentInfoPage: async({}, use) => { await use(new ClientPaymentInfoPage())},
+
+    clubId: Number(process.env.CLUB_ID)
 })
 )
 

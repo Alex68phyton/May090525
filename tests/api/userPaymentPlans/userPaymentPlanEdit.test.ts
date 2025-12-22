@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import test, { expect } from "../baseApiTest.fixture";
 import { getBaseParameters } from "@entities/baseParameters";
 import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import ClubsRequests from "@requests/clubs.requests";
@@ -16,19 +16,7 @@ import { selectUserPaymentPlanById } from "db/userPaymentPlans.db";
 
 
 test.describe("API-тесты на редактирование подписки юзера", async () => {
-    test("[positive] редактирование статуса подписки", async ({request}) => {
-        const clubId = await test.step("Получить id клуба", async () => {
-            const parameters = {...await getBaseParameters()};
-            const getClubResponse = await new ClubsRequests(request).getClubs(200, parameters);
-            const getClubsData = await getClubResponse.json();
-            return getClubsData?.data[0]?.id;
-        });
-        
-        const userId = await test.step("Получить id клиента", async () => {     
-            const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber());
-            const response = (await (await new UsersRequests(request).postUsers(200, requestBody)).json()).data;
-            return response.id
-        });
+    test("[positive] редактирование статуса подписки", async ({request,clubId, userId}) => {
 
         const createUppResponse = await test.step("Создать подписку юзеру", async () => { 
             const requestBody = await getUserPaymentPlanRequestJson(clubId);

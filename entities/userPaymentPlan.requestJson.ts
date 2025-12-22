@@ -6,11 +6,11 @@ import { getCurrentSplitDate } from "@utils/getAnyDate";
 export interface UserPaymentPlanDataRequestJson {
         session_id: string,
         request_id: string,
-        request_source: string,
+        request_source: string,        
+        verification_token: string;
         start_date: string;
         payment_plan_id: number;
         club_id: number;
-        verification_token: string;
         discount_id: number
 }
 

@@ -1,21 +1,13 @@
-import test, { expect } from "../baseTest";
+import test from "../baseTest";
 import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
-import ClubsRequests from "@requests/clubs.requests";
 import UsersRequests from "@requests/users.request";
 import { Statuses } from "@libs/statuses";
-import { getBaseParameters } from "@entities/baseParameters";
-import { getUserRequestJson, UserDataRequestJson } from "@entities/users/user.requestJson";
+import { getUserRequestJson } from "@entities/users/user.requestJson";
 import authCRMTestData from "@data/authCRM.json";
 
 
 test.describe("Тесты на блокировку/разблокировку клиента", async () => {
-    test("Тест на блокировку клиента", async ( {request, page, loginPage, clientPage, headerBlock }) => {
-        const clubId = await test.step("Получить id клуба", async () => {
-            const parameters = {...await getBaseParameters()};
-            const getClubResponse = await new ClubsRequests(request).getClubs(Statuses.OK, parameters);
-            const getClubsData = await getClubResponse.json();
-            return getClubsData?.data[0]?.id;
-        });
+    test.only("Тест на блокировку клиента", async ( {request, page, loginPage, clientPage, headerBlock, clubId }) => {
 
         const userId = await test.step("Создать клиента", async () => {     
             const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber());

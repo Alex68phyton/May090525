@@ -7,7 +7,7 @@ import authCRMTestData from "@data/authCRM.json";
 
 
 test.describe("Тесты на блокировку/разблокировку клиента", async () => {
-    test.only("Тест на блокировку клиента", async ( {request, page, loginPage, clientPage, headerBlock, clubId }) => {
+    test("Тест на блокировку клиента", async ( {request, page, loginPage, clientPage, headerBlock, clubId }) => {
 
         const userId = await test.step("Создать клиента", async () => {     
             const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber());

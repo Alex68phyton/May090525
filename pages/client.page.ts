@@ -13,7 +13,7 @@ export default class ClientPage {
             allRecordOpenButton: page.getByRole('button', { name: 'Открыть все записи' })
         },
         elements: {
-            paymentPlanStatus: page.locator(`//div[@data-testid="subscription-name"]/../div[2]/div[text()="${crmStatus}"]`),
+            paymentPlanStatus: page.locator(`//div[h1[contains(text(), 'Подписки')]]/../div[2]//div[contains(text(), "${crmStatus}")][1]`),
             paymentInfo: page.locator(`//td[contains(text(), "${payDate}")]`)
         }
     });

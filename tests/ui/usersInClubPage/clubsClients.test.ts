@@ -18,7 +18,7 @@ test.describe("Тесты на функционал клиенты в клубе
             await page.waitForURL("clients-in-club");  
         });    
     });
-    test.only("Открытие формы фильтров", async( {page, clientsInClubPage} ) => {
+    test("Открытие формы фильтров", async( {page, clientsInClubPage} ) => {
         await page.setViewportSize({ width: 1400, height: 953 });
         await test.step("Открыть форму фильтров", async () => {
             await clientsInClubPage.selector(page).elements.filtersButton.click();  

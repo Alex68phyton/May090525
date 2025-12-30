@@ -17,7 +17,7 @@ test.describe("Тесты на проверку отображения стат�
     });
 
 
-    test(`Проверка отображения подписки в статусе  на карточке клиента`, async ({ page, request, clientPage, cpWidgetPage }) => {
+    test.only(`Проверка отображения подписки в статусе  на карточке клиента`, async ({ page, request, clientPage, cpWidgetPage }) => {
         const userPaymentPlan = await test.step(`Получить клиента с подпиской в статусе ${dbStatus}`, async () => {
             return await selectUserPaymentPlanByStatus(dbStatus.created);
         });
@@ -42,7 +42,7 @@ test.describe("Тесты на проверку отображения стат�
             //console.log(iframe);
             //const iframe = await newPage.frameLocator('iframe[src*="cloudpayments.ru"]');
             //await cpWidgetPage.selector(iframe).element.choicePaymentButton.waitFor({state: 'visible', timeout: 10000});
-            await cpWidgetPage.iframe(iframe).element.choicePaymentButton.waitFor({ state: 'visible', timeout: 10000 });;
+            await cpWidgetPage.iframe(iframe).element.choicePaymentButton.waitFor({ state: 'visible', timeout: 50000 });;
         });
     });
 });

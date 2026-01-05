@@ -26,7 +26,7 @@ test.describe("Тесты на проверку отображения стат�
             const requestBody = await getPaymentCreateRequestJson(Number(userPaymentPlan.user_id), Number(userPaymentPlan.id), 2);
             const paymentCreateResponse = (await (await new UserPaymentCreateRequests(request).postUserPaymentCreate(200, requestBody)).json());
             return paymentCreateResponse.transaction.payment_widget_uri;
-        })
+        });
 
         await test.step("Перейти на страницу клиента", async() => {
             await page.goto(`${paths.paths.clients}/${Number(userPaymentPlan.user_id)}`);

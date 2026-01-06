@@ -58,7 +58,7 @@ export const userNotificationsTableDB = db.define(
 
   export async function selectUserNotification(sendTo: string): Promise <UserNotificationsDB> {
       const result = await db.query(
-          `SELECT * FROM ${tableName} WHERE send_to = ${sendTo} ORDER BY id DESC LIMIT 1`,
+          `SELECT * FROM ${tableName} WHERE send_to = '${sendTo}' ORDER BY id DESC LIMIT 1`,
           { model: userNotificationsTableDB, mapToModel: true});
   
       return <UserNotificationsDB | any>result[0];   

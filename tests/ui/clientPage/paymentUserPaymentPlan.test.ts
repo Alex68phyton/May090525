@@ -15,6 +15,16 @@ test.describe("Тесты на оплату подписки", () =>{
     let providerNames = ['CloudPayments', 'Method'];
     providerNames.forEach(provider => {
         test.only(`Оплата подписки провайдером ${provider}`, async ({ page, loginPage, addClientPage, cpWidgetPage}) => {
+
+            page.on('response', async req => {
+                if (req.url().includes("/payment/create")) {
+                    console.log('request completed')
+                    paymentCreateWidgetLink = (await req.json()).transaction.payment_widget_uri
+                    console.log(paymentCreateWidgetLink)
+                }
+            });
+
+            test.setTimeout(120000);
             let paymentCreateWidgetLink;
             const phoneNumber = await test.step("Создать номер телефона клиента", () => getRandomPhoneNumber());
             const email = await test.step("Создать email", () => getRandomEmail());
@@ -58,7 +68,7 @@ test.describe("Тесты на оплату подписки", () =>{
             });
 
             const confirmationCode = await test.step("Получить код подтверждения из БД", async () => {
-                const userNotification = await selectUserNotification(phoneNumber);
+                const userNotification = await selectUserNotification(email);
                 const body = userNotification.body as any;
                 const code = body?.variables?.code || null;
                 return code;
@@ -73,17 +83,20 @@ test.describe("Тесты на оплату подписки", () =>{
                 await addClientPage.selector(page).buttons.sendLinkButton.click();
             });
 
-            page.on('response', async req => {
-                if (req.url().includes("/payment/create")) {
-                    paymentCreateWidgetLink = (await req.json()).payment_widget_uri
-                }
+            const mainPage = page;
+
+            await page.waitForFunction(() => window['paymentCreateWidgetLink'] !== null, {}, {
+                polling: 100,
+                timeout: 30000
+            }).catch(() => {
+                throw new Error('Не удалось получить ссылку');
             });
 
             await test.step("Открыть новую вкладку,перейти на виджет и успешно оплатить", async () => {
                 const newPage = await page.context().newPage();
                 await newPage.goto(paymentCreateWidgetLink, {waitUntil: "domcontentloaded", timeout: 90000});
-                if (provider = 'CloudPayments') {
-                    await cpWidgetPage.successPayment(newPage, paymentInfo.cloudPayments.successCardInfo);
+                if (provider === 'CloudPayments') {
+                    await cpWidgetPage.successPayment(newPage, paymentInfo.cloudPayments.successCardInfo, paymentInfo.cloudPayments.cardExpiredAndCvv);
                 }
                 else console.log("Заглушка");
             });

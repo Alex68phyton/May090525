@@ -1,6 +1,7 @@
 {
     "cloudPayments": {
-        "successCardInfo": "42424242424242421228555"
+        "successCardInfo": "4242424242424242",
+        "cardExpiredAndCvv": "1228555"
     },
     "method": {
         "successCardInfo": ""

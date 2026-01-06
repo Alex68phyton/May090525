@@ -9,7 +9,7 @@ export default class AddClientPage {
         },
         buttons: {
             confirmCodeButton: page.getByText("Подтвердить"),
-            sendLinkButton: page.getByText("Отправить ссылку"),
+            sendLinkButton: page.getByTestId("send-link-button"),
             successConfirmButton: page.getByRole('button', { name: 'Продолжить'}),
             completeRegistrationButton: page.getByRole('button', { name: 'Завершить оформление'})
         }

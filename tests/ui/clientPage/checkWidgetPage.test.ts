@@ -17,7 +17,7 @@ test.describe("Тесты на проверку отображения стат�
     });
 
 
-    test.only(`Проверка отображения подписки в статусе  на карточке клиента`, async ({ page, request, clientPage, cpWidgetPage }) => {
+    test(`Проверка отображения подписки в статусе  на карточке клиента`, async ({ page, request, clientPage, cpWidgetPage }) => {
         const userPaymentPlan = await test.step(`Получить клиента с подпиской в статусе ${dbStatus}`, async () => {
             return await selectUserPaymentPlanByStatus(dbStatus.created);
         });

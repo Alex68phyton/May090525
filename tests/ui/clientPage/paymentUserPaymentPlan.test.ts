@@ -1,12 +1,7 @@
 import test, { expect } from "../baseTest";
-import { selectUserPaymentPlanByStatus } from "db/userPaymentPlans.db";
-import paths from "../../../api.json";
 import authCRMTestData from "@data/authCRM.json";
-import dbStatus from "@data/userPaymentPlanStatuses.json";
 import crmStatus from "@data/crmUserPaymentPlanStatus.json";
 import paymentInfo from "@data/paymentInfo.json";
-import { getPaymentCreateRequestJson } from "@entities/paymentCreate.requestJson";
-import UserPaymentCreateRequests from "@requests/paymentCreate.requests";
 import { selectUserNotification } from "db/userNotifications.db";
 import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import userTestData from "@data/user.json";
@@ -14,18 +9,15 @@ import userTestData from "@data/user.json";
 test.describe("Тесты на оплату подписки", () =>{
     let providerNames = ['CloudPayments', 'Method'];
     providerNames.forEach(provider => {
-        test.only(`Оплата подписки провайдером ${provider}`, async ({ page, loginPage, addClientPage, cpWidgetPage}) => {
+        test.only(`Оплата подписки провайдером ${provider}`, async ({ page, loginPage, addClientPage, cpWidgetPage, methodWidgetPage, clientPage}) => {
+            //let paymentCreateWidgetLink;
+            //page.on('response', async req => {
+            //    if (req.url().includes("/payment/create")) {
+            //        paymentCreateWidgetLink = (await req.json()).transaction.payment_widget_uri
+            //    }
+            //});
 
-            page.on('response', async req => {
-                if (req.url().includes("/payment/create")) {
-                    console.log('request completed')
-                    paymentCreateWidgetLink = (await req.json()).transaction.payment_widget_uri
-                    console.log(paymentCreateWidgetLink)
-                }
-            });
-
-            test.setTimeout(120000);
-            let paymentCreateWidgetLink;
+            test.setTimeout(100000);
             const phoneNumber = await test.step("Создать номер телефона клиента", () => getRandomPhoneNumber());
             const email = await test.step("Создать email", () => getRandomEmail());
 
@@ -68,6 +60,7 @@ test.describe("Тесты на оплату подписки", () =>{
             });
 
             const confirmationCode = await test.step("Получить код подтверждения из БД", async () => {
+                await page.waitForTimeout(3000);
                 const userNotification = await selectUserNotification(email);
                 const body = userNotification.body as any;
                 const code = body?.variables?.code || null;
@@ -79,18 +72,22 @@ test.describe("Тесты на оплату подписки", () =>{
                 await addClientPage.selector(page).buttons.confirmCodeButton.click();
             });
 
-            await test.step("Выбрать платежный сервис и отправить ссылку на оплату", async () => {
-                await addClientPage.selector(page).buttons.sendLinkButton.click();
+            const paymentCreateWidgetLink = await test.step("Выбрать платежный сервис и отправить ссылку на оплату", async () => {
+                const paymentCreateResponse = page.waitForResponse('**/payment/create')
+                await addClientPage.paymentServiceChoose(page, 'CloudPayments', provider);
+                const response = await paymentCreateResponse;
+                const responseBody = await response.json();
+                return responseBody.transaction.payment_widget_uri;
             });
 
             const mainPage = page;
 
-            await page.waitForFunction(() => window['paymentCreateWidgetLink'] !== null, {}, {
-                polling: 100,
-                timeout: 30000
-            }).catch(() => {
-                throw new Error('Не удалось получить ссылку');
-            });
+            //await page.waitForFunction(() => window['paymentCreateWidgetLink'] !== null, {}, {
+            //    polling: 100,
+            //    timeout: 30000
+            //}).catch(() => {
+            //    throw new Error('Не удалось получить ссылку');
+            //});
 
             await test.step("Открыть новую вкладку,перейти на виджет и успешно оплатить", async () => {
                 const newPage = await page.context().newPage();
@@ -98,7 +95,14 @@ test.describe("Тесты на оплату подписки", () =>{
                 if (provider === 'CloudPayments') {
                     await cpWidgetPage.successPayment(newPage, paymentInfo.cloudPayments.successCardInfo, paymentInfo.cloudPayments.cardExpiredAndCvv);
                 }
-                else console.log("Заглушка");
+                else await methodWidgetPage.successPayment(newPage, paymentInfo.method.successCardInfo);
+            });
+
+            await test.step("Закрыть страницу создания подписки и проверить наличие активной подписки на карточке клиента", async () => {
+                await addClientPage.selector(mainPage).buttons.successConfirmButton.click();
+                await addClientPage.selector(mainPage).buttons.completeRegistrationButton.click();
+                await mainPage.reload();
+                await expect(clientPage.selector(mainPage, crmStatus.active).elements.paymentPlanStatus).toBeVisible();
             });
         });
     });

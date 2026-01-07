@@ -14,4 +14,11 @@ export default class AddClientPage {
             completeRegistrationButton: page.getByRole('button', { name: 'Завершить оформление'})
         }
     });
+
+    async paymentServiceChoose(page: Page, defaultProvider: string, provider: string) {
+        await page.locator('(//div[div[text()="Платежный сервис"]]//following-sibling::div)[1]').click();
+        await page.waitForTimeout(10000);
+        await page.locator(`div[title="${provider}"]`).click();
+        await page.getByTestId("send-link-button").click();
+    }
 }

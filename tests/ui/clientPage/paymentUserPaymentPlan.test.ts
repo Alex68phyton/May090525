@@ -70,11 +70,12 @@ test.describe("Тесты на оплату подписки", () =>{
             await test.step("Ввести код подтверждения и нажать Подтвердить", async () => {
                 await addClientPage.selector(page).elements.codeConfirmationInput.fill(confirmationCode);
                 await addClientPage.selector(page).buttons.confirmCodeButton.click();
+                await page.waitForTimeout(3000);
             });
 
             const paymentCreateWidgetLink = await test.step("Выбрать платежный сервис и отправить ссылку на оплату", async () => {
-                const paymentCreateResponse = page.waitForResponse('**/payment/create')
-                await addClientPage.paymentServiceChoose(page, 'CloudPayments', provider);
+                const paymentCreateResponse = page.waitForResponse('**/payment/create');
+                await addClientPage.paymentServiceChoose(page, provider);
                 const response = await paymentCreateResponse;
                 const responseBody = await response.json();
                 return responseBody.transaction.payment_widget_uri;
@@ -95,7 +96,7 @@ test.describe("Тесты на оплату подписки", () =>{
                 if (provider === 'CloudPayments') {
                     await cpWidgetPage.successPayment(newPage, paymentInfo.cloudPayments.successCardInfo, paymentInfo.cloudPayments.cardExpiredAndCvv);
                 }
-                else await methodWidgetPage.successPayment(newPage, paymentInfo.method.successCardInfo);
+                else await methodWidgetPage.successPayment(newPage, paymentInfo.method.successCardNumber, paymentInfo.method.cardExpired, paymentInfo.method.cardCvv);
             });
 
             await test.step("Закрыть страницу создания подписки и проверить наличие активной подписки на карточке клиента", async () => {

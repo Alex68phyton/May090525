@@ -15,10 +15,20 @@ export default class AddClientPage {
         }
     });
 
-    async paymentServiceChoose(page: Page, defaultProvider: string, provider: string) {
-        await page.locator('(//div[div[text()="Платежный сервис"]]//following-sibling::div)[1]').click();
-        await page.waitForTimeout(10000);
-        await page.locator(`div[title="${provider}"]`).click();
-        await page.getByTestId("send-link-button").click();
+    async paymentServiceChoose(page: Page, provider: string) {
+        switch(provider) {
+            case 'CloudPayments':
+                await page.locator('(//div[div[text()="Платежный сервис"]]//following-sibling::div)[1]//div[@data-testid="select"]').click();
+                await page.waitForTimeout(2000);
+                await page.locator(`//*[@data-testid="selected" and @title="${provider}"]`).click();
+                await page.getByTestId("send-link-button").click();
+                break;
+            case 'Method':
+                await page.locator('(//div[div[text()="Платежный сервис"]]//following-sibling::div)[1]//div[@data-testid="select"]').click();
+                await page.waitForTimeout(2000);
+                await page.locator(`div[title="${provider}"]`).click();
+                await page.getByTestId("send-link-button").click();
+                break;
+        }
     }
 }

@@ -4,6 +4,8 @@
         "cardExpiredAndCvv": "1228555"
     },
     "method": {
-        "successCardInfo": "60154400001001050634879"
+        "successCardNumber": "6015440000100105",
+        "cardExpired": "0634",
+        "cardCvv": "879"
     }
 }

@@ -60,211 +60,458 @@
     ],
     "shard": null,
     "updateSnapshots": "missing",
-    "updateSourceMethod": "3way",
+    "updateSourceMethod": "patch",
     "version": "1.53.1",
     "workers": 4,
     "webServer": null
   },
   "suites": [
     {
-      "title": "ui\\clientPage\\paymentUserPaymentPlan.test.ts",
-      "file": "ui/clientPage/paymentUserPaymentPlan.test.ts",
+      "title": "api\\paymentCreate\\paymentCreateV2.test.ts",
+      "file": "api/paymentCreate/paymentCreateV2.test.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Тесты на оплату подписки",
-          "file": "ui/clientPage/paymentUserPaymentPlan.test.ts",
-          "line": 9,
+          "title": "API-тесты на оплату подписки",
+          "file": "api/paymentCreate/paymentCreateV2.test.ts",
+          "line": 15,
           "column": 6,
           "specs": [
             {
-              "title": "Оплата подписки провайдером CloudPayments",
+              "title": "[positive] создание транзакции первичной оплаты подписки провайдером 2",
               "ok": true,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 100000,
+                  "timeout": 30000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 61,
+                      "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 60404,
+                      "duration": 1750,
                       "errors": [],
                       "stdout": [
                         {
-                          "text": "Executing (default): SELECT * FROM user_notifications WHERE send_to = 'autotest+5485813@mailtest.ru' ORDER BY id DESC LIMIT 1\n"
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/users\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"data\": {\n\t\t\"email\": \"autotest+7953604@mailtest.ru\",\n\t\t\"name\": \"Кваква\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79017953604\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"password\": \"Qwery@123456\",\n\t\t\"lang\": \"ru\",\n\t\t\"home_club_id\": 146,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\"\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": {\n\t\t\"id\": 3252128,\n\t\t\"created_at\": \"2026-01-09T14:12:33.940763569Z\",\n\t\t\"updated_at\": \"2026-01-09T14:12:33.940763569Z\",\n\t\t\"name\": \"Кваква\",\n\t\t\"email\": \"autotest+7953604@mailtest.ru\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79017953604\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"parent\": 0,\n\t\t\"lang\": \"ru\",\n\t\t\"user_photo\": \"\",\n\t\t\"home_club_id\": 146,\n\t\t\"balance\": 0,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\",\n\t\t\"is_qr_check\": true,\n\t\t\"qr_token\": \"b8ba732e-f22a-4187-bb3b-23368ce20b5f\",\n\t\t\"need_recovery\": false\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/v2/users/3252128/user_payment_plans\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"verification_token\": \"e3767699-6a16-4da1-94b9-fa8ab9378fb4\",\n\t\"data\": [\n\t\t{\n\t\t\t\"start_date\": \"2026-01-09\",\n\t\t\t\"payment_plan_id\": 18,\n\t\t\t\"club_id\": 146\n\t\t},\n\t\t{\n\t\t\t\"start_date\": \"2026-01-09\",\n\t\t\t\"payment_plan_id\": 205,\n\t\t\t\"club_id\": 201\n\t\t}\n\t]\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 4675201,\n\t\t\t\"user_id\": 3252128,\n\t\t\t\"signed_date\": \"2025-04-09T11:41:11Z\",\n\t\t\t\"start_date\": \"2026-01-09T14:12:34Z\",\n\t\t\t\"status\": \"Created\",\n\t\t\t\"parent_id\": 4675200,\n\t\t\t\"payment_plan\": {\n\t\t\t\t\"id\": 205,\n\t\t\t\t\"name\": \"Action\",\n\t\t\t\t\"currency_code\": \"RUB\",\n\t\t\t\t\"our_join_fee\": 0,\n\t\t\t\t\"partner_join_fee\": 0,\n\t\t\t\t\"membership_fee\": 299,\n\t\t\t\t\"is_recurrent\": true,\n\t\t\t\t\"is_multi_club_access\": false,\n\t\t\t\t\"is_spa_access\": false,\n\t\t\t\t\"payment_interval\": 1,\n\t\t\t\t\"interval_type\": \"month\",\n\t\t\t\t\"is_group_training_access\": false,\n\t\t\t\t\"is_fitness_access\": false,\n\t\t\t\t\"payment_plan_type\": \"video_trainings\"\n\t\t\t},\n\t\t\t\"club\": {\n\t\t\t\t\"id\": 201,\n\t\t\t\t\"name\": \"DDX ИЛОН\",\n\t\t\t\t\"open_date\": \"2025-12-31T00:00:00Z\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": 4675200,\n\t\t\t\"user_id\": 3252128,\n\t\t\t\"signed_date\": \"2025-04-09T11:41:11Z\",\n\t\t\t\"start_date\": \"2026-01-09T14:12:34Z\",\n\t\t\t\"status\": \"Created\",\n\t\t\t\"payment_plan\": {\n\t\t\t\t\"id\": 18,\n\t\t\t\t\"name\": \"Infinity 1мес 18\",\n\t\t\t\t\"currency_code\": \"RUB\",\n\t\t\t\t\"our_join_fee\": 3000,\n\t\t\t\t\"partner_join_fee\": 0,\n\t\t\t\t\"membership_fee\": 2800,\n\t\t\t\t\"is_recurrent\": true,\n\t\t\t\t\"is_multi_club_access\": true,\n\t\t\t\t\"is_spa_access\": true,\n\t\t\t\t\"payment_interval\": 1,\n\t\t\t\t\"interval_type\": \"month\",\n\t\t\t\t\"is_group_training_access\": true,\n\t\t\t\t\"is_fitness_access\": true,\n\t\t\t\t\"payment_plan_type\": \"subscription\",\n\t\t\t\t\"pp_extension\": \"infinity\"\n\t\t\t},\n\t\t\t\"club\": {\n\t\t\t\t\"id\": 146,\n\t\t\t\t\"name\": \"DDX Страстной\",\n\t\t\t\t\"open_date\": \"2025-04-17T00:00:00Z\"\n\t\t\t}\n\t\t}\n\t]\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/v2/payment/create\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"provider_id\": 20,\n\t\"gate_id\": 3,\n\t\"user_id\": 3252128,\n\t\"related_user_payment_plans\": [\n\t\t4675201\n\t],\n\t\"user_payment_plan_id\": 4675200,\n\t\"currency\": \"RUB\",\n\t\"payment_service_id\": 2,\n\t\"employee_id\": 2549,\n\t\"fiscal_method\": \"OrangeData\",\n\t\"widget_settings\": {\n\t\t\"success_page\": \"https://site-pretest.ddxfitness.ru/checkout/redirect.php\",\n\t\t\"fault_page\": \"https://site-pretest.ddxfitness.ru/checkout/redirect.php?error=faild\"\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"currency\": \"RUB\",\n\t\t\t\"payment_service_id\": 2,\n\t\t\t\"total_amount\": 6099,\n\t\t\t\"payment_widget_uri\": \"https://ls.test.ddxfitness.ru/y4qeR\",\n\t\t\t\"transactions\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 47797105,\n\t\t\t\t\t\"status\": \"in progress\",\n\t\t\t\t\t\"price\": {\n\t\t\t\t\t\t\"our_amount\": 5800,\n\t\t\t\t\t\t\"partner_amount\": 0,\n\t\t\t\t\t\t\"discount_amount\": 0,\n\t\t\t\t\t\t\"deposit_amount\": 0,\n\t\t\t\t\t\t\"total_amount\": 5800\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"id\": 47797106,\n\t\t\t\t\t\"parent_id\": 47797105,\n\t\t\t\t\t\"status\": \"in progress\",\n\t\t\t\t\t\"price\": {\n\t\t\t\t\t\t\"our_amount\": 299,\n\t\t\t\t\t\t\"partner_amount\": 0,\n\t\t\t\t\t\t\"discount_amount\": 0,\n\t\t\t\t\t\t\"deposit_amount\": 0,\n\t\t\t\t\t\t\"total_amount\": 299\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t]\n}\n"
+                        },
+                        {
+                          "text": "ПРОВЕРКА СХЕМЫ undefined\n"
+                        },
+                        {
+                          "text": "\n\t-- EXPECTED RESPONSE SCHEMA --\n"
+                        },
+                        {
+                          "text": "{\n  type: \u001b[32m'object'\u001b[39m,\n  properties: {\n    session_id: { type: \u001b[32m'string'\u001b[39m },\n    request_id: { type: \u001b[32m'string'\u001b[39m },\n    request_source: { type: \u001b[32m'string'\u001b[39m },\n    data: { anyOf: \u001b[36m[Array]\u001b[39m }\n  },\n  required: [ \u001b[32m'session_id'\u001b[39m, \u001b[32m'request_id'\u001b[39m ],\n  additionalProperties: \u001b[33mfalse\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "\nRESPONSE SUCCESSFULY VALIDATED\n"
+                        },
+                        {
+                          "text": "ПРОВЕРКА СХЕМЫ undefined\n"
+                        },
+                        {
+                          "text": "\n\t-- EXPECTED RESPONSE SCHEMA --\n"
+                        },
+                        {
+                          "text": "{\n  type: \u001b[32m'object'\u001b[39m,\n  properties: {\n    currency: { type: \u001b[32m'string'\u001b[39m },\n    payment_service_id: { type: \u001b[32m'number'\u001b[39m },\n    total_amount: { type: \u001b[32m'number'\u001b[39m },\n    payment_widget_uri: { type: \u001b[32m'string'\u001b[39m },\n    transactions: { type: \u001b[32m'array'\u001b[39m, items: \u001b[36m[Object]\u001b[39m }\n  },\n  required: [\n    \u001b[32m'currency'\u001b[39m,\n    \u001b[32m'payment_service_id'\u001b[39m,\n    \u001b[32m'total_amount'\u001b[39m,\n    \u001b[32m'payment_widget_uri'\u001b[39m,\n    \u001b[32m'transactions'\u001b[39m\n  ],\n  additionalProperties: \u001b[33mfalse\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "\nRESPONSE SUCCESSFULY VALIDATED\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
                       "steps": [
                         {
-                          "title": "Создать номер телефона клиента",
-                          "duration": 2
+                          "title": "Создание платежной транзакции первичной оплаты подписки",
+                          "duration": 567
                         },
                         {
-                          "title": "Создать email",
-                          "duration": 0
+                          "title": "Проверить схему ответа",
+                          "duration": 63
                         },
                         {
-                          "title": "Перейти на страницу входа в CRM",
-                          "duration": 1189
-                        },
-                        {
-                          "title": "Заполнить форму авторизации и нажать войти",
-                          "duration": 1538
-                        },
-                        {
-                          "title": "Ввести номер телефона в поиске и перейти на страницу создания клиента",
-                          "duration": 1973
-                        },
-                        {
-                          "title": "Заполнить информацию о клиенте",
-                          "duration": 3208
-                        },
-                        {
-                          "title": "Выбрать подписку, клуб и запросить код верификации",
-                          "duration": 3683
-                        },
-                        {
-                          "title": "Получить код подтверждения из БД",
-                          "duration": 7764
-                        },
-                        {
-                          "title": "Ввести код подтверждения и нажать Подтвердить",
-                          "duration": 3471
-                        },
-                        {
-                          "title": "Выбрать платежный сервис и отправить ссылку на оплату",
-                          "duration": 3096
-                        },
-                        {
-                          "title": "Открыть новую вкладку,перейти на виджет и успешно оплатить",
-                          "duration": 28355
-                        },
-                        {
-                          "title": "Закрыть страницу создания подписки и проверить наличие активной подписки на карточке клиента",
-                          "duration": 2197
+                          "title": "Проверить статус транзакции",
+                          "duration": 1
                         }
                       ],
-                      "startTime": "2026-01-08T09:44:45.004Z",
+                      "startTime": "2026-01-09T14:12:33.564Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "trace",
-                          "contentType": "application/zip",
-                          "path": "C:\\Users\\a.aparin\\STUDYAGAIN\\test-results\\ui-clientPage-paymentUserP-da015-и-провайдером-CloudPayments-chromium\\trace.zip"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "45a0cc3b257c9346ff12-5a4c7d730c56efab788c",
-              "file": "ui/clientPage/paymentUserPaymentPlan.test.ts",
-              "line": 12,
+              "id": "15592ed0222074cced7e-1c8b7a8fac6c31bd6f0c",
+              "file": "api/paymentCreate/paymentCreateV2.test.ts",
+              "line": 30,
               "column": 14
             },
             {
-              "title": "Оплата подписки провайдером Method",
+              "title": "[positive] создание транзакции первичной оплаты подписки провайдером 6",
               "ok": true,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 100000,
+                  "timeout": 30000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 61,
+                      "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 48424,
+                      "duration": 2059,
                       "errors": [],
                       "stdout": [
                         {
-                          "text": "Executing (default): SELECT * FROM user_notifications WHERE send_to = 'autotest+5547970@mailtest.ru' ORDER BY id DESC LIMIT 1\n"
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/users\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"data\": {\n\t\t\"email\": \"autotest+7955342@mailtest.ru\",\n\t\t\"name\": \"Кваква\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79017955342\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"password\": \"Qwery@123456\",\n\t\t\"lang\": \"ru\",\n\t\t\"home_club_id\": 146,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\"\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": {\n\t\t\"id\": 3252129,\n\t\t\"created_at\": \"2026-01-09T14:12:35.513213718Z\",\n\t\t\"updated_at\": \"2026-01-09T14:12:35.513213718Z\",\n\t\t\"name\": \"Кваква\",\n\t\t\"email\": \"autotest+7955342@mailtest.ru\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79017955342\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"parent\": 0,\n\t\t\"lang\": \"ru\",\n\t\t\"user_photo\": \"\",\n\t\t\"home_club_id\": 146,\n\t\t\"balance\": 0,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\",\n\t\t\"is_qr_check\": true,\n\t\t\"qr_token\": \"2e9d3283-4441-48be-8426-97d821e4f3e8\",\n\t\t\"need_recovery\": false\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/v2/users/3252129/user_payment_plans\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"verification_token\": \"e3767699-6a16-4da1-94b9-fa8ab9378fb4\",\n\t\"data\": [\n\t\t{\n\t\t\t\"start_date\": \"2026-01-09\",\n\t\t\t\"payment_plan_id\": 18,\n\t\t\t\"club_id\": 146\n\t\t},\n\t\t{\n\t\t\t\"start_date\": \"2026-01-09\",\n\t\t\t\"payment_plan_id\": 205,\n\t\t\t\"club_id\": 201\n\t\t}\n\t]\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 4675203,\n\t\t\t\"user_id\": 3252129,\n\t\t\t\"signed_date\": \"2025-04-09T11:41:11Z\",\n\t\t\t\"start_date\": \"2026-01-09T14:12:36Z\",\n\t\t\t\"status\": \"Created\",\n\t\t\t\"parent_id\": 4675202,\n\t\t\t\"payment_plan\": {\n\t\t\t\t\"id\": 205,\n\t\t\t\t\"name\": \"Action\",\n\t\t\t\t\"currency_code\": \"RUB\",\n\t\t\t\t\"our_join_fee\": 0,\n\t\t\t\t\"partner_join_fee\": 0,\n\t\t\t\t\"membership_fee\": 299,\n\t\t\t\t\"is_recurrent\": true,\n\t\t\t\t\"is_multi_club_access\": false,\n\t\t\t\t\"is_spa_access\": false,\n\t\t\t\t\"payment_interval\": 1,\n\t\t\t\t\"interval_type\": \"month\",\n\t\t\t\t\"is_group_training_access\": false,\n\t\t\t\t\"is_fitness_access\": false,\n\t\t\t\t\"payment_plan_type\": \"video_trainings\"\n\t\t\t},\n\t\t\t\"club\": {\n\t\t\t\t\"id\": 201,\n\t\t\t\t\"name\": \"DDX ИЛОН\",\n\t\t\t\t\"open_date\": \"2025-12-31T00:00:00Z\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": 4675202,\n\t\t\t\"user_id\": 3252129,\n\t\t\t\"signed_date\": \"2025-04-09T11:41:11Z\",\n\t\t\t\"start_date\": \"2026-01-09T14:12:36Z\",\n\t\t\t\"status\": \"Created\",\n\t\t\t\"payment_plan\": {\n\t\t\t\t\"id\": 18,\n\t\t\t\t\"name\": \"Infinity 1мес 18\",\n\t\t\t\t\"currency_code\": \"RUB\",\n\t\t\t\t\"our_join_fee\": 3000,\n\t\t\t\t\"partner_join_fee\": 0,\n\t\t\t\t\"membership_fee\": 2800,\n\t\t\t\t\"is_recurrent\": true,\n\t\t\t\t\"is_multi_club_access\": true,\n\t\t\t\t\"is_spa_access\": true,\n\t\t\t\t\"payment_interval\": 1,\n\t\t\t\t\"interval_type\": \"month\",\n\t\t\t\t\"is_group_training_access\": true,\n\t\t\t\t\"is_fitness_access\": true,\n\t\t\t\t\"payment_plan_type\": \"subscription\",\n\t\t\t\t\"pp_extension\": \"infinity\"\n\t\t\t},\n\t\t\t\"club\": {\n\t\t\t\t\"id\": 146,\n\t\t\t\t\"name\": \"DDX Страстной\",\n\t\t\t\t\"open_date\": \"2025-04-17T00:00:00Z\"\n\t\t\t}\n\t\t}\n\t]\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/v2/payment/create\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"provider_id\": 20,\n\t\"gate_id\": 3,\n\t\"user_id\": 3252129,\n\t\"related_user_payment_plans\": [\n\t\t4675203\n\t],\n\t\"user_payment_plan_id\": 4675202,\n\t\"currency\": \"RUB\",\n\t\"payment_service_id\": 6,\n\t\"employee_id\": 2549,\n\t\"fiscal_method\": \"OrangeData\",\n\t\"widget_settings\": {\n\t\t\"success_page\": \"https://site-pretest.ddxfitness.ru/checkout/redirect.php\",\n\t\t\"fault_page\": \"https://site-pretest.ddxfitness.ru/checkout/redirect.php?error=faild\"\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"currency\": \"RUB\",\n\t\t\t\"payment_service_id\": 6,\n\t\t\t\"total_amount\": 6099,\n\t\t\t\"payment_widget_uri\": \"https://ls.test.ddxfitness.ru/ZINd1\",\n\t\t\t\"transactions\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 47797107,\n\t\t\t\t\t\"status\": \"in progress\",\n\t\t\t\t\t\"price\": {\n\t\t\t\t\t\t\"our_amount\": 5800,\n\t\t\t\t\t\t\"partner_amount\": 0,\n\t\t\t\t\t\t\"discount_amount\": 0,\n\t\t\t\t\t\t\"deposit_amount\": 0,\n\t\t\t\t\t\t\"total_amount\": 5800\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"id\": 47797108,\n\t\t\t\t\t\"parent_id\": 47797107,\n\t\t\t\t\t\"status\": \"in progress\",\n\t\t\t\t\t\"price\": {\n\t\t\t\t\t\t\"our_amount\": 299,\n\t\t\t\t\t\t\"partner_amount\": 0,\n\t\t\t\t\t\t\"discount_amount\": 0,\n\t\t\t\t\t\t\"deposit_amount\": 0,\n\t\t\t\t\t\t\"total_amount\": 299\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t]\n}\n"
+                        },
+                        {
+                          "text": "ПРОВЕРКА СХЕМЫ undefined\n"
+                        },
+                        {
+                          "text": "\n\t-- EXPECTED RESPONSE SCHEMA --\n"
+                        },
+                        {
+                          "text": "{\n  type: \u001b[32m'object'\u001b[39m,\n  properties: {\n    session_id: { type: \u001b[32m'string'\u001b[39m },\n    request_id: { type: \u001b[32m'string'\u001b[39m },\n    request_source: { type: \u001b[32m'string'\u001b[39m },\n    data: { anyOf: \u001b[36m[Array]\u001b[39m }\n  },\n  required: [ \u001b[32m'session_id'\u001b[39m, \u001b[32m'request_id'\u001b[39m ],\n  additionalProperties: \u001b[33mfalse\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "\nRESPONSE SUCCESSFULY VALIDATED\n"
+                        },
+                        {
+                          "text": "ПРОВЕРКА СХЕМЫ undefined\n"
+                        },
+                        {
+                          "text": "\n\t-- EXPECTED RESPONSE SCHEMA --\n"
+                        },
+                        {
+                          "text": "{\n  type: \u001b[32m'object'\u001b[39m,\n  properties: {\n    currency: { type: \u001b[32m'string'\u001b[39m },\n    payment_service_id: { type: \u001b[32m'number'\u001b[39m },\n    total_amount: { type: \u001b[32m'number'\u001b[39m },\n    payment_widget_uri: { type: \u001b[32m'string'\u001b[39m },\n    transactions: { type: \u001b[32m'array'\u001b[39m, items: \u001b[36m[Object]\u001b[39m }\n  },\n  required: [\n    \u001b[32m'currency'\u001b[39m,\n    \u001b[32m'payment_service_id'\u001b[39m,\n    \u001b[32m'total_amount'\u001b[39m,\n    \u001b[32m'payment_widget_uri'\u001b[39m,\n    \u001b[32m'transactions'\u001b[39m\n  ],\n  additionalProperties: \u001b[33mfalse\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "\nRESPONSE SUCCESSFULY VALIDATED\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
                       "steps": [
                         {
-                          "title": "Создать номер телефона клиента",
-                          "duration": 0
+                          "title": "Создание платежной транзакции первичной оплаты подписки",
+                          "duration": 1331
                         },
                         {
-                          "title": "Создать email",
+                          "title": "Проверить схему ответа",
+                          "duration": 29
+                        },
+                        {
+                          "title": "Проверить статус транзакции",
                           "duration": 1
-                        },
-                        {
-                          "title": "Перейти на страницу входа в CRM",
-                          "duration": 1407
-                        },
-                        {
-                          "title": "Заполнить форму авторизации и нажать войти",
-                          "duration": 1442
-                        },
-                        {
-                          "title": "Ввести номер телефона в поиске и перейти на страницу создания клиента",
-                          "duration": 2598
-                        },
-                        {
-                          "title": "Заполнить информацию о клиенте",
-                          "duration": 3508
-                        },
-                        {
-                          "title": "Выбрать подписку, клуб и запросить код верификации",
-                          "duration": 3790
-                        },
-                        {
-                          "title": "Получить код подтверждения из БД",
-                          "duration": 6535
-                        },
-                        {
-                          "title": "Ввести код подтверждения и нажать Подтвердить",
-                          "duration": 3452
-                        },
-                        {
-                          "title": "Выбрать платежный сервис и отправить ссылку на оплату",
-                          "duration": 2894
-                        },
-                        {
-                          "title": "Открыть новую вкладку,перейти на виджет и успешно оплатить",
-                          "duration": 17301
-                        },
-                        {
-                          "title": "Закрыть страницу создания подписки и проверить наличие активной подписки на карточке клиента",
-                          "duration": 2778
                         }
                       ],
-                      "startTime": "2026-01-08T09:45:47.769Z",
+                      "startTime": "2026-01-09T14:12:35.337Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "trace",
-                          "contentType": "application/zip",
-                          "path": "C:\\Users\\a.aparin\\STUDYAGAIN\\test-results\\ui-clientPage-paymentUserP-a0d20-подписки-провайдером-Method-chromium\\trace.zip"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "45a0cc3b257c9346ff12-73f15fe1d90404de37ae",
-              "file": "ui/clientPage/paymentUserPaymentPlan.test.ts",
-              "line": 12,
+              "id": "15592ed0222074cced7e-8c0d0ce168a88de7c307",
+              "file": "api/paymentCreate/paymentCreateV2.test.ts",
+              "line": 30,
+              "column": 14
+            },
+            {
+              "title": "[positive] создание транзакции первичной оплаты подписки провайдером 5",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1541,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/users\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"data\": {\n\t\t\"email\": \"autotest+7957406@mailtest.ru\",\n\t\t\"name\": \"Кваква\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79017957406\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"password\": \"Qwery@123456\",\n\t\t\"lang\": \"ru\",\n\t\t\"home_club_id\": 146,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\"\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": {\n\t\t\"id\": 3252130,\n\t\t\"created_at\": \"2026-01-09T14:12:37.5643792Z\",\n\t\t\"updated_at\": \"2026-01-09T14:12:37.5643792Z\",\n\t\t\"name\": \"Кваква\",\n\t\t\"email\": \"autotest+7957406@mailtest.ru\",\n\t\t\"last_name\": \"Квак\",\n\t\t\"middle_name\": \"Квакович\",\n\t\t\"sex\": \"male\",\n\t\t\"phone\": \"+79017957406\",\n\t\t\"birthday\": \"1991-11-11\",\n\t\t\"parent\": 0,\n\t\t\"lang\": \"ru\",\n\t\t\"user_photo\": \"\",\n\t\t\"home_club_id\": 146,\n\t\t\"balance\": 0,\n\t\t\"club_access\": true,\n\t\t\"admin_panel_access\": true,\n\t\t\"group_training_registration_access\": false,\n\t\t\"sport_experience\": \"0-6 месяцев\",\n\t\t\"is_qr_check\": true,\n\t\t\"qr_token\": \"4b865a19-4ceb-4866-8b33-324c123897c6\",\n\t\t\"need_recovery\": false\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/v2/users/3252130/user_payment_plans\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"verification_token\": \"e3767699-6a16-4da1-94b9-fa8ab9378fb4\",\n\t\"data\": [\n\t\t{\n\t\t\t\"start_date\": \"2026-01-09\",\n\t\t\t\"payment_plan_id\": 18,\n\t\t\t\"club_id\": 146\n\t\t},\n\t\t{\n\t\t\t\"start_date\": \"2026-01-09\",\n\t\t\t\"payment_plan_id\": 205,\n\t\t\t\"club_id\": 201\n\t\t}\n\t]\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 4675205,\n\t\t\t\"user_id\": 3252130,\n\t\t\t\"signed_date\": \"2025-04-09T11:41:11Z\",\n\t\t\t\"start_date\": \"2026-01-09T14:12:38Z\",\n\t\t\t\"status\": \"Created\",\n\t\t\t\"parent_id\": 4675204,\n\t\t\t\"payment_plan\": {\n\t\t\t\t\"id\": 205,\n\t\t\t\t\"name\": \"Action\",\n\t\t\t\t\"currency_code\": \"RUB\",\n\t\t\t\t\"our_join_fee\": 0,\n\t\t\t\t\"partner_join_fee\": 0,\n\t\t\t\t\"membership_fee\": 299,\n\t\t\t\t\"is_recurrent\": true,\n\t\t\t\t\"is_multi_club_access\": false,\n\t\t\t\t\"is_spa_access\": false,\n\t\t\t\t\"payment_interval\": 1,\n\t\t\t\t\"interval_type\": \"month\",\n\t\t\t\t\"is_group_training_access\": false,\n\t\t\t\t\"is_fitness_access\": false,\n\t\t\t\t\"payment_plan_type\": \"video_trainings\"\n\t\t\t},\n\t\t\t\"club\": {\n\t\t\t\t\"id\": 201,\n\t\t\t\t\"name\": \"DDX ИЛОН\",\n\t\t\t\t\"open_date\": \"2025-12-31T00:00:00Z\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": 4675204,\n\t\t\t\"user_id\": 3252130,\n\t\t\t\"signed_date\": \"2025-04-09T11:41:11Z\",\n\t\t\t\"start_date\": \"2026-01-09T14:12:38Z\",\n\t\t\t\"status\": \"Created\",\n\t\t\t\"payment_plan\": {\n\t\t\t\t\"id\": 18,\n\t\t\t\t\"name\": \"Infinity 1мес 18\",\n\t\t\t\t\"currency_code\": \"RUB\",\n\t\t\t\t\"our_join_fee\": 3000,\n\t\t\t\t\"partner_join_fee\": 0,\n\t\t\t\t\"membership_fee\": 2800,\n\t\t\t\t\"is_recurrent\": true,\n\t\t\t\t\"is_multi_club_access\": true,\n\t\t\t\t\"is_spa_access\": true,\n\t\t\t\t\"payment_interval\": 1,\n\t\t\t\t\"interval_type\": \"month\",\n\t\t\t\t\"is_group_training_access\": true,\n\t\t\t\t\"is_fitness_access\": true,\n\t\t\t\t\"payment_plan_type\": \"subscription\",\n\t\t\t\t\"pp_extension\": \"infinity\"\n\t\t\t},\n\t\t\t\"club\": {\n\t\t\t\t\"id\": 146,\n\t\t\t\t\"name\": \"DDX Страстной\",\n\t\t\t\t\"open_date\": \"2025-04-17T00:00:00Z\"\n\t\t\t}\n\t\t}\n\t]\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- REQUEST URL --\n"
+                        },
+                        {
+                          "text": "https://api.test.ddxfitness.ru/v2/payment/create\n"
+                        },
+                        {
+                          "text": "\n\t-- PARAMETERS --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"request_source\": \"crm\",\n\t\"provider_id\": 20,\n\t\"gate_id\": 3,\n\t\"user_id\": 3252130,\n\t\"related_user_payment_plans\": [\n\t\t4675205\n\t],\n\t\"user_payment_plan_id\": 4675204,\n\t\"currency\": \"RUB\",\n\t\"payment_service_id\": 5,\n\t\"employee_id\": 2549,\n\t\"fiscal_method\": \"OrangeData\",\n\t\"widget_settings\": {\n\t\t\"success_page\": \"https://site-pretest.ddxfitness.ru/checkout/redirect.php\",\n\t\t\"fault_page\": \"https://site-pretest.ddxfitness.ru/checkout/redirect.php?error=faild\"\n\t}\n}\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE STATUS --\n"
+                        },
+                        {
+                          "text": "\u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "\n\t-- RESPONSE BODY --\n"
+                        },
+                        {
+                          "text": "{\n\t\"session_id\": \"autotest_aai\",\n\t\"request_id\": \"autotest_aai\",\n\t\"data\": [\n\t\t{\n\t\t\t\"currency\": \"RUB\",\n\t\t\t\"payment_service_id\": 5,\n\t\t\t\"total_amount\": 6099,\n\t\t\t\"payment_widget_uri\": \"https://ls.test.ddxfitness.ru/O2mrZ\",\n\t\t\t\"transactions\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": 47797109,\n\t\t\t\t\t\"status\": \"in progress\",\n\t\t\t\t\t\"price\": {\n\t\t\t\t\t\t\"our_amount\": 5800,\n\t\t\t\t\t\t\"partner_amount\": 0,\n\t\t\t\t\t\t\"discount_amount\": 0,\n\t\t\t\t\t\t\"deposit_amount\": 0,\n\t\t\t\t\t\t\"total_amount\": 5800\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"id\": 47797110,\n\t\t\t\t\t\"parent_id\": 47797109,\n\t\t\t\t\t\"status\": \"in progress\",\n\t\t\t\t\t\"price\": {\n\t\t\t\t\t\t\"our_amount\": 299,\n\t\t\t\t\t\t\"partner_amount\": 0,\n\t\t\t\t\t\t\"discount_amount\": 0,\n\t\t\t\t\t\t\"deposit_amount\": 0,\n\t\t\t\t\t\t\"total_amount\": 299\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t]\n}\n"
+                        },
+                        {
+                          "text": "ПРОВЕРКА СХЕМЫ undefined\n"
+                        },
+                        {
+                          "text": "\n\t-- EXPECTED RESPONSE SCHEMA --\n"
+                        },
+                        {
+                          "text": "{\n  type: \u001b[32m'object'\u001b[39m,\n  properties: {\n    session_id: { type: \u001b[32m'string'\u001b[39m },\n    request_id: { type: \u001b[32m'string'\u001b[39m },\n    request_source: { type: \u001b[32m'string'\u001b[39m },\n    data: { anyOf: \u001b[36m[Array]\u001b[39m }\n  },\n  required: [ \u001b[32m'session_id'\u001b[39m, \u001b[32m'request_id'\u001b[39m ],\n  additionalProperties: \u001b[33mfalse\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "\nRESPONSE SUCCESSFULY VALIDATED\n"
+                        },
+                        {
+                          "text": "ПРОВЕРКА СХЕМЫ undefined\n"
+                        },
+                        {
+                          "text": "\n\t-- EXPECTED RESPONSE SCHEMA --\n"
+                        },
+                        {
+                          "text": "{\n  type: \u001b[32m'object'\u001b[39m,\n  properties: {\n    currency: { type: \u001b[32m'string'\u001b[39m },\n    payment_service_id: { type: \u001b[32m'number'\u001b[39m },\n    total_amount: { type: \u001b[32m'number'\u001b[39m },\n    payment_widget_uri: { type: \u001b[32m'string'\u001b[39m },\n    transactions: { type: \u001b[32m'array'\u001b[39m, items: \u001b[36m[Object]\u001b[39m }\n  },\n  required: [\n    \u001b[32m'currency'\u001b[39m,\n    \u001b[32m'payment_service_id'\u001b[39m,\n    \u001b[32m'total_amount'\u001b[39m,\n    \u001b[32m'payment_widget_uri'\u001b[39m,\n    \u001b[32m'transactions'\u001b[39m\n  ],\n  additionalProperties: \u001b[33mfalse\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "\nRESPONSE SUCCESSFULY VALIDATED\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Создание платежной транзакции первичной оплаты подписки",
+                          "duration": 675
+                        },
+                        {
+                          "title": "Проверить схему ответа",
+                          "duration": 32
+                        },
+                        {
+                          "title": "Проверить статус транзакции",
+                          "duration": 4
+                        }
+                      ],
+                      "startTime": "2026-01-09T14:12:37.402Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "15592ed0222074cced7e-8986a5d96b3bea1ee29c",
+              "file": "api/paymentCreate/paymentCreateV2.test.ts",
+              "line": 30,
               "column": 14
             }
           ]
@@ -274,9 +521,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-01-08T09:44:42.755Z",
-    "duration": 115978.91499999166,
-    "expected": 2,
+    "startTime": "2026-01-09T14:12:23.153Z",
+    "duration": 15821.228,
+    "expected": 3,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

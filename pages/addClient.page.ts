@@ -31,4 +31,25 @@ export default class AddClientPage {
                 break;
         }
     }
+    async fillUserInfo (page: Page, email: string, lastName: string, firstName: string, middleName: string) {
+        await page.getByPlaceholder('Введите фамилию').fill(lastName);
+        await page.getByPlaceholder('Введите имя').fill(firstName);
+        await page.getByPlaceholder('Введите отчество').fill(middleName);
+        await page.getByPlaceholder('__.__.____').fill('11111991');
+        await page.keyboard.press('Enter');
+        const radio = await page.locator('input[name="sex"][value="male"]');
+        await radio.evaluate((el: HTMLInputElement) => el.click());
+        await page.getByPlaceholder('Введите email').fill(email);
+        await page.locator("//div[contains(text(), 'Выберите интервал')]/parent::div/div[2]").click()
+        await page.waitForTimeout(1000);
+        await page.getByText('Нет опыта').click();
+    }
+    async fillPaymentPlanInfo (page: Page) {
+        await page.locator("//div[contains(text(), 'Выберите тариф')]/parent::div/div[2]").click();
+        await page.waitForTimeout(1000); 
+        await page.getByText('Smart 1месяц').click();
+        await page.getByPlaceholder('Выберите клуб').click();
+        await page.waitForTimeout(1000);
+        await page.getByText('Аэропорт').click();
+    }
 }

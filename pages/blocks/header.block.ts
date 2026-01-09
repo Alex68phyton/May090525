@@ -9,5 +9,12 @@ export default class HeaderBlock {
         clientInfo: {
             openButton: page.getByRole('button', { name: 'Открыть'}),
         }
-    })
+    });
+
+    async toUserCreate(page: Page, phoneNumber: string) {
+        await page.getByTestId('phone-input').waitFor({state: 'visible', timeout: 3000});
+        await page.getByTestId('phone-input').fill(phoneNumber);
+        await page.getByTestId('search').getByRole('img').click();
+        await page.getByRole('button', { name: 'Создать' }).click();
+    }
 }

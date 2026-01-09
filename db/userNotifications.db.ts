@@ -56,10 +56,23 @@ export const userNotificationsTableDB = db.define(
     timestamps: false
   });
 
-  export async function selectUserNotification(sendTo: string): Promise <UserNotificationsDB> {
-      const result = await db.query(
-          `SELECT * FROM ${tableName} WHERE send_to = '${sendTo}' ORDER BY id DESC LIMIT 1`,
-          { model: userNotificationsTableDB, mapToModel: true});
+  export async function selectUserNotification(sendTo: string): Promise<UserNotificationsDB> {
+  let error;
   
-      return <UserNotificationsDB | any>result[0];   
+  for (let i = 0; i < 3; i++) {
+    try {
+      const result = await db.query(
+        `SELECT * FROM ${tableName} WHERE send_to = '${sendTo}' ORDER BY id DESC LIMIT 1`,
+        { model: userNotificationsTableDB, mapToModel: true }
+      );
+      
+      return <UserNotificationsDB | any>result[0];
+      
+    } catch (err: any) {
+      error = err;
+      if (i < 2) await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
+    }
   }
+  
+  throw error!;
+}

@@ -14,8 +14,6 @@ export default class MethodWidgetPage {
         await page.getByTestId('card:pan-input').fill(cardNumber);
         await page.getByTestId('card:date-input').fill(cardDate);
         await page.getByTestId('card:code-input').fill(cardCvv);
-        //await input.click({ force: true });
-        //await page.keyboard.type(cardNumber, { delay: 50 });
         await page.getByTestId('card:submit-btn').click();
         await page.waitForURL('**/checkout/**');
         await page.close();

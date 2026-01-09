@@ -59,7 +59,14 @@ export const userPaymentPlansDB = db.define(
 
 export async function selectUserPaymentPlanByStatus(status:string): Promise <UserPaymentPlansDB> {
     const result = await db.query(
-        `SELECT * FROM ${tableName} WHERE status  = '${status}' ORDER BY id DESC LIMIT 1`,
+        `SELECT upp1.* FROM ${tableName} upp1 WHERE upp1.status  = '${status}' 
+            AND NOT EXISTS (
+                SELECT 1 
+                FROM user_payment_plans upp2 
+                WHERE upp2.user_id = upp1.user_id 
+                    AND upp2.id != upp1.id
+        ) ORDER BY upp1.id DESC 
+		LIMIT 1;`,
         { model: userPaymentPlansDB, mapToModel: true});
 
     return <UserPaymentPlansDB | any>result[0];   

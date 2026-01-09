@@ -9,13 +9,7 @@ import userTestData from "@data/user.json";
 test.describe("Тесты на оплату подписки", () =>{
     let providerNames = ['CloudPayments', 'Method'];
     providerNames.forEach(provider => {
-        test.only(`Оплата подписки провайдером ${provider}`, async ({ page, loginPage, addClientPage, cpWidgetPage, methodWidgetPage, clientPage}) => {
-            //let paymentCreateWidgetLink;
-            //page.on('response', async req => {
-            //    if (req.url().includes("/payment/create")) {
-            //        paymentCreateWidgetLink = (await req.json()).transaction.payment_widget_uri
-            //    }
-            //});
+        test.only(`Оплата подписки провайдером ${provider}`, async ({ page, loginPage, addClientPage, cpWidgetPage, methodWidgetPage, clientPage, headerBlock}) => {
 
             test.setTimeout(100000);
             const phoneNumber = await test.step("Создать номер телефона клиента", () => getRandomPhoneNumber());
@@ -30,37 +24,19 @@ test.describe("Тесты на оплату подписки", () =>{
             });
 
             await test.step("Ввести номер телефона в поиске и перейти на страницу создания клиента", async () => {
-                await page.getByTestId('phone-input').waitFor({state: 'visible', timeout: 3000});
-                await page.getByTestId('phone-input').fill(phoneNumber);
-                await page.getByTestId('search').getByRole('img').click();
-                await page.getByRole('button', { name: 'Создать' }).click();
+                headerBlock.toUserCreate(page, phoneNumber);
             });
 
             await test.step("Заполнить информацию о клиенте", async () => {
-                await page.getByPlaceholder('Введите фамилию').fill(userTestData.last_name);
-                await page.getByPlaceholder('Введите имя').fill(userTestData.first_name);
-                await page.getByPlaceholder('Введите отчество').fill(userTestData.middle_name);
-                await page.getByPlaceholder('__.__.____').fill('11111991');
-                await page.keyboard.press('Enter');
-                const radio = await page.locator('input[name="sex"][value="male"]');
-                await radio.evaluate((el: HTMLInputElement) => el.click());
-                await page.getByPlaceholder('Введите email').fill(email);
-                await page.locator("//div[contains(text(), 'Выберите интервал')]/parent::div/div[2]").click()
-                await page.waitForTimeout(1000);
-                await page.getByText('Нет опыта').click();
+                addClientPage.fillUserInfo(page, email, userTestData.last_name, userTestData.first_name, userTestData.middle_name);
             });
             await test.step("Выбрать подписку, клуб и запросить код верификации", async () => {
-                await page.locator("//div[contains(text(), 'Выберите тариф')]/parent::div/div[2]").click();
-                await page.waitForTimeout(1000); 
-                await page.getByText('Smart 1месяц').click();
-                await page.getByPlaceholder('Выберите клуб').click();
-                await page.waitForTimeout(1000);
-                await page.getByText('Аэропорт').click();
+                addClientPage.fillPaymentPlanInfo(page);
                 await page.getByRole('button', { name: 'Отправить код' }).click();
             });
 
             const confirmationCode = await test.step("Получить код подтверждения из БД", async () => {
-                await page.waitForTimeout(3000);
+                await page.waitForTimeout(6000);
                 const userNotification = await selectUserNotification(email);
                 const body = userNotification.body as any;
                 const code = body?.variables?.code || null;
@@ -82,13 +58,6 @@ test.describe("Тесты на оплату подписки", () =>{
             });
 
             const mainPage = page;
-
-            //await page.waitForFunction(() => window['paymentCreateWidgetLink'] !== null, {}, {
-            //    polling: 100,
-            //    timeout: 30000
-            //}).catch(() => {
-            //    throw new Error('Не удалось получить ссылку');
-            //});
 
             await test.step("Открыть новую вкладку,перейти на виджет и успешно оплатить", async () => {
                 const newPage = await page.context().newPage();

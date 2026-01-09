@@ -8,21 +8,26 @@ import UserPaymentCreateV2Requests from "@requests/paymentCreateV2.request";
 import { validateJson } from "@utils/validator.util";
 import { baseResponseJsonSchema } from "@entities/base.response";
 import { paymentCreateV2RequestJsonSchema } from "@entities/paymentCreateV2.response";
+import UsersRequests from "@requests/users.request";
+import { getUserRequestJson } from "@entities/users/user.requestJson";
+import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 
 test.describe("API-тесты на оплату подписки", async () => {
     let userPaymentPlanFirstId: number;
     let userPaymentPlanSecondId: number;
-    test.beforeEach(async ({request, clubId, userId}) => {
-                [userPaymentPlanFirstId, userPaymentPlanSecondId] = await test.step("Создать подписку юзеру и получить id", async () => {
-            const uppV2RequestBody = await getUserPaymentPlanRequestJson(clubId); 
+    let userId: number;
+    test.beforeEach(async ({request, clubId}) => {
+                [userPaymentPlanFirstId, userPaymentPlanSecondId, userId] = await test.step("Создать подписку юзеру и получить id", async () => {
+            const uppV2RequestBody = await getUserPaymentPlanRequestJson(clubId);
+            const userId = (await (await new UsersRequests(request).postUsers(Statuses.OK, await getUserRequestJson(Number(process.env.CLUB_ID), getRandomEmail(), getRandomPhoneNumber()))).json()).data.id; 
 
             const getUserPaymentPlanV2Response = (await (await new UserPaymentPlansV2Requests(request).postUserPaymentPlansV2(Statuses.OK, uppV2RequestBody, userId)).json()).data[0];
-            return [getUserPaymentPlanV2Response.parent_id, getUserPaymentPlanV2Response.id]      
+            return [getUserPaymentPlanV2Response.parent_id, getUserPaymentPlanV2Response.id, userId]      
         });
     });
     const paymentService = [PaymentServices.CLOUDPAYMENTS, PaymentServices.NEW_SBER, PaymentServices.PAYGINE]
     paymentService.forEach(payment_service => {
-        test.only(`[positive] создание транзакции первичной оплаты подписки провайдером ${payment_service}`, async ({request, userId}) => {
+        test.only(`[positive] создание транзакции первичной оплаты подписки провайдером ${payment_service}`, async ({request}) => {
             const paymentCreateResponse = await test.step("Создание платежной транзакции первичной оплаты подписки", async () => {
                 const paymentCreateV2Body = await getPaymentCreateV2RequestJson(userId, userPaymentPlanFirstId, payment_service, userPaymentPlanSecondId);
                 const paymentCreateV2Response = (await (await new UserPaymentCreateV2Requests(request).postUserPaymentCreateV2(Statuses.OK, paymentCreateV2Body)).json());

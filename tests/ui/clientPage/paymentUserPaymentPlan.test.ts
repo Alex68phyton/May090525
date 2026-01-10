@@ -24,14 +24,14 @@ test.describe("Тесты на оплату подписки", () =>{
             });
 
             await test.step("Ввести номер телефона в поиске и перейти на страницу создания клиента", async () => {
-                headerBlock.toUserCreate(page, phoneNumber);
+                await headerBlock.toUserCreate(page, phoneNumber);
             });
 
             await test.step("Заполнить информацию о клиенте", async () => {
-                addClientPage.fillUserInfo(page, email, userTestData.last_name, userTestData.first_name, userTestData.middle_name);
+                await addClientPage.fillUserInfo(page, email, userTestData.last_name, userTestData.first_name, userTestData.middle_name);
             });
             await test.step("Выбрать подписку, клуб и запросить код верификации", async () => {
-                addClientPage.fillPaymentPlanInfo(page);
+                await addClientPage.fillPaymentPlanInfo(page);
                 await page.getByRole('button', { name: 'Отправить код' }).click();
             });
 
